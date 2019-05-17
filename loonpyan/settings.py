@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'administration',
 ]
 
 MIDDLEWARE = [
@@ -75,13 +76,23 @@ WSGI_APPLICATION = 'loonpyan.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'loonpyandb',
+    'USER': 'root',
+    'PASSWORD': 'P@$$w0rd',
+    'HOST': '127.0.0.1',
+    'PORT': '3306',
+    'AUTOCOMMIT': True,
 }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
