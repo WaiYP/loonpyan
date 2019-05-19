@@ -109,7 +109,7 @@
                     <!-- widget content -->
                     <div class="widget-body no-padding">
                         <form id="products_form" role="form"
-                              action="{% url 'inventory:product_save' %}"
+                              action="{% url 'inventory:category_save' %}"
                               class="smart-form" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.errors }}
