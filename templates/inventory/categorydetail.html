@@ -1,0 +1,686 @@
+{% extends "adminbase.html" %}
+{% load staticfiles %}
+{% block css %}
+    <style>
+        fieldset.scheduler-border {
+            border: solid 2px #DDD !important;
+            padding: 10px 10px 10px 10px;
+            border-bottom: none;
+        }
+
+        legend.scheduler-border {
+            width: auto !important; /* Or auto */
+            padding: 0 10px; /* To give a bit of padding on the left and right */
+            border-bottom: none;
+        }
+
+        .picture-container {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .picture {
+            width: 200px;
+            height: 130px;
+            background-color: #999999;
+            border: 4px solid #CCCCCC;
+            color: #FFFFFF;
+            border-radius: 5px;
+            margin: 0px auto;
+            overflow: hidden;
+            transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+        }
+
+        .picture:hover {
+            border-color: #2ca8ff;
+        }
+
+        .content.ct-wizard-green .picture:hover {
+            border-color: #05ae0e;
+        }
+
+        .content.ct-wizard-blue .picture:hover {
+            border-color: #3472f7;
+        }
+
+        .content.ct-wizard-orange .picture:hover {
+            border-color: #ff9500;
+        }
+
+        .content.ct-wizard-red .picture:hover {
+            border-color: #ff3b30;
+        }
+
+        .picture input[type="file"] {
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .picture-src {
+            width: 100%;
+
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <!-- NEW COL START -->
+        <article class="col-lg-8 col-sm-8 col-md-8 col-md-offset-2">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false"
+                 data-widget-custombutton="false">
+                <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                    <h2> Category Details </h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+                        <form id="products_form" role="form"
+                              action="{% url 'inventory:product_save' %}"
+                              class="smart-form" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.errors }}
+                            {{ form.non_field_errors }}
+
+                            <fieldset>
+                                {% if edit == 1 %}
+                                    <input type="text" name="id" value="{{ category.id }}" hidden>
+                                {% endif %}
+                                <div class="col col-6">
+                                    <section>
+                                        <label class="label">Category Name:</label>
+                                        <label class="input"><i class="icon-append fa fa-cube"></i>
+                                            <input type="text" name="name" placeholder="Name"
+                                                   value="{{ category.name }}">
+                                        </label>
+                                    </section>
+
+                                </div>
+                            </fieldset>
+                        <fieldset>
+                                <div class="row">
+                                    <section class="col col-4">
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="active" {% if category.active == 1 %}
+                                                   checked {% endif %} value="1"><i></i>Is Active
+                                        </label>
+                                    </section>
+                                </div>
+                            </fieldset>
+                            <footer>
+                                <button type="submit" class="btn btn-primary" style="float: left;">
+                                    <i class="fa fa-save"></i>
+                                    Save
+                                </button>
+                            </footer>
+                        </form>
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+        <!-- END COL -->
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {#    <script>#}
+    {#        // Prepare the preview for profile picture#}
+    {#        $("#wizard-picture").change(function () {#}
+    {#            readURL(this);#}
+    {#            var filePath = $("#wizard-picture").val().toString();#}
+    {#            var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);#}
+    {#            document.getElementById('staff_photo').value = fileName;#}
+    {#        });#}
+    {##}
+    {#        function selectedpgroup() {#}
+    {#var selectedpgroup = $("#pgroup option:selected").val();#}
+    {#document.getElementById('psubgroup').value = selectedpgroup;#}
+    {#        }#}
+    {##}
+    {#        function readURL(input) {#}
+    {#            if (input.files && input.files[0]) {#}
+    {#                var reader = new FileReader();#}
+    {##}
+    {#                reader.onload = function (e) {#}
+    {#                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');#}
+    {#                }#}
+    {#                reader.readAsDataURL(input.files[0]);#}
+    {#            }#}
+    {#        }#}
+    {#    </script>#}
+{% endblock %}
+{% block docrdy %}
+    var errorClass = 'invalid';
+    var errorElement = 'em';
+
+    var $deposit_form = $('#deposit_form').validate({
+    errorClass        : errorClass,
+    errorElement    : errorElement,
+    highlight: function(element) {
+    $(element).parent().removeClass('state-success').addClass("state-error");
+    $(element).removeClass('valid');
+    },
+    unhighlight: function(element) {
+    $(element).parent().removeClass("state-error").addClass('state-success');
+    $(element).addClass('valid');
+    },
+
+    // Rules for form validation
+    rules : {
+    fname : {
+    required : true
+    },
+    lname : {
+    required : true
+    },
+    email : {
+    required : true,
+    email : true
+    },
+    phone : {
+    required : true
+    },
+    country : {
+    required : true
+    },
+    city : {
+    required : true
+    },
+    code : {
+    required : true,
+    digits : true
+    },
+    address : {
+    required : true
+    },
+    name : {
+    required : true
+    },
+    card : {
+    required : true,
+    creditcard : true
+    },
+    cvv : {
+    required : true,
+    digits : true
+    },
+    month : {
+    required : true
+    },
+    year : {
+    required : true,
+    digits : true
+    }
+    },
+
+    // Messages for form validation
+    messages : {
+    fname : {
+    required : 'Please enter your first name'
+    },
+    lname : {
+    required : 'Please enter your last name'
+    },
+    email : {
+    required : 'Please enter your email address',
+    email : 'Please enter a VALID email address'
+    },
+    phone : {
+    required : 'Please enter your phone number'
+    },
+    country : {
+    required : 'Please select your country'
+    },
+    city : {
+    required : 'Please enter your city'
+    },
+    code : {
+    required : 'Please enter code',
+    digits : 'Digits only please'
+    },
+    address : {
+    required : 'Please enter your full address'
+    },
+    name : {
+    required : 'Please enter name on your card'
+    },
+    card : {
+    required : 'Please enter your card number'
+    },
+    cvv : {
+    required : 'Enter CVV2',
+    digits : 'Digits only'
+    },
+    month : {
+    required : 'Select month'
+    },
+    year : {
+    required : 'Enter year',
+    digits : 'Digits only please'
+    }
+    },
+
+    // Do not change code below
+    errorPlacement : function(error, element) {
+    error.insertAfter(element.parent());
+    }
+    });
+
+    var $registerForm = $("#smart-form-register").validate({
+    errorClass        : errorClass,
+    errorElement    : errorElement,
+    highlight: function(element) {
+    $(element).parent().removeClass('state-success').addClass("state-error");
+    $(element).removeClass('valid');
+    },
+    unhighlight: function(element) {
+    $(element).parent().removeClass("state-error").addClass('state-success');
+    $(element).addClass('valid');
+    },
+
+    // Rules for form validation
+    rules : {
+    username : {
+    required : true
+    },
+    email : {
+    required : true,
+    email : true
+    },
+    password : {
+    required : true,
+    minlength : 3,
+    maxlength : 20
+    },
+    passwordConfirm : {
+    required : true,
+    minlength : 3,
+    maxlength : 20,
+    equalTo : '#password'
+    },
+    firstname : {
+    required : true
+    },
+    lastname : {
+    required : true
+    },
+    gender : {
+    required : true
+    },
+    terms : {
+    required : true
+    }
+    },
+
+    // Messages for form validation
+    messages : {
+    login : {
+    required : 'Please enter your login'
+    },
+    email : {
+    required : 'Please enter your email address',
+    email : 'Please enter a VALID email address'
+    },
+    password : {
+    required : 'Please enter your password'
+    },
+    passwordConfirm : {
+    required : 'Please enter your password one more time',
+    equalTo : 'Please enter the same password as above'
+    },
+    firstname : {
+    required : 'Please select your first name'
+    },
+    lastname : {
+    required : 'Please select your last name'
+    },
+    gender : {
+    required : 'Please select your gender'
+    },
+    terms : {
+    required : 'You must agree with Terms and Conditions'
+    }
+    },
+
+    // Do not change code below
+    errorPlacement : function(error, element) {
+    error.insertAfter(element.parent());
+    }
+    });
+
+    var $reviewForm = $("#review-form").validate({
+    errorClass        : errorClass,
+    errorElement    : errorElement,
+    highlight: function(element) {
+    $(element).parent().removeClass('state-success').addClass("state-error");
+    $(element).removeClass('valid');
+    },
+    unhighlight: function(element) {
+    $(element).parent().removeClass("state-error").addClass('state-success');
+    $(element).addClass('valid');
+    },
+    // Rules for form validation
+    rules : {
+    name : {
+    required : true
+    },
+    email : {
+    required : true,
+    email : true
+    },
+    review : {
+    required : true,
+    minlength : 20
+    },
+    quality : {
+    required : true
+    },
+    reliability : {
+    required : true
+    },
+    overall : {
+    required : true
+    }
+    },
+
+    // Messages for form validation
+    messages : {
+    name : {
+    required : 'Please enter your name'
+    },
+    email : {
+    required : 'Please enter your email address',
+    email : '<i class="fa fa-warning"></i><strong>Please enter a VALID email addres</strong>'
+    },
+    review : {
+    required : 'Please enter your review'
+    },
+    quality : {
+    required : 'Please rate quality of the product'
+    },
+    reliability : {
+    required : 'Please rate reliability of the product'
+    },
+    overall : {
+    required : 'Please rate the product'
+    }
+    },
+
+    // Do not change code below
+    errorPlacement : function(error, element) {
+    error.insertAfter(element.parent());
+    }
+    });
+
+    var $commentForm = $("#comment-form").validate({
+    errorClass        : errorClass,
+    errorElement    : errorElement,
+    highlight: function(element) {
+    $(element).parent().removeClass('state-success').addClass("state-error");
+    $(element).removeClass('valid');
+    },
+    unhighlight: function(element) {
+    $(element).parent().removeClass("state-error").addClass('state-success');
+    $(element).addClass('valid');
+    },
+    // Rules for form validation
+    rules : {
+    name : {
+    required : true
+    },
+    email : {
+    required : true,
+    email : true
+    },
+    url : {
+    url : true
+    },
+    comment : {
+    required : true
+    }
+    },
+
+    // Messages for form validation
+    messages : {
+    name : {
+    required : 'Enter your name',
+    },
+    email : {
+    required : 'Enter your email address',
+    email : 'Enter a VALID email'
+    },
+    url : {
+    email : 'Enter a VALID url'
+    },
+    comment : {
+    required : 'Please enter your comment'
+    }
+    },
+
+    // Ajax form submition
+    submitHandler : function(form) {
+    $(form).ajaxSubmit({
+    success : function() {
+    $("#comment-form").addClass('submited');
+    }
+    });
+    },
+
+    // Do not change code below
+    errorPlacement : function(error, element) {
+    error.insertAfter(element.parent());
+    }
+    });
+
+    var $contactForm = $("#contact-form").validate({
+    errorClass        : errorClass,
+    errorElement    : errorElement,
+    highlight: function(element) {
+    $(element).parent().removeClass('state-success').addClass("state-error");
+    $(element).removeClass('valid');
+    },
+    unhighlight: function(element) {
+    $(element).parent().removeClass("state-error").addClass('state-success');
+    $(element).addClass('valid');
+    },
+    // Rules for form validation
+    rules : {
+    name : {
+    required : true
+    },
+    email : {
+    required : true,
+    email : true
+    },
+    message : {
+    required : true,
+    minlength : 10
+    }
+    },
+
+    // Messages for form validation
+    messages : {
+    name : {
+    required : 'Please enter your name',
+    },
+    email : {
+    required : 'Please enter your email address',
+    email : 'Please enter a VALID email address'
+    },
+    message : {
+    required : 'Please enter your message'
+    }
+    },
+
+    // Ajax form submition
+    submitHandler : function(form) {
+    $(form).ajaxSubmit({
+    success : function() {
+    $("#contact-form").addClass('submited');
+    }
+    });
+    },
+
+    // Do not change code below
+    errorPlacement : function(error, element) {
+    error.insertAfter(element.parent());
+    }
+    });
+
+    var $loginForm = $("#login-form").validate({
+    errorClass        : errorClass,
+    errorElement    : errorElement,
+    highlight: function(element) {
+    $(element).parent().removeClass('state-success').addClass("state-error");
+    $(element).removeClass('valid');
+    },
+    unhighlight: function(element) {
+    $(element).parent().removeClass("state-error").addClass('state-success');
+    $(element).addClass('valid');
+    },
+    // Rules for form validation
+    rules : {
+    email : {
+    required : true,
+    email : true
+    },
+    password : {
+    required : true,
+    minlength : 3,
+    maxlength : 20
+    }
+    },
+
+    // Messages for form validation
+    messages : {
+    email : {
+    required : 'Please enter your email address',
+    email : 'Please enter a VALID email address'
+    },
+    password : {
+    required : 'Please enter your password'
+    }
+    },
+
+    // Do not change code below
+    errorPlacement : function(error, element) {
+    error.insertAfter(element.parent());
+    }
+    });
+
+    var $orderForm = $("#order-form").validate({
+    errorClass        : errorClass,
+    errorElement    : errorElement,
+    highlight: function(element) {
+    $(element).parent().removeClass('state-success').addClass("state-error");
+    $(element).removeClass('valid');
+    },
+    unhighlight: function(element) {
+    $(element).parent().removeClass("state-error").addClass('state-success');
+    $(element).addClass('valid');
+    },
+    // Rules for form validation
+    rules : {
+    name : {
+    required : true
+    },
+    email : {
+    required : true,
+    email : true
+    },
+    phone : {
+    required : true
+    },
+    interested : {
+    required : true
+    },
+    budget : {
+    required : true
+    }
+    },
+
+    // Messages for form validation
+    messages : {
+    name : {
+    required : 'Please enter your name'
+    },
+    email : {
+    required : 'Please enter your email address',
+    email : 'Please enter a VALID email address'
+    },
+    phone : {
+    required : 'Please enter your phone number'
+    },
+    interested : {
+    required : 'Please select interested service'
+    },
+    budget : {
+    required : 'Please select your budget'
+    }
+    },
+
+    // Do not change code below
+    errorPlacement : function(error, element) {
+    error.insertAfter(element.parent());
+    }
+    });
+
+    // START AND FINISH DATE
+    $('#startdate').datepicker({
+    dateFormat : 'dd.mm.yy',
+    prevText : '<i class="fa fa-chevron-left"></i>',
+    nextText : '<i class="fa fa-chevron-right"></i>',
+    onSelect : function(selectedDate) {
+    $('#finishdate').datepicker('option', 'minDate', selectedDate);
+    }
+    });
+
+    $('#finishdate').datepicker({
+    dateFormat : 'dd.mm.yy',
+    prevText : '<i class="fa fa-chevron-left"></i>',
+    nextText : '<i class="fa fa-chevron-right"></i>',
+    onSelect : function(selectedDate) {
+    $('#startdate').datepicker('option', 'maxDate', selectedDate);
+    }
+    });
+
+{% endblock %}

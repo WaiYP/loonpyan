@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'administration',
+    'inventory',
 ]
 
 MIDDLEWARE = [
@@ -87,9 +88,9 @@ DATABASES = {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'loonpyandb',
     'USER': 'root',
-    'PASSWORD': 'P@$$w0rd',
+    'PASSWORD': 'root',
     'HOST': '127.0.0.1',
-    'PORT': '3306',
+    'PORT': '3307',
     'AUTOCOMMIT': True,
 }
 }
@@ -134,3 +135,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'loonpyan', 'static'),
                     )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

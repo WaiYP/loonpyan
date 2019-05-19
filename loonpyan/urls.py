@@ -18,10 +18,19 @@ from django.contrib import admin
 from django.conf.urls import include, url
 from django.views.generic import TemplateView
 from home import views
+# from home import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
     url(r'^home/',include('home.urls')),
     url(r'^administration/', include('administration.urls')),
+    url(r'^inventory/',include('inventory.urls'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
