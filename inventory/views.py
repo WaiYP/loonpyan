@@ -303,3 +303,4 @@ class CategoryView():
     #     else:
     #         Customer.objects.filter(cust_id=cust_id).update(active=False)
     #     return HttpResponseRedirect(reverse('customer:customer_list'))
+

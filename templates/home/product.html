@@ -97,13 +97,25 @@
             <h5 class="widget-title">Catagories</h5>
             <!-- Cata List -->
             <ul class="cata-list shop-page">
-              <li><a href="#">All products (72)</a>
-              </li>
-              <li><a href="#">Freshy Fruits (20)</a></li>
-              <li><a href="#">Rice &amp; Corn (15)</a></li>
-              <li><a href="#">Meat &amp; Eggs (20)</a></li>
-              <li><a href="#">Milk &amp; Cheese (15)</a></li>
-              <li><a href="#">Others (2)</a></li>
+                {% for menu in sidemenu %}
+                    <li>
+                        <a  href="javascript:sideSubMenu()">{{ menu.parent }}</a>
+                    <div id = 'sub' hidden="hidden">
+                         {% if menu.child %}
+                        <ul>
+                        {% for menuchild in menu.child %}
+                            <li>
+                                <a href="#">{{ menuchild.name }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    </li>
+
+                {% endfor %}
+
+
             </ul>
           </div>
 
@@ -156,7 +168,7 @@
         <div class="col-12 col-md-8 col-lg-9">
           <div class="row">
            <!-- Single Product Area -->
-              {% for res in datalist %}
+{#              {% for res in datalist %}#}
 {#            <div class="col-12 col-sm-6 col-lg-4">#}
 {#              <div class="single-product-area mb-50">#}
 {#                <!-- Product Thumbnail -->#}
@@ -234,7 +246,7 @@
 {#          </div>   #}
 
         </div>
-              {% endfor %}
+{#              {% endfor %}#}
 
 
 
@@ -254,4 +266,16 @@
     </div>
   </section>
   <!-- ##### Shop Area End ##### -->
+    <script>
+        function sideSubMenu(){
+            var x = document.getElementById("sub");
+
+            if (x.hidden == true)
+                x.hidden = false;
+            else
+                x.hidden = true
+        }
+
+
+    </script>
 {% endblock content %}
