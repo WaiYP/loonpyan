@@ -213,7 +213,25 @@
                         <a href="{% url 'inventory:category_list' %}">Product's Categories</a>
                     </li>
                     <li>
+                        <a href="{% url 'inventory:pgroup_list' %}"> Product Group</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'inventory:psubgroup_list' %}"> Product Sub Group</a>
+                    </li>
+                    <li>
                         <a href="{% url 'inventory:product_list' %}"> Products</a>
+                    </li>
+
+                </ul>
+            </li>
+             <li>
+                <a href="#"><i class="fa fa-lg fa-fw fa-male"></i> <span class="menu-item-parent">Activity </span></a>
+                <ul>
+                    <li>
+                        <a href="{% url 'inventory:actgroup_list' %}"> Activity Group</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'inventory:activity_list' %}"> Activity </a>
                     </li>
                 </ul>
             </li>
