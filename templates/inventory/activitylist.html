@@ -39,7 +39,7 @@
                     -->
                     <header>
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                        <h2>Members Table</h2>
+                        <h2>Activity  Table</h2>
 
                     </header>
 
@@ -61,64 +61,50 @@
                                     <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th><i class="icon-append fa fa-user"></i> Categroy Name</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Group Name</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Sub Group Name</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Name</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Description</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Standard Certificate</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Made In</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Technology</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Photo1</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Photo2</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Photo3</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Photo4</th>
-                                         <th><i class="icon-append fa fa-user"></i> Product Photo5</th>
-
-{#                                        <th>Cust_id_id</th>#}
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity Group Name</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity  Name</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity  Description</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo1</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo2</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo3</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo4</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo5</th>
+{#                                        <th>Cust_id_id</tah>#}
                                         <th>Edit</th>
 {#                                        <th>Delete</th>#}
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for product in products %}
+                                    {% for agroup in activity %}
 
                                         <tr>
                                             <td>{{ forloop.counter }}</td>
-                                            <td>{{ product.cat.name }}</td>
-                                            <td>{{ product.pgroup.name }}</td>
-                                            <td>{{ product.psubgroup.name }}</td>
-                                            <td>{{ product.name }}</td>
-                                            <td>{{ product.description }}</td>
-                                            <td>{{ product.std_cert }}</td>
-                                            <td>{{ product.made_in }}</td>
-                                            <td>{{ product.technology }}</td>
-                                            <td>{% if product.photo_1 is None or product.photo_1 == '' %}<img class="picture-src" src="{{ product.photo_1 }}" id="wizardPicturePreview"
+                                            <td>{{ agroup.agroup.name }}</td>
+                                            <td>{{ agroup.name }}</td>
+                                            <td>{{ agroup.description }}</td>
+                                            <td>{% if agroup.photo_1 is None or agroup.photo_1 == '' %}<img class="picture-src" src="{{ product.photo_1 }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ product.photo_1.url }}" id="wizardPicturePreview"
+                                            {% else %}<img class="picture-src" src="{{ agroup.photo_1.url }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">{% endif %}</td>
-                                        <td>{% if product.photo_2 is None or product.photo_2 == '' %}<img class="picture-src" src="{{ product.photo_2 }}" id="wizardPicturePreview"
+                                        <td>{% if agroup.photo_2 is None or agroup.photo_2 == '' %}<img class="picture-src" src="{{ product.photo_2 }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ product.photo_2.url }}" id="wizardPicturePreview"
+                                            {% else %}<img class="picture-src" src="{{ agroup.photo_2.url }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">{% endif %}</td>
-                                         <td>{% if product.photo_3 is None or product.photo_3 == '' %}<img class="picture-src" src="{{ product.photo_3 }}" id="wizardPicturePreview"
+                                         <td>{% if agroup.photo_3 is None or agroup.photo_3 == '' %}<img class="picture-src" src="{{ product.photo_3 }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ product.photo_3.url }}" id="wizardPicturePreview"
+                                            {% else %}<img class="picture-src" src="{{ agroup.photo_3.url }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">{% endif %}</td>
-                                         <td>{% if product.photo_4 is None or product.photo_4 == '' %}<img class="picture-src" src="{{ product.photo_4 }}" id="wizardPicturePreview"
+                                         <td>{% if agroup.photo_4 is None or agroup.photo_4 == '' %}<img class="picture-src" src="{{ product.photo_4 }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ product.photo_4.url }}" id="wizardPicturePreview"
+                                            {% else %}<img class="picture-src" src="{{ agroup.photo_4.url }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">{% endif %}</td>
-                                                <td>{% if product.photo_5 is None or product.photo_5 == '' %}<img class="picture-src" src="{{ product.photo_5 }}" id="wizardPicturePreview"
+                                                <td>{% if agroup.photo_5 is None or agroup.photo_5 == '' %}<img class="picture-src" src="{{ product.photo_5 }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ product.photo_5.url }}" id="wizardPicturePreview"
+                                            {% else %}<img class="picture-src" src="{{ agroup.photo_5.url }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">{% endif %}</td>
                                         <td>
-                                            <a href="{% url 'inventory:product_edit' product.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>
-                                        </td>
-{#                                         <td>#}
-{#                                                <a href="{% url 'inventory:product_edit'  poduct.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>#}
-{#                                            </td>#}
+                                                <a href="{% url 'inventory:activity_edit' agroup.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>
+                                            </td>
                                         </tr>
 
                                     {% endfor %}
@@ -204,7 +190,7 @@
     "xls",
     {
     "sExtends": "text",
-    "sButtonText" : '<a href="{% url 'inventory:product_create' %}"><span><i class="glyphicon glyphicon-plus"></i></span></a>',
+    "sButtonText" : '<a href="{% url 'inventory:activity_create' %}"><span><i class="glyphicon glyphicon-plus"></i></span></a>',
 
     },
     {

@@ -92,7 +92,7 @@
                 -->
                 <header>
                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                    <h2> Products Details </h2>
+                    <h2> Activity  Details </h2>
 
                 </header>
 
@@ -109,7 +109,7 @@
                     <!-- widget content -->
                     <div class="widget-body no-padding">
                         <form id="products_form" role="form"
-                              action="{% url 'inventory:product_save' %}"
+                              action="{% url 'inventory:activity_save' %}"
                               class="smart-form" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.errors }}
@@ -117,67 +117,37 @@
 
                             <fieldset>
                                 {% if edit == 1 %}
-                                    <input type="text" name="id" value="{{ product.id }}" hidden>
-                                    <input type="text" name="photoid1" value="{{ product.photo_1 }}" hidden>
-                                    <input type="text" name="photoid2" value="{{ product.photo_2 }}" hidden>
-                                    <input type="text" name="photoid3" value="{{ product.photo_3 }}" hidden>
-                                    <input type="text" name="photoid4" value="{{ product.photo_4 }}" hidden>
-                                    <input type="text" name="photoid5" value="{{ product.photo_5 }}" hidden>
+                                    <input type="text" name="id" value="{{ activity.id }}" hidden>
+                                    <input type="text" name="photoid1" value="{{ activity.photo_1 }}" hidden>
+                                    <input type="text" name="photoid2" value="{{ activity.photo_2 }}" hidden>
+                                    <input type="text" name="photoid3" value="{{ activity.photo_3 }}" hidden>
+                                    <input type="text" name="photoid4" value="{{ activity.photo_4 }}" hidden>
+                                    <input type="text" name="photoid5" value="{{ activity.photo_5 }}" hidden>
                                 {% endif %}
-                                <div class="col col-6">
-                                  <section>
-                                        <label class="label">Choose Product Category</label>
-                                        <label class="select">
-                                        <select name="category" id="category">
-                                            {% for cat in category %}
-                                                {% if cat.id == product.cat_id %}
-                                                    <option value="{{ cat.id }}"
-                                                            selected="selected">{{ cat.name }}</option>
-                                                {% else %}
-                                                    <option value="{{ cat.id }}">{{ cat.name }}</option>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </select><i></i>
-                                        </label>
-                                    </section>
-                                  <section>
-                                        <label class="label">Choose ProductGroups</label>
-                                        <label class="select">
-                                        <select name="pgroup" id="pgroup">
-                                            {% for pgroup in productgroup %}
-                                                {% if pgroup.id == product.pgroup_id %}
-                                                    <option value="{{ pgroup.id }}"
-                                                            selected="selected">{{ pgroup.name }}</option>
-                                                {% else %}
-                                                    <option value="{{ pgroup.id }}">{{ pgroup.name }}</option>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </select><i></i>
-                                        </label>
-                                    </section>
-                                <section>
-                                        <label class="label">Choose Product Sub Group</label>
-                                        <label class="select">
-                                        <select name="psubgroup" id="psubgroup">
-                                            {% for ps in psubgroup %}
-                                                {% if ps.id == product.psubgroup_id %}
-                                                    <option value="{{ ps.id }}"
-                                                            selected="selected">{{ ps.name }}</option>
-                                                {% else %}
-                                                    <option value="{{ ps.id }}">{{ ps.name }}</option>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </select><i></i>
-                                        </label>
-                                    </section>
-                                    <section>
-                                        <label class="label">Product Name:</label>
-                                        <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="name" placeholder="Name"
-                                                   value="{{ product.name }}">
-                                        </label>
-                                    </section>
+                              <div class="col col-6">
 
+                                     <section>
+                                        <label class="label">Choose Activity Group</label>
+                                        <label class="select">
+                                        <select name="agroup" id="agroup">
+                                            {% for agroup in actgroup %}
+                                                {% if agroup.id == activity.agroup_id %}
+                                                    <option value="{{ agroup.id }}"
+                                                            selected="selected">{{ agroup.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ agroup.id }}">{{ agroup.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select><i></i>
+                                        </label>
+                                    </section>
+                               <section>
+                                        <label class="label">Activity  Description:</label>
+                                        <label class="input"><i class="icon-append fa fa-cube"></i>
+                                            <input type="text" name="description" placeholder="Description"
+                                                   value="{{ activity.description }}">
+                                        </label>
+                                    </section>
                                 <section>
                                     <div style="float:right;">
                                         {% if photourl is None %}
@@ -224,36 +194,16 @@
                                 </div>
                                 </section>
                                 </div>
-                            <div class="col col-6">
-                                  <section>
-                                        <label class="label">Product Description:</label>
+                                <div class="col col-6">
+                                    <section>
+                                        <label class="label">Activity  Name:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="description" placeholder="Description"
-                                                   value="{{ product.description }}">
+                                            <input type="text" name="name" placeholder="Name"
+                                                   value="{{ activity.name }}">
                                         </label>
                                     </section>
                                     <section>
-                                        <label class="label">Product Technology:</label>
-                                        <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="technology" placeholder="Technology"
-                                                   value="{{ product.technology }}">
-                                        </label>
-                                    </section>
-                                 <section>
-                                        <label class="label">Product Standard Certificate:</label>
-                                        <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="standard" placeholder="Standard Certificate"
-                                                   value="{{ product.std_cert }}">
-                                        </label>
-                                    </section>
-                            <section>
-                                        <label class="label">Product Made In:</label>
-                                        <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="made_in" placeholder="Made In"
-                                                   value="{{ product.made_in }}">
-                                        </label>
-                                    </section>
-                                <section>
+                                     <section></section>
                                     <div style="float:right;">
                                         {% if photourl2 is None %}
                                             <img src="{% static 'img/no-image-available.png' %}"
@@ -268,28 +218,30 @@
                                         {% endif %}
                                 </div>
                                 </section>
+
                             <section>
                                     <div style="float:right;">
                                         {% if photourl4 is None %}
                                             <img src="{% static 'img/no-image-available.png' %}"
                                                  class="picture-src" id="wizardPicturePreview"
                                                  style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_3" class="" name="photo_3">
+                                            <input type="file" id="photo_4" class="" name="photo_4">
                                         {% else %}
                                             <img src="{{ photourl4 }}"
                                                  class="picture-src" id="wizardPicturePreview"
                                                  style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_3" class="" name="photo_3">
+                                            <input type="file" id="photo_4" class="" name="photo_4">
                                         {% endif %}
                                 </div>
                                 </section>
+
                                 </div>
                             </fieldset>
                         <fieldset>
                                 <div class="row">
                                     <section class="col col-4">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="active" {% if product.active == 1 %}
+                                            <input type="checkbox" name="active" {% if activity.active == 1 %}
                                                    checked {% endif %} value="1"><i></i>Is Active
                                         </label>
                                     </section>
