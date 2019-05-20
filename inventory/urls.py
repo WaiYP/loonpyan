@@ -42,4 +42,9 @@ urlpatterns = [
     url(r'^sergroup_save', views.ServiceGroupView.save, name='sergroup_save'),
     url(r'^sergroup_create', views.ServiceGroupView.create, name='sergroup_create'),
 
+    url(r'^service_list', views.ServiceView.list, name='service_list'),
+    url(r'^service_edit/(?P<id>[\w\-]+)/$', views.ServiceView.edit, name='service_edit'),
+    url(r'^service_save', views.ServiceView.save, name='service_save'),
+    url(r'^service_create', views.ServiceView.create, name='service_create'),
+
 ]

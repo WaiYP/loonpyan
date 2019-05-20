@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from inventory.models import Products, Customer, Categories, ProductGroup, ProductSubGroup, ActivityGroup, Activities, \
-    ServiceGroup
+    ServiceGroup, Services
 
 
 class ProductView():
@@ -752,7 +752,7 @@ class ServiceGroupView():
         content = {'sergroup':sergroup,
                         # 'pricegroup':pricegroup,
         }
-        return render(request,'inventory/activitygrouplist.html',content)
+        return render(request,'inventory/servicegrouplist.html',content)
 
     def edit(request,id):
 
@@ -766,7 +766,7 @@ class ServiceGroupView():
                    'edit':1,
                    # 'pricegroup':pricegroup,
                    }
-        return render(request, 'inventory/activitygroupcreate.html', content)
+        return render(request, 'inventory/servicegroupcreate.html', content)
 
     def save (request):
 
@@ -782,15 +782,15 @@ class ServiceGroupView():
             else:
                 active = request.POST.get('active')
             if request.POST.get('id') is None or request.POST.get('id')=='':
-                cats = ActivityGroup(name=name,active=active,ts=ts)
+                cats = ServiceGroup(name=name,active=active,ts=ts)
                 cats.save()
 
             else:
                 id = request.POST.get('id')
-                cats = ActivityGroup(id=id,name=name, active=active, ts=ts)
+                cats = ServiceGroup(id=id,name=name, active=active, ts=ts)
                 cats.save()
-            return HttpResponseRedirect(reverse('inventory:actgroup_list'))
-        return render(request, 'inventory/activitygrouplist.html')
+            return HttpResponseRedirect(reverse('inventory:sergroup_list'))
+        return render(request, 'inventory/servicegrouplist.html')
 
     def create(request):
 
@@ -804,7 +804,141 @@ class ServiceGroupView():
         #            'edit':1,
         #            # 'pricegroup':pricegroup,
         #            }
-        return render(request, 'inventory/activitygroupcreate.html')
+        return render(request, 'inventory/servicegroupcreate.html')
+
+
+    # def delete(request,cust_id):
+    #     if not request.user.is_authenticated():
+    #         return render(request, 'administration/login.html')
+    #     else:
+    #         Customer.objects.filter(cust_id=cust_id).update(active=False)
+    #     return HttpResponseRedirect(reverse('customer:customer_list'))
+
+class ServiceView():
+    model = Services
+
+    def list(request):
+        # if not request.user.is_authenticated():
+        #     return render(request, 'administration/login.html')
+        # else:
+        try:
+            services = Services.objects.filter(active=True)
+            # pricegroup= Products.objects.filter(active=True)
+        except Services.DoesNotExist:
+            raise Http404('This Services does not exist')
+
+        content = {'services':services,
+                        # 'pricegroup':pricegroup,
+        }
+        return render(request,'inventory/servicelist.html',content)
+
+    def edit(request,id):
+
+        try:
+            services = Services.objects.get(active=True,id=id)
+            if services.photo_1 == '':
+                photourl = ''
+            else:
+                photourl = services.photo_1.url
+            if services.photo_2 == '':
+                photourl2 = ''
+            else:
+                photourl2 = services.photo_2.url
+            if services.photo_3 == '':
+                photourl3 = ''
+            else:
+                photourl3 = services.photo_3.url
+            if services.photo_4 == '':
+                photourl4 = ''
+            else:
+                photourl4 = services.photo_4.url
+            if services.photo_5 == '':
+                photourl5 = ''
+            else:
+                photourl5 = services.photo_5.url
+            # pricegroup= Products.objects.filter(active=True)
+        except Services.DoesNotExist:
+            raise Http404('This Services does not exist')
+        sergroup = ServiceGroup.objects.filter(active=1)
+        content = {'services': services,
+                   'sergroup':sergroup,
+                   'edit':1,
+                   'photourl': photourl,
+                   'photourl2': photourl2,
+                   'photourl3': photourl3,
+                   'photourl4': photourl4,
+                   'photourl5': photourl5,
+                   # 'pricegroup':pricegroup,
+                   }
+        return render(request, 'inventory/servicecreate.html', content)
+
+    def save (request):
+
+        if request.method == 'POST':
+
+            userid = request.user.id
+            name = request.POST.get('name')
+            sgroup  = request.POST.get('sgroup')
+            description = request.POST.get('description')
+
+            if 'photo_1' in request.FILES:
+                photo = request.FILES['photo_1']
+            else:
+                photo = request.POST.get('photoid1')
+
+            if 'photo_2' in request.FILES:
+                photo2 = request.FILES['photo_2']
+            else:
+                photo = request.POST.get('photoid2')
+
+            if 'photo_3' in request.FILES:
+                photo3 = request.FILES['photo_3']
+            else:
+                photo3 = request.POST.get('photoid3')
+
+            if 'photo_4' in request.FILES:
+                photo4 = request.FILES['photo_4']
+            else:
+                photo4 = request.POST.get('photoid4')
+
+            if 'photo_5' in request.FILES:
+                photo5 = request.FILES['photo_5']
+            else:
+                photo5 = request.POST.get('photoid5')
+            ts = datetime.now()
+
+
+            if request.POST.get('active') is None:
+                active = 0
+            else:
+                active = request.POST.get('active')
+            if request.POST.get('id') is None or request.POST.get('id')=='':
+                cats = Services(name=name,active=active,ts=ts,sgroup_id=sgroup,description=description,
+                                  photo_1=photo,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5)
+                cats.save()
+
+            else:
+                id = request.POST.get('id')
+                cats = Services(id=id,name=name, active=active, ts=ts,sgroup_id=sgroup,description=description,
+                                  photo_1=photo, photo_2=photo2, photo_3=photo3, photo_4=photo4, photo_5=photo5)
+                cats.save()
+            return HttpResponseRedirect(reverse('inventory:service_list'))
+        return render(request, 'inventory/servicelist.html')
+
+    def create(request):
+
+        # try:
+        #     category = Categories.objects.get(active=True)
+        #     # pricegroup= Products.objects.filter(active=True)
+        # except Categories.DoesNotExist:
+        #     raise Http404('This Categories does not exist')
+        #
+        sergroup = ServiceGroup.objects.filter(active=1)
+        content = {'sergroup': sergroup,
+
+                   # 'pricegroup':pricegroup,
+                   }
+        return render(request, 'inventory/servicecreate.html',content)
 
 
     # def delete(request,cust_id):

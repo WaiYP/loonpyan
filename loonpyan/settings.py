@@ -88,9 +88,9 @@ DATABASES = {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'loonpyandb',
     'USER': 'root',
-    'PASSWORD': 'P@$$w0rd',
+    'PASSWORD': 'root',
     'HOST': '127.0.0.1',
-    'PORT': '3306',
+    'PORT': '3307',
     'AUTOCOMMIT': True,
 }
 }
