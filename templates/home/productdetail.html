@@ -3,19 +3,17 @@
 {% block content %}
      <!-- ##### News Details Area Start ##### -->
   <section class="news-details-area section-padding-0-100">
+  <form action="{% url 'home:customer_save' %}" method="post">
+  {% csrf_token %}
     <div class="container">
       <div class="row">
         <div class="col-12">
           <!-- News Details Content -->
           <div class="news-details-content">
             <h6>Post on <a href="#" class="post-date">18 Aug 2018</a> / <a href="#" class="post-author">Peter Crough</a></h6>
-            <h2 class="post-title">Rising cattle supplies see beef export lifted</h2>
-
-            <p>Nunc aliquet, justo non commodo conguet, velici semi paluvinar denim, action bibendum purus selecao samuel eget libero. Maecenas ac viverra , sheta laoreet lacus. Etiam nisi diam, sagittis quam at mattis quam lorem, euismod dictum
-              ante ornare eget. Nulla viverra suscipit sem deet suscipit. Suspendisse suscipit
-              vulputate quis lacus non consectetur. Vestibulum odio nunc, lobortis vitae elit sed, sodales mollis urna. Curabitur trununc et nunc cursus, ustava vehicula ipsum molestie. Donec mattis mi et arcu ullamcorper blandit. Ut quis sagittis,
-              interdum libero ut, elementum nunc. Integer placerat sapien sedoni ligula
-              placerat laoreet. Aliquam sit amet varius arcu. Vivamus condimentum metus quis est finibus feugiat.</p>
+            <h2 class="post-title">{{ products.name }}</h2>
+            <h5>{{ products.std_cert }} , {{ products.made_in }}</h5>
+            <p>{{ products.description }}</p>
 
             <div class="row">
               <div class="col-lg-4">
@@ -24,25 +22,57 @@
                 <p>Etiam faucibus vestibulum orci at euismod. Sedo sollicitudin justo esteran nibh egestas maximus. Nullam rutrum dolor velit, act accumsan denim commodo non.</p>
               </div>
               <div class="col-lg-8">
-                <img class="w-100 mb-30" src="{% static 'home/img/bg-img/37.jpg' %}" alt="">
+                <img class="w-100 mb-30" src="{{ products.photo_2.url }}" alt="">
               </div>
+                <div class="col-lg-4"></div>
+
+                    <blockquote class="famie-blockquote d-flex">
+                        <div class="quote-text">
+                        <h5>Available Units</h5>
+                        <span>Suzanne Somers</span>
+                      </div>
+                        <div class="quote-icon pt-2">
+                        <img src="{{ products.photo_2.url }}" alt="">
+                          <span>Small Unit</span>
+                      </div> &nbsp; &nbsp;
+                        <div class="quote-icon pt-2">
+                        <img src="{{ products.photo_3.url }}" alt="">
+                            <span>Medium </span>
+                      </div>&nbsp; &nbsp;
+                        <div class="quote-icon pt-2">
+                        <img src="{{ products.photo_4.url }}" alt="">
+                            <span>Large </span>
+                      </div>&nbsp; &nbsp;
+                        <div class="quote-icon pt-2">
+                        <img src="{{ products.photo_5.url }}" alt="">
+                            <span>X Large </span>
+                      </div>
+                    </blockquote>
+
+                </div>
             </div>
-            <p>Morbi eget convallis nisi. Sed blandit neque eu leo
-              fringilla semper. Donec sedan arcu utarcu sagittis
-              ornare ac at ipsum. Fusce ut pharetra auguet, int
-              placerat arcu. Ut at erat sit amet ligulan pharetra
-              scelerisque nec et justo. Mauris etsa turpis nonta
-              Maecenas imperdiet pulvinar magna, vel feugiat</p>
+{#            <p>Morbi eget convallis nisi. Sed blandit neque eu leo#}
+{#              fringilla semper. Donec sedan arcu utarcu sagittis#}
+{#              ornare ac at ipsum. Fusce ut pharetra auguet, int#}
+{#              placerat arcu. Ut at erat sit amet ligulan pharetra#}
+{#              scelerisque nec et justo. Mauris etsa turpis nonta#}
+{#              Maecenas imperdiet pulvinar magna, vel feugiat</p>#}
 
             <!-- Famie Blockquote -->
             <blockquote class="famie-blockquote d-flex">
-              <div class="quote-icon pt-2">
-                <img src="{% static 'home/img/core-img/quote.png' %}" alt="">
-              </div>
-              <div class="quote-text">
-                <h5>"Browsing our local farmer's market is one of my family's favorite weekend activities. Make it a relaxing, healthful habit for your family, and you'll reap the nutritional rewards."</h5>
+                <div class="quote-text">
+                <h5>Available Units</h5>
                 <span>Suzanne Somers</span>
               </div>
+              <div class="quote-icon pt-2">
+                <img src="{{ products.photo_2.url }}" alt="">
+                  <span>Small Unit</span>
+              </div> &nbsp; &nbsp;
+                <div class="quote-icon pt-2">
+                <img src="{{ products.photo_3.url }}" alt="">
+                    <span>Medium Unit</span>
+              </div>
+
             </blockquote>
 
             <p>Morbi ante diam, molestie at ligula at, placerat vehicula nulla. Etiam id laoreet eros. Proin rhoncus luctus vehicula. Donec et magna in urna faucibus porttitor et at nibh. Donec lobortis odio odio, eu mattis risus suscipit vitae. Sed
@@ -65,7 +95,7 @@
               </div>
               <!-- Tags -->
               <ul class="famie-tags">
-                <li><a href="#">All product</a></li>
+                <li><a href="{% url 'home:product' %}">All product</a></li>
                 <li><a href="#">Freshy Fruit</a></li>
                 <li><a href="#">Sweet Corn</a></li>
               </ul>
@@ -158,13 +188,19 @@
 
             <!-- Reply Form -->
             <div class="contact-form-area">
-              <form action="#" method="post">
+{#              <form action="{% url 'home:customer_save' %}" method="post">#}
                 <div class="row">
                   <div class="col-12 col-lg-6">
-                    <input type="text" class="form-control" id="name" placeholder="Your Name*">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name*">
                   </div>
                   <div class="col-12 col-lg-6">
-                    <input type="email" class="form-control" id="email" placeholder="Your Email*">
+                    <input type="email" class="form-control" id="email"  name="email" placeholder="Your Email*">
+                  </div>
+                    <div class="col-12 col-lg-6">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Your Phone Number*">
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Your Address*">
                   </div>
                   <div class="col-12">
                     <textarea name="message" class="form-control" id="message" placeholder="Message*"></textarea>
@@ -173,13 +209,14 @@
                     <button class="btn famie-btn mt-30" type="submit">Submit Comment</button>
                   </div>
                 </div>
-              </form>
+{#              </form>#}
             </div>
           </div>
 
         </div>
       </div>
     </div>
+      </form>
   </section>
   <!-- ##### News Details Area End ##### -->
 {% endblock content %}

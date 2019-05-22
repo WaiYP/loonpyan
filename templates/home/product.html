@@ -96,71 +96,53 @@
             <!-- Title -->
             <h5 class="widget-title">Catagories</h5>
             <!-- Cata List -->
-            <ul class="cata-list shop-page">
-                {% for menu in sidemenu %}
-                    <li>
-                        <a  href="javascript:sideSubMenu()">{{ menu.parent }}</a>
-                    <div id = 'sub' hidden="hidden">
-                         {% if menu.child %}
-                        <ul>
-                        {% for menuchild in menu.child %}
-                            <li>
-                                <a href="#">{{ menuchild.name }}</a>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                        {% endif %}
-                    </div>
-                    </li>
+{#            <ul class="cata-list shop-page">#}
+{#                {% for menu in sidemenu %}#}
+{#                    <li>#}
+{#                        <a  class="toggle" href="#sub" >{{ menu.parent }}</a>#}
+{#                        <div class="toggle-content" id="sub" >#}
+{#                         {% if menu.child %}#}
+{#                        <ul>#}
+{#                        {% for menuchild in menu.child %}#}
+{#                            <li>#}
+{#                                <a href="#" style="color: blue" >{{ menuchild.name }}</a>#}
+{#                            </li>#}
+{#                        {% endfor %}#}
+{#                        </ul>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    </li>#}
+{#                {% endfor %}#}
+{##}
+{##}
+{#            </ul>#}
+              <div >
+  <div class="row">
+    <div class="col-md-8">
 
+      <div id="MainMenu">
+        <div class="list-group panel">
+            {% for menu in sidemenu %}
+          <a href="#child" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent }}</a>
+           {% if menu.child %}
+            <div class="collapse" id="child">
+
+               {% for menuchild in menu.child %}
+                    <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">{{ menuchild.name }} </a>
                 {% endfor %}
 
+          </div>
+                {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 
-            </ul>
           </div>
 
-{#          <!-- Single Widget Area -->#}
-{#          <div class="single-widget-area">#}
-{#            <!-- Title -->#}
-{#            <h5 class="widget-title">Sort by</h5>#}
-{#            <!-- Cata List -->#}
-{#            <ul class="cata-list shop-page">#}
-{#              <li><a href="#">Top rated</a></li>#}
-{#              <li><a href="#">New arrivals</a></li>#}
-{#              <li><a href="#">Alphabetically, A-Z</a></li>#}
-{#              <li><a href="#">Alphabetically, Z-A</a></li>#}
-{#              <li><a href="#">Price: low to high</a></li>#}
-{#              <li><a href="#">Price: high to low</a></li>#}
-{#            </ul>#}
-{#          </div>#}
 
-{#          <!-- Single Widget Area -->#}
-{#          <div class="single-widget-area">#}
-{#            <!-- Title -->#}
-{#            <h5 class="widget-title">Price</h5>#}
-{#            <!-- Cata List -->#}
-{#            <ul class="cata-list shop-page">#}
-{#              <li><a href="#">$0.00 - $10.00</a></li>#}
-{#              <li><a href="#">$10.00 - $50.00</a></li>#}
-{#              <li><a href="#">$50.00 - $100.00</a></li>#}
-{#              <li><a href="#">$100.00+</a></li>#}
-{#            </ul>#}
-{#          </div>#}
-
-{#          <!-- Single Widget Area -->#}
-{#          <div class="single-widget-area">#}
-{#            <!-- Title -->#}
-{#            <h5 class="widget-title">Tags</h5>#}
-{#            <!-- Tags -->#}
-{#            <ul class="famie-tags">#}
-{#              <li><a href="#">All product</a></li>#}
-{#              <li><a href="#">Freshy Fruit</a></li>#}
-{#              <li><a href="#">Sweet Corn</a></li>#}
-{#              <li><a href="#">Chicken</a></li>#}
-{#              <li><a href="#">Organic</a></li>#}
-{#              <li><a href="#">Meat</a></li>#}
-{#            </ul>#}
-{#          </div>#}
 
         </div>
 
@@ -168,52 +150,33 @@
         <div class="col-12 col-md-8 col-lg-9">
           <div class="row">
            <!-- Single Product Area -->
-{#              {% for res in datalist %}#}
-{#            <div class="col-12 col-sm-6 col-lg-4">#}
-{#              <div class="single-product-area mb-50">#}
-{#                <!-- Product Thumbnail -->#}
-{#                <div class="product-thumbnail">#}
-{#                  <img src="{% static 'img/bg-img/p1.jpg' %}" alt="">#}
-{#                  <!-- Product Tags -->#}
-{#                  <span class="product-tags">Hot</span>#}
-{#                  <!-- Product Meta Data -->#}
-{#                  <div class="product-meta-data">#}
-{#                    <a href="#" data-toggle="tooltip" data-placement="top" title="Favourite"><i class="icon_heart_alt"></i></a>#}
-{#                    <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon_cart_alt"></i></a>#}
-{#                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="arrow_left-right_alt"></i></a>#}
-{#                  </div>#}
-{#                </div>#}
-{#                <!-- Product Description -->#}
-{#                <div class="product-desc text-center pt-4">#}
-{#                  <a href="#" class="product-title">Strawberry</a>#}
-{#                  <h6 class="price">$17.99</h6>#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-                  <div class="col-12 col-sm-6 col-lg-4">
+{% for product in products %}
+    <div class="col-12 col-sm-6 col-lg-4">
 
-          <!-- Shopping Cart -->
-{#          <div class="shopping-cart mb-50">#}
-{#            <h5 class="mb-30">Shopping Cart</h5>#}
+
             <!-- Cart Table -->
             <div class="cart-table clearfix">
               <table class="table table-responsive">
                 <!-- tbody -->
                 <tbody>
                   <!-- Single Table Row -->
+
                   <tr>
                     <td class="cart_product_img">
-                      <a href="#"><img src="{% static 'home/img/core-img/image5.jpg' %}" alt="Product"></a>
+                      <a href="#">
+{#                          <img src="{% static 'home/img/core-img/image5.jpg' %}" alt="Product">#}
+                        <img class="picture-src" src="{{ product.photo_1.url }}" id="wizardPicturePreview"
+                                             style="width: 50px; height: 50px;">
+                          </a>
                     </td>
                     <td class="cart_product_desc">
-                      <p>Bayonne Ham</p>
-{#                      <h6>1 x $39.99</h6>#}
-                        <a href="{% url 'home:productdetail' %}">Detail</a>
+                      <p>{{ product.name }}</p>
+
+                        <a href="{% url 'home:productdetail' product.id %}">{{ product.std_cert }}</a>
                     </td>
-{#                    <td class="pro-close">#}
-{#                      <a href="#"><i class="icon_close"></i></a>#}
-{#                    </td>#}
+
                   </tr>
+
 {#                  <!-- Single Table Row -->#}
 {#                  <tr>#}
 {#                    <td class="cart_product_img">#}
@@ -246,7 +209,7 @@
 {#          </div>   #}
 
         </div>
-{#              {% endfor %}#}
+              {% endfor %}
 
 
 
@@ -267,15 +230,53 @@
   </section>
   <!-- ##### Shop Area End ##### -->
     <script>
-        function sideSubMenu(){
-            var x = document.getElementById("sub");
+        {#function sideSubMenu(){#}
+        {#    var x = document.getElementById("sub");#}
+        {##}
+        {#    if (x.hidden == true)#}
+        {#        x.hidden = false;#}
+        {#    else#}
+        {#        x.hidden = true#}
+        {#}#}
 
-            if (x.hidden == true)
-                x.hidden = false;
-            else
-                x.hidden = true
-        }
+            var show = function (elem) {
+                elem.style.display = 'block';
+            };
 
+            var hide = function (elem) {
+                elem.style.display = 'none';
+            };
+
+            var toggle = function (elem) {
+
+                // If the element is visible, hide it
+                if (window.getComputedStyle(elem).display === 'none') {
+                    show(elem);
+                    return;
+                }
+
+                // Otherwise, show it
+                hide(elem);
+
+            };
+
+// Listen for click events
+            document.addEventListener('click', function (event) {
+
+                // Make sure clicked element is our toggle
+                if (!event.target.classList.contains('toggle')) return;
+
+                // Prevent default link behavior
+                event.preventDefault();
+
+                // Get the content
+                var content = document.querySelector(event.target.hash);
+                if (!content) return;
+
+                // Toggle the content
+                toggle(content);
+
+            }, false);
 
     </script>
 {% endblock content %}

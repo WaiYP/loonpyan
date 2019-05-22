@@ -1,7 +1,11 @@
+from _datetime import datetime
+
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from home.custom import ParentChild
-from inventory.models import Categories, ProductGroup, ProductSubGroup
+from inventory.models import Categories, ProductGroup, ProductSubGroup, Products, Customer
 
 
 def index(request):
@@ -17,10 +21,13 @@ def product(request):
     for pgroup in pgroups:
         psubgrps = ProductSubGroup.objects.select_related().filter(pgroup=pgroup, active=True)
         sidemenu.append(ParentChild(pgroup.name, psubgrps))
+    products = Products.objects.filter(active=True)
+
     datalist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     context = {
         'datalist': datalist,
         'sidemenu': sidemenu,
+        'products':products,
     }
     return  render(request,'home/product.html',context)
 
@@ -30,8 +37,24 @@ def activities(request):
 def farmingpractice(request):
     return render(request,'home/farming-practice.html')
 
-def productdetail(request):
-    return render(request, 'home/productdetail.html')
+def productdetail(request,pid):
+    products = Products.objects.get(id=pid)
+    content = {'products' : products }
+    return render(request, 'home/productdetail.html',content)
 
 def contact(request):
     return render(request,'home/contact.html')
+
+def custsave(request):
+    if request.method=="POST":
+        cust = Customer()
+        cust.name = request.POST.get("name")
+        cust.email = request.POST.get("email")
+        cust.phone = request.POST.get("phone")
+        cust.address = request.POST.get("address")
+        cust.message = request.POST.get("message")
+        cust.active = 1
+        cust.ts = datetime.now()
+        # cust = Customer(name=cust_name,email=cust_email,phone=cust_phone,address=cust_address,message=cust_message,ts=cust_ts,active=cust_active)
+        cust.save()
+    return HttpResponseRedirect(reverse('home:productdetail'))
