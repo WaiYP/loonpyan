@@ -124,7 +124,7 @@
                                     <input type="text" name="photoid4" value="{{ activity.photo_4 }}" hidden>
                                     <input type="text" name="photoid5" value="{{ activity.photo_5 }}" hidden>
                                 {% endif %}
-                              <div class="col col-6">
+                              <div class="col col-4">
 
                                      <section>
                                         <label class="label">Choose Activity Group</label>
@@ -141,60 +141,8 @@
                                         </select><i></i>
                                         </label>
                                     </section>
-                               <section>
-                                        <label class="label">Activity  Description:</label>
-                                        <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="description" placeholder="Description"
-                                                   value="{{ activity.description }}">
-                                        </label>
-                                    </section>
-                                <section>
-                                    <div style="float:right;">
-                                        {% if photourl is None %}
-                                            <img src="{% static 'img/no-image-available.png' %}"
-                                                 class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_1" class="" name="photo_1">
-                                        {% else %}
-                                            <img src="{{ photourl }}"
-                                                 class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_1" class="" name="photo_1">
-                                        {% endif %}
                                 </div>
-                                </section>
-                                <section>
-                                    <div style="float:right;">
-                                        {% if photourl3 is None %}
-                                            <img src="{% static 'img/no-image-available.png' %}"
-                                                 class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_3" class="" name="photo_3">
-                                        {% else %}
-                                            <img src="{{ photourl3 }}"
-                                                 class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_3" class="" name="photo_3">
-                                        {% endif %}
-                                </div>
-                                </section>
-                                <section>
-                                    <div style="float:right;">
-                                        {% if photourl5 is None %}
-                                            <img src="{% static 'img/no-image-available.png' %}"
-                                                 class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_5" class="" name="photo_5">
-                                        {% else %}
-                                            <img src="{{ photourl5 }}"
-                                                 class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
-                                            <input type="file" id="photo_5" class="" name="photo_5">
-                                        {% endif %}
-                                </div>
-                                </section>
-                                </div>
-                                <div class="col col-6">
+                                <div class="col col-4">
                                     <section>
                                         <label class="label">Activity  Name:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
@@ -202,41 +150,109 @@
                                                    value="{{ activity.name }}">
                                         </label>
                                     </section>
-                                    <section>
-                                     <section></section>
+
+                                </div>
+                            <div class="col col-4">
+                                 <section>
+                                        <label class="label">Activity  Description:</label>
+                                        <label class="input"><i class="icon-append fa fa-cube"></i>
+                                            <input type="text" name="description" placeholder="Description"
+                                                   value="{{ activity.description }}">
+                                        </label>
+                                    </section>
+                            </div>
+                            </fieldset>
+                        <fieldset>
+                            <div class="col col-4">
+                                <section>
+                                    <div style="float:right;">
+                                        {% if photourl is None %}
+                                            <img src="{% static 'img/no-image-available.png' %}"
+                                                 class="picture-src" id="wizardPicturePreview"
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
+                                            <input type="file" id="photo_1" class="" name="photo_1">
+                                        {% else %}
+                                            <img src="{{ photourl }}"
+                                                 class="picture-src" id="wizardPicturePreview"
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
+                                            <input type="file" id="photo_1" class="" name="photo_1">
+                                        {% endif %}
+                                </div>
+                                </section>
+                            </div>
+                        <div class="col col-4">
+                             <section>
+
                                     <div style="float:right;">
                                         {% if photourl2 is None %}
                                             <img src="{% static 'img/no-image-available.png' %}"
                                                  class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
                                             <input type="file" id="photo_2" class="" name="photo_2">
                                         {% else %}
                                             <img src="{{ photourl2 }}"
                                                  class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
                                             <input type="file" id="photo_2" class="" name="photo_2">
                                         {% endif %}
                                 </div>
                                 </section>
-
+                        </div>
+                        <div class="col col-4">
                             <section>
+                                    <div style="float:right;">
+                                        {% if photourl3 is None %}
+                                            <img src="{% static 'img/no-image-available.png' %}"
+                                                 class="picture-src" id="wizardPicturePreview"
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
+                                            <input type="file" id="photo_3" class="" name="photo_3">
+                                        {% else %}
+                                            <img src="{{ photourl3 }}"
+                                                 class="picture-src" id="wizardPicturePreview"
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
+                                            <input type="file" id="photo_3" class="" name="photo_3">
+                                        {% endif %}
+                                </div>
+                                </section>
+                        </div>
+                        </fieldset>
+                        <fieldset>
+                        <div class="col col-4">
+                             <section>
                                     <div style="float:right;">
                                         {% if photourl4 is None %}
                                             <img src="{% static 'img/no-image-available.png' %}"
                                                  class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
                                             <input type="file" id="photo_4" class="" name="photo_4">
                                         {% else %}
                                             <img src="{{ photourl4 }}"
                                                  class="picture-src" id="wizardPicturePreview"
-                                                 style="width: 100%;height: 100%;border: 4px solid #CCCCCC;">
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
                                             <input type="file" id="photo_4" class="" name="photo_4">
                                         {% endif %}
                                 </div>
                                 </section>
-
+                        </div>
+                            <div class="col col-4">
+                                 <section>
+                                    <div style="float:right;">
+                                        {% if photourl5 is None %}
+                                            <img src="{% static 'img/no-image-available.png' %}"
+                                                 class="picture-src" id="wizardPicturePreview"
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
+                                            <input type="file" id="photo_5" class="" name="photo_5">
+                                        {% else %}
+                                            <img src="{{ photourl5 }}"
+                                                 class="picture-src" id="wizardPicturePreview"
+                                                 style="width: 300px;height: 300px;border: 4px solid #CCCCCC;">
+                                            <input type="file" id="photo_5" class="" name="photo_5">
+                                        {% endif %}
                                 </div>
-                            </fieldset>
+                                </section>
+                            </div>
+
+                        </fieldset>
                         <fieldset>
                                 <div class="row">
                                     <section class="col col-4">

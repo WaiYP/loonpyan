@@ -37,7 +37,7 @@
                     data-widget-sortable="false"
 
                     -->
-                    <header>
+                    <header style="background-color: #d6a042">
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
                         <h2>Activity  Table</h2>
 
@@ -82,26 +82,36 @@
                                             <td>{{ agroup.agroup.name }}</td>
                                             <td>{{ agroup.name }}</td>
                                             <td>{{ agroup.description }}</td>
-                                            <td>{% if agroup.photo_1 is None or agroup.photo_1 == '' %}<img class="picture-src" src="{{ product.photo_1 }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ agroup.photo_1.url }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">{% endif %}</td>
-                                        <td>{% if agroup.photo_2 is None or agroup.photo_2 == '' %}<img class="picture-src" src="{{ product.photo_2 }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ agroup.photo_2.url }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">{% endif %}</td>
-                                         <td>{% if agroup.photo_3 is None or agroup.photo_3 == '' %}<img class="picture-src" src="{{ product.photo_3 }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ agroup.photo_3.url }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">{% endif %}</td>
-                                         <td>{% if agroup.photo_4 is None or agroup.photo_4 == '' %}<img class="picture-src" src="{{ product.photo_4 }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ agroup.photo_4.url }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">{% endif %}</td>
-                                                <td>{% if agroup.photo_5 is None or agroup.photo_5 == '' %}<img class="picture-src" src="{{ product.photo_5 }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">
-                                            {% else %}<img class="picture-src" src="{{ agroup.photo_5.url }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">{% endif %}</td>
+                                            <td>{% if agroup.photo_1 is None or agroup.photo_1 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_1 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_1 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_1.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_1.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                         <td>{% if agroup.photo_2 is None or agroup.photo_2 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_2 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{agroup.photo_2 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_2.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_2.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                          <td>{% if agroup.photo_3 is None or agroup.photo_3 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_3 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_3 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_3.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_3.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                         <td>{% if agroup.photo_4 is None or agroup.photo_4 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_4 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_4 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_4.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_4.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                                 <td>{% if agroup.photo_5 is None or agroup.photo_5 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_5 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_5 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_5.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ agroup.photo_5.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
                                         <td>
                                                 <a href="{% url 'inventory:activity_edit' agroup.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>
                                             </td>
@@ -144,7 +154,24 @@
             </div>
         </div>
     </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
+      </div>
+      <div class="modal-body" >
+
+        <img  id="img01" style="width: 150px; height: 150px;">
+      </div>
+{#        <div class="modal-footer">#}
+{#        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
+{##}
+{#      </div>#}
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
 {% endblock %}
 {% block scripts %}
     <script src="{% static 'js/plugin/datatables/jquery.dataTables.min.js' %}"></script>
@@ -158,6 +185,16 @@
                 'max-height': '10%'
             });
             $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    $('#myModal').on('show.bs.modal', function (e) {
+            var yourparameter = e.relatedTarget.dataset.yourparameter;
+            {#alert(yourparameter);#}
+            var modalImg1 = document.getElementById("img01");
+            modalImg1.src=yourparameter;
+            {#alert(yourparameter.url);#}
+            {#image=$("#btn").val();#}
+            {#alert(image);#}
+            {#img01.src=image;#}
         });
 </script>
 {% endblock %}
