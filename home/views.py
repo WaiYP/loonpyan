@@ -19,7 +19,7 @@ def product(request,pgrpid,psubgrpid):
     sidemenu.clear()
     pgroups = ProductGroup.objects.filter(active=True)
     for pgroup in pgroups:
-        psubgrps = ProductSubGroup.objects.select_related().filter(pgroup=pgroup, active=True)
+        psubgrps = ProductSubGroup.objects.select_related().filter(pgroup=pgroup, active=True).order_by('id')
         sidemenu.append(ParentChild(pgroup, psubgrps))
     products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
 

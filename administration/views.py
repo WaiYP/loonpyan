@@ -9,7 +9,7 @@ from datetime import datetime
 # Create your views here.
 from django.urls import reverse
 
-from inventory.models import LearningPagePicture, AboutPagePicture
+from .models import LearningPagePicture, AboutPagePicture
 
 
 def index(request):
