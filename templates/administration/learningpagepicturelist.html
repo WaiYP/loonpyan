@@ -1,0 +1,273 @@
+{% extends "adminbase.html" %}
+{% load staticfiles %}
+{% block css %}
+    <style>
+        div.dataTables_wrapper {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+    </style>
+{% endblock %}
+{% block content %}
+    {#    <div class="row">#}
+    {#        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">#}
+    {#            <a href="{% url 'administration:staff_create' %}" class="btn btn-labeled btn-success" style="float: right;">#}
+    {#                <span class="btn-label"><i class="glyphicon glyphicon-plus-sign"></i></span>New </a>#}
+    {#        </div>#}
+    {#    </div>#}
+    <section id="widget-grid" class="">
+        <div class="row">
+            <!-- NEW COL START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-0"
+                     data-widget-editbutton="false">
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header style="background-color: #d6a042">
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>Leaning Page Pictures Table</h2>
+
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
+                        </div>
+                        <!-- end widget edit box -->
+
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+
+                                <table id="dt_basic" class="table table-striped table-bordered table-hover"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Description</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo1</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo2</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo3</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo4</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo5</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo6</th>
+{#                                        <th>Cust_id_id</tah>#}
+                                        <th>Edit</th>
+{#                                        <th>Delete</th>#}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for ser in lpagepictures %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ ser.description }}</td>
+                                            <td>{% if ser.photo_1 is None or ser.photo_1 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_1 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_1 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_1.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_1.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                         <td>{% if ser.photo_2 is None or ser.photo_2 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_2 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ser.photo_2 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_2.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_2.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                          <td>{% if ser.photo_3 is None or ser.photo_3 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_3 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_3 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_3.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_3.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                         <td>{% if ser.photo_4 is None or ser.photo_4 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_4 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_4 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_4.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_4.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                                 <td>{% if ser.photo_5 is None or ser.photo_5 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_5 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_5 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_5.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_5.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                        <td>{% if ser.photo_6 is None or ser.photo_6 == '' %}
+                                                <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_6 }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_6 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% else %} <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_6.url }} data-toggle="modal" data-target="#myModal" >
+                                                <span><img class="picture-src" src="{{ ser.photo_6.url }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
+                                            {% endif %}</td>
+                                        <td>
+                                                <a href="{% url 'administration:learn_page_edit' ser.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+
+                        </div>
+                        <!-- end widget content -->
+
+                    </div>
+                    <!-- end widget div -->
+
+                </div>
+                <!-- end widget -->
+
+                <!-- end widget -->
+            </article>
+            <!-- END COL -->
+        </div>
+    </section>
+
+    <div class="modal fade" id="confirm-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b>Opps..!</b>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete.?</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success btn-ok">Yes</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+      </div>
+      <div class="modal-body" >
+
+        <img  id="img01" style="width: 150px; height: 150px;">
+      </div>
+{#        <div class="modal-footer">#}
+{#        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
+{##}
+{#      </div>#}
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/plugin/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/plugin/datatables/dataTables.colVis.min.js' %}"></script>
+    <script src="{% static 'js/plugin/datatables/dataTables.tableTools.min.js' %}"></script>
+    <script src="{% static 'js/plugin/datatables/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugin/datatable-responsive/datatables.responsive.min.js' %}"></script>
+    <script>
+    $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.modal-body').css({
+                'max-height': '10%'
+            });
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    $('#myModal').on('show.bs.modal', function (e) {
+            var yourparameter = e.relatedTarget.dataset.yourparameter;
+            {#alert(yourparameter);#}
+            var modalImg1 = document.getElementById("img01");
+            modalImg1.src=yourparameter;
+            {#alert(yourparameter.url);#}
+            {#image=$("#btn").val();#}
+            {#alert(image);#}
+            {#img01.src=image;#}
+        });
+</script>
+{% endblock %}
+{% block docrdy %}
+
+    /* BASIC ;*/
+    var responsiveHelper_dt_basic = undefined;
+    var responsiveHelper_datatable_fixed_column = undefined;
+    var responsiveHelper_datatable_col_reorder = undefined;
+    var responsiveHelper_datatable_tabletools = undefined;
+
+    var breakpointDefinition = {
+    tablet : 1024,
+    phone : 480
+    };
+
+    $('#dt_basic').dataTable({
+    "scrollX": true,
+    "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-4'f><'col-xs-12 col-sm-4'l><'col-sm-4 col-xs-12'T>r>"+
+    "t"+
+    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+    "autoWidth" : true,
+    "oLanguage": {
+    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+    },
+    "oTableTools": {
+    "aButtons": [
+    "copy",
+    "csv",
+    "xls",
+    {
+    "sExtends": "text",
+    "sButtonText" : '<a href="{% url 'administration:learn_page_create' %}"><span><i class="glyphicon glyphicon-plus"></i></span></a>',
+
+    },
+    {
+    "sExtends": "ajax",
+    "sButtonText": ' <span><i class="glyphicon glyphicon-refresh"></i></span> ',
+    {#                                "sAjaxUrl": ' $('#dt_basic').DataTable().reload(); '#}
+
+    },
+    {
+    "sExtends": "pdf",
+    "sTitle": "WeitSein_PDF",
+    "sPdfMessage": "WeitSein PDF Export",
+    "sPdfSize": "A4"
+    },
+    {
+    "sExtends": "print",
+    "sButtonText": ' <span><i class="glyphicon glyphicon-print"></i></span> ',
+    "sMessage": "Generated by Weit Sein <i>(press Esc to close)</i>"
+    },
+    ],
+    "sSwfPath": "{% static 'js/plugin/datatables/swf/copy_csv_xls_pdf.swf' %}"
+    },
+    "autoWidth" : true,
+    "preDrawCallback" : function() {
+    // Initialize the responsive datatables helper once.
+    if (!responsiveHelper_dt_basic) {
+    responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+    }
+    },
+    "rowCallback" : function(nRow) {
+    responsiveHelper_dt_basic.createExpandIcon(nRow);
+    },
+    "drawCallback" : function(oSettings) {
+    responsiveHelper_dt_basic.respond();
+    }
+    });
+
+    /* END BASIC */
+
+{% endblock %}
