@@ -128,7 +128,8 @@
             <div class="collapse" id="child">
 
                {% for menuchild in menu.child %}
-                    <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">{{ menuchild.name }} </a>
+                    <a href="{% url 'home:product' menu.parent.id menuchild.id %}" class="list-group-item" data-toggle="collapse" target="_blank" >{{ menuchild.name }} </a>
+
                 {% endfor %}
 
           </div>
@@ -142,32 +143,26 @@
 
           </div>
 
-
-
         </div>
 
         <!-- Shop Products Area -->
         <div class="col-12 col-md-8 col-lg-9">
           <div class="row">
            <!-- Single Product Area -->
-{% for product in products %}
-    <div class="col-12 col-sm-6 col-lg-4">
-
-
+    {% for product in products %}
+        <div class="col-12 col-sm-6 col-lg-4">
             <!-- Cart Table -->
             <div class="cart-table clearfix">
               <table class="table table-responsive">
                 <!-- tbody -->
                 <tbody>
                   <!-- Single Table Row -->
-
                   <tr>
                     <td class="cart_product_img">
                       <a href="#">
-{#                          <img src="{% static 'home/img/core-img/image5.jpg' %}" alt="Product">#}
                         <img class="picture-src" src="{{ product.photo_1.url }}" id="wizardPicturePreview"
                                              style="width: 50px; height: 50px;">
-                          </a>
+                      </a>
                     </td>
                     <td class="cart_product_desc">
                       <p>{{ product.name }}</p>
@@ -209,10 +204,7 @@
 {#          </div>   #}
 
         </div>
-              {% endfor %}
-
-
-
+    {% endfor %}
           </div>
 
           <!-- Pagination -->

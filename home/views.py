@@ -14,22 +14,25 @@ def index(request):
 def about(request):
     return  render(request,'home/about.html')
 
-def product(request):
+def product(request,pgrpid,psubgrpid):
     sidemenu = []
     sidemenu.clear()
     pgroups = ProductGroup.objects.filter(active=True)
     for pgroup in pgroups:
         psubgrps = ProductSubGroup.objects.select_related().filter(pgroup=pgroup, active=True)
-        sidemenu.append(ParentChild(pgroup.name, psubgrps))
-    products = Products.objects.filter(active=True)
+        sidemenu.append(ParentChild(pgroup, psubgrps))
+    products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
 
-    datalist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     context = {
-        'datalist': datalist,
         'sidemenu': sidemenu,
         'products':products,
     }
     return  render(request,'home/product.html',context)
+
+def productshow(request,pgrpid,psubgrpid):
+    products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
+    content = {}
+    return render(request, 'home/product.html', context)
 
 def activities(request):
     return render(request, 'home/activities.html')
