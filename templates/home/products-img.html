@@ -1,0 +1,45 @@
+{% extends "home/product.html" %}
+{% load staticfiles %}
+{% block imgcontent %}
+ {% csrf_token %}
+<div class="col-12 col-md-8 col-lg-9">
+          <div class="row">
+           <!-- Single Product Area -->
+    {% for product in products %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <!-- Cart Table -->
+        <div class="cart-table clearfix">
+              <table class="table table-responsive">
+                <!-- tbody -->
+                <tbody>
+                  <!-- Single Table Row -->
+                  <tr>
+                    <td class="cart_product_img">
+                      <a href="#">
+                        <img class="picture-src" src="{{ product.photo_1.url }}"
+                                             style="width: 100px; height: 100px;">
+                      </a>
+                    </td>
+                    <td class="cart_product_desc">
+                      <p>{{ product.name }}</p>
+
+                        <a href="{% url 'home:productdetail' product.id %}">{{ product.std_cert }}</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        </div>
+    {% endfor %}
+
+                    <!-- Pagination -->
+          <nav>
+            <ul class="pagination mb-0 mt-50">
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+          </nav>
+        </div>
+</div>
+{% endblock %}

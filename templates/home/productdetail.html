@@ -14,7 +14,7 @@
             <h2 class="post-title">{{ products.name }}</h2>
             <h5>{{ products.std_cert }} , {{ products.made_in }}</h5>
             <p>{{ products.description }}</p>
-
+            <input type="hidden" id="pid" name="pid" value="{{ products.id }}">
             <div class="row">
               <div class="col-lg-4">
                 <p>Proin accumsan laoreet donald, a pretiumas dolor congue facilisis. Morbi eget convallis nisi. Sedoni blandit neque eu leo fringilla semper. Donec sed arcu ut arcu sagittis ornare acdat ipsum. Fusces
@@ -95,7 +95,7 @@
               </div>
               <!-- Tags -->
               <ul class="famie-tags">
-                <li><a href="{% url 'home:product' %}">All product</a></li>
+                <li><a href="{% url 'home:product' 1 1 %}">All product</a></li>
                 <li><a href="#">Freshy Fruit</a></li>
                 <li><a href="#">Sweet Corn</a></li>
               </ul>
