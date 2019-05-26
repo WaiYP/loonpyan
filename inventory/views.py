@@ -131,7 +131,7 @@ class ProductView():
             if 'photo_2' in request.FILES:
                 photo2 = request.FILES['photo_2']
             else:
-                photo = request.POST.get('photoid2')
+                photo2 = request.POST.get('photoid2')
 
             if 'photo_3' in request.FILES:
                 photo3 = request.FILES['photo_3']
@@ -157,7 +157,7 @@ class ProductView():
             if request.POST.get('id') is None or request.POST.get('id')=='':
                 cust = Products(name=name,photo_1=photo,active=active,ts=ts,
                                 cat_id=cat,pgroup_id=pgroup,psubgroup_id=psubgroup,description=description,technology=technology,
-                                made_in=made,std_cert=standard,photo_2=photo2,photo_3=photo3,photo_5=photo5,photo_4=photo5)
+                                made_in=made,std_cert=standard,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5)
                 cust.save()
 
             else:

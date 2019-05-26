@@ -2,7 +2,6 @@ from django.conf.urls import url
 from . import views
 
 app_name = "inventory"
-
 urlpatterns = [
     url(r'^product_list', views.ProductView.list, name='product_list'),
     url(r'^product_edit/(?P<id>[\w\-]+)/$', views.ProductView.edit, name='product_edit'),

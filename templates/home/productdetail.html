@@ -22,7 +22,7 @@
                 <p>Etiam faucibus vestibulum orci at euismod. Sedo sollicitudin justo esteran nibh egestas maximus. Nullam rutrum dolor velit, act accumsan denim commodo non.</p>
               </div>
               <div class="col-lg-6">
-                <img class="w-100 mb-30" src="{{ products.photo_2.url }}" alt="" style="width: 300px;height: 300px">
+                <img class="w-100 mb-30" src="{{ products.photo_1.url }}" alt="" style="width: 300px;height: 300px">
               </div>
                 <div class="col-lg-6"></div>
                 <div class="col-lg-3">
@@ -32,23 +32,39 @@
 {#                        <span>Suzanne Somers</span>#}
 {#                      </div>#}
                         <div>
-                        <img src="{{ products.photo_2.url }}" alt="" style="height: 100px;width: 150px;">
-                          <span>{{ products.description_2 }}</span>
+                        {% if photo2_url is not None %}
+                            <div>
+                                <img src="{{ photo2_url }}" alt="" style="height: 100px;width: 150px;">
+                                <span>{{ products.description_2 }}</span>
+                            </div>
+                            {% endif %}
                       </div> &nbsp; &nbsp;
                         <div>
-                        <img src="{{ products.photo_3.url }}" alt="" style="height: 100px;width: 150px;">
-                            <span>{{ products.description_3 }}</span>
+                            {% if photo3_url is not None %}
+                                <div>
+                                    <img src="{{ photo3_url }}" alt="" style="height: 100px;width: 150px;">
+                                    <span>{{ products.description_3 }}</span>
+                                </div>
+                            {% endif %}
                       </div>&nbsp; &nbsp;
 
                 </div>
                 <div class="col-lg-3">
                         <div>
-                        <img src="{{ products.photo_4.url }}" alt="" style="height: 100px;width: 150px;">
-                            <span>{{ products.description_4 }} </span>
+                            {% if photo4_url is not  None %}
+                                <div>
+                                    <img src="{{ photo4_url }}" alt="" style="height: 100px;width: 150px;">
+                                    <span>{{ products.description_4 }} </span>
+                                </div>
+                            {% endif %}
                       </div>&nbsp; &nbsp;
                         <div >
-                        <img src="{{ products.photo_5.url }}" alt="" style="height: 100px;width: 150px;">
-                            <span>{{ products.description_5 }}</span>
+                            {% if photo5_url is not  None %}
+                                <div>
+                                    <img src="{{ photo5_url }}" alt="" style="height: 100px;width: 150px;">
+                                    <span>{{ products.description_5 }}</span>
+                                </div>
+                            {% endif %}
                       </div>
 {#                    </blockquote>#}
                 </div>

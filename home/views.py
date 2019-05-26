@@ -52,7 +52,33 @@ def farmingpractice(request):
 
 def productdetail(request,pid):
     products = Products.objects.get(id=pid)
-    content = {'products' : products }
+    if products.photo_1 == '' :
+        photo1_url = ''
+    else:
+        photo1_url = products.photo_1.url
+    if products.photo_2 == '' :
+        photo2_url = ''
+    else:
+        photo2_url = products.photo_2.url
+    if products.photo_3 == '':
+        photo3_url = ''
+    else:
+        photo3_url = products.photo_3.url
+    if products.photo_4 == '':
+        photo4_url = ''
+    else:
+        photo4_url = products.photo_4.url
+    if products.photo_5 == '':
+        photo5_url = ''
+    else:
+        photo5_url = products.photo_5.url
+
+    content = {'products' : products,
+               'photo1_url':photo1_url,
+               'photo2_url' : photo2_url,
+               'photo3_url' : photo3_url,
+               'photo4_url' : photo4_url,
+               'photo5_url' : photo5_url}
     return render(request, 'home/productdetail.html',content)
 
 def contact(request):
