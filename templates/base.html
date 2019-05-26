@@ -14,7 +14,8 @@
   <link rel="icon" href="{% static 'img/favicon/loonpyan_logo.ico' %}">
   <!-- Core Stylesheet -->
   <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
-
+ {% block css %}
+ {% endblock css %}
 </head>
 
 <body>
@@ -233,6 +234,22 @@
   <script src="{% static 'home/js/jarallax-video.min.js' %}"></script>
   <!-- Active js -->
   <script src="{% static 'home/js/active.js' %}"></script>
+
+{% block scripts %}
+{% endblock scripts %}
+
+<script>
+    $(document).ready(function () {
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+
+        {% block docrdy %}
+        {% endblock docrdy %}
+
+    })
+
+</script>
 </body>
 
 </html>

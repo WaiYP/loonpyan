@@ -34,6 +34,7 @@ def product(request,pgrpid,psubgrpid):
         'products':products,
     }
     return  render(request,'home/product.html',context)
+    # return render(request, 'home/admin-product.html', context)
 
 def productshow(request,pgrpid,psubgrpid):
     side_menu = sidemenu()
