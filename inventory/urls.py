@@ -46,4 +46,7 @@ urlpatterns = [
     url(r'^service_save', views.ServiceView.save, name='service_save'),
     url(r'^service_create', views.ServiceView.create, name='service_create'),
 
+    url(r'api/products/get_productgroup/$', views.get_productgroup, name='get_productgroup'),
+    url(r'api/products/get_productsubgroup/(?P<id>[0-9]+)/$', views.get_productsubgroup, name='get_productsubgroup'),
+
 ]
