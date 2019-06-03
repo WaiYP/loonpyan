@@ -155,21 +155,21 @@
                                         </select><i></i>
                                         </label>
                                     </section>
-                                <section>
-                                    <datalist id="default_sub">
-
-                                    </datalist>
-                                    <label class="label">Choose Product Subgroup</label>
-                                    <label class="input">
-                                        <div class="input-group">
-                                            {% if psname %}
-                                                <input type="text" value="{{ psname }}" list="default_sub" style="line-height: 28px; width: 350px" name="psubgroup" id="psubgroup">
-                                            {% else %}
-                                                <input type="text" list="default_sub" style="line-height: 28px; width: 350px" name="psubgroup" id="psubgroup" >
-                                            {% endif %}
-                                        </div>
-                                    </label>
-                                </section>
+                             <section>
+                                        <label class="label">Choose Product Sub Groups</label>
+                                        <label class="select">
+                                        <select name="psgroup" id="psgroup">
+                                            {% for psg in psubgroup %}
+                                                {% if psg.id|slugify == product.psubgroup_id|slugify %}
+                                                    <option value="{{ psg.id }}"
+                                                            selected="selected">{{ psg.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ psg.id}}">{{ psg.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select><i></i>
+                                        </label>
+                                    </section>
                                     <section>
                                         <label class="label">Product Name:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>

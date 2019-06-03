@@ -97,7 +97,7 @@ class ProductView():
             category = Categories.objects.filter(active=1)
             pgroup = ProductGroup.objects.filter(active=True)
             psubgroup = ProductSubGroup.objects.filter(active=True)
-            psname = psubgroup.name
+            # psname = psubgroup.name
             content = {
                 'category':category,
                 'product':product,
@@ -119,7 +119,7 @@ class ProductView():
             userid = request.user.id
             cat = request.POST.get('category')
             pgroup = request.POST.get('pgroup')
-            psubgroup = request.POST.get('psubgroup')
+            psubgroup = request.POST.get('psgroup')
             name = request.POST.get('name')
             description = request.POST.get('description')
             technology = request.POST.get('technology')

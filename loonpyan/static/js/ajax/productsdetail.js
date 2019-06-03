@@ -13,7 +13,7 @@ $(function () {
                 var sel;
                 var pid=$("#pgroup").val();
 
-                //alert(pid);
+                // alert(pid);
                 $("#pgroup").html('');
                 for (var i = 0; i < data.length; i++) {
                     pgroup = data[i];
@@ -32,7 +32,7 @@ $(function () {
                         );
                     }
                     else{
-
+                        // alert(pgroup.id);
                         $("#pgroup").append(
                         $('<option/>', {
                             value: pgroup.id,
@@ -65,34 +65,50 @@ $(function () {
     //updated by SSM to make text search input in Product Sub Group 4/5/2018
     function getProductSubGroup(id) {
         $.ajax({
+
             url: "api/products/get_productsubgroup/" + id, // the endpoint
             type: "GET", // http method
             // handle a successful response
             success: function (data) {
-                //alert('hello in Pro Sub Group');
-                // var psid=$("#psgroup").val();
+                // alert('hello success');
+                var psid=$("#psgroup").val();
                 // alert(psid);
-                $('#default_sub').html(' ');
-                //alert($("#default_sub").val());
-                var product=$("#psubgroup").val();
-                // alert($("#psubgroup").val());
-                $("#psubgroup").html(' ');
-                // $("#psubgroup").val(product);
+                $('#psgroup').html(' ');
                 var sel;
-                // alert(data.length);
                 for (var i = 0; i < data.length; i++) {
                    // alert(i);
                     psgroup = data[i];
-                    // alert(psgroup.name);
-
-                    $("#default_sub").append(
-                            '<option value="' + psgroup.name + '" >'
-
+                   // alert(psgroup.id);
+                    if (i == 0)
+                        sel = psgroup.id;
+                     if(psid==psgroup.id)
+                    {
+                        sel = psgroup.id;
+                        // alert('in selected');
+                        $("#psgroup").append(
+                            '<option value="' + psgroup.id + '" selected>'
+                            + psgroup.name
                             + '</option>'
                         );
+                    }
+                    else{
+                        // alert(psgroup.id);
+                        $("#psgroup").append(
+                        $('<option/>', {
+                            value: psgroup.id,
+                            html: psgroup.name
+                        }));
+                    }
 
+                    // $("#psgroup").append(
+                    //     $('<option/>', {
+                    //         value: psgroup.id,
+                    //         html: psgroup.name
+                    //     }));
                 }
-
+                $("#psgroup").val(sel);
+                // getProduct(sel);
+                // getProductLength(sel);
             },
             // handle a non-successful response
             error: function (xhr, errmsg, err) {
@@ -107,8 +123,8 @@ $(function () {
     $('#psgroup').change(function () {
         // alert('In change sub group');
         // alert($('#pgroup').val());
-        getProduct($('#psgroup').val());
-        getProductLength($('#psgroup').val());
+        // getProduct($('#psgroup').val());
+        // getProductLength($('#psgroup').val());
     });
 
 
