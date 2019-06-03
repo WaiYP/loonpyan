@@ -5,9 +5,12 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from inventory.models import Products, Customer, Categories, ProductGroup, ProductSubGroup, ActivityGroup, Activities, \
     ServiceGroup, Services
+from inventory.serializers import ProductGroupSerializer, ProductSubGroupSerializer
 
 
 class ProductView():
@@ -45,7 +48,7 @@ class ProductView():
             psubgroup = ProductSubGroup.objects.filter(active=1)
             context = {
                 "category":category,
-                'productgroup':pgroup,
+                'prodgroup':pgroup,
                 'psubgroup':psubgroup,
 
             }
@@ -92,9 +95,10 @@ class ProductView():
             except Products.DoesNotExist:
                 raise Http404('This Products does not exist')
             category = Categories.objects.filter(active=1)
-            pgroup = ProductGroup.objects.filter(active=1)
-            psubgroup = ProductSubGroup.objects.filter(active=1)
-            context = {
+            pgroup = ProductGroup.objects.filter(active=True)
+            psubgroup = ProductSubGroup.objects.filter(active=True)
+            psname = psubgroup.name
+            content = {
                 'category':category,
                 'product':product,
                 'photourl':photourl,
@@ -105,10 +109,9 @@ class ProductView():
                 'edit':1,
                 'productgroup':pgroup,
                 'psubgroup':psubgroup,
-
             }
 
-            return render(request, 'inventory/productcreate.html',context)
+            return render(request, 'inventory/productcreate.html',content)
     def save (request):
 
         if request.method == 'POST':
@@ -131,7 +134,7 @@ class ProductView():
             if 'photo_2' in request.FILES:
                 photo2 = request.FILES['photo_2']
             else:
-                photo = request.POST.get('photoid2')
+                photo2 = request.POST.get('photoid2')
 
             if 'photo_3' in request.FILES:
                 photo3 = request.FILES['photo_3']
@@ -157,7 +160,7 @@ class ProductView():
             if request.POST.get('id') is None or request.POST.get('id')=='':
                 cust = Products(name=name,photo_1=photo,active=active,ts=ts,
                                 cat_id=cat,pgroup_id=pgroup,psubgroup_id=psubgroup,description=description,technology=technology,
-                                made_in=made,std_cert=standard,photo_2=photo2,photo_3=photo3,photo_5=photo5,photo_4=photo5)
+                                made_in=made,std_cert=standard,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5)
                 cust.save()
 
             else:
@@ -947,3 +950,19 @@ class ServiceView():
     #     else:
     #         Customer.objects.filter(cust_id=cust_id).update(active=False)
     #     return HttpResponseRedirect(reverse('customer:customer_list'))
+
+
+@api_view(['GET', 'POST'])
+def get_productgroup(request):
+        if request.method == 'GET':
+            productgroup = ProductGroup.objects.filter(active=True)
+            serializer = ProductGroupSerializer(productgroup, many=True)
+            return Response(serializer.data)
+
+@api_view(['GET','POST'])
+def get_productsubgroup(request,id):
+    if request.method == 'GET':
+        pgrpid = int(id)
+        prouductsubgroup = ProductSubGroup.objects.filter(pgroup=pgrpid,active=True)
+        serializer = ProductSubGroupSerializer(prouductsubgroup,many=True)
+        return Response(serializer.data)

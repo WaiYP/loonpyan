@@ -2,7 +2,6 @@ from django.conf.urls import url
 from . import views
 
 app_name = "inventory"
-
 urlpatterns = [
     url(r'^product_list', views.ProductView.list, name='product_list'),
     url(r'^product_edit/(?P<id>[\w\-]+)/$', views.ProductView.edit, name='product_edit'),
@@ -46,5 +45,8 @@ urlpatterns = [
     url(r'^service_edit/(?P<id>[\w\-]+)/$', views.ServiceView.edit, name='service_edit'),
     url(r'^service_save', views.ServiceView.save, name='service_save'),
     url(r'^service_create', views.ServiceView.create, name='service_create'),
+
+    url(r'api/products/get_productgroup/$', views.get_productgroup, name='get_productgroup'),
+    url(r'api/products/get_productsubgroup/(?P<id>[0-9]+)/$', views.get_productsubgroup, name='get_productsubgroup'),
 
 ]

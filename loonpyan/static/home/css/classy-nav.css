@@ -68,7 +68,7 @@ img {
 .justify-content-between {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between; }
+  justify-content: space-between;}
 
 .justify-content-center {
   -webkit-box-pack: center;

@@ -404,19 +404,21 @@ input:focus {
   width: 100%; }
   .header-area .famie-main-menu {
     position: relative;
-    width: 100%; }
+    width: 100%;}
     .header-area .famie-main-menu .classy-nav-container {
       position: relative;
-      z-index: 1; }
+      z-index: 1;}
       .header-area .famie-main-menu .classy-nav-container .container {
         position: relative;
-        z-index: 1; }
+        z-index: 1;
+        }
     .header-area .famie-main-menu .classy-navbar {
       padding: 0;
       height: 80px; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
         .header-area .famie-main-menu .classy-navbar {
-          height: 70px; } }
+          height: 70px;
+        } }
       @media only screen and (max-width: 767px) {
         .header-area .famie-main-menu .classy-navbar {
           height: 70px; } }

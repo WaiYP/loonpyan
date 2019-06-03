@@ -14,7 +14,8 @@
   <link rel="icon" href="{% static 'img/favicon/loonpyan_logo.ico' %}">
   <!-- Core Stylesheet -->
   <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
-
+ {% block css %}
+ {% endblock css %}
 </head>
 
 <body>
@@ -49,7 +50,7 @@
                 <ul>
                   <li class="active"><a href="{% url 'home:index' %}">Home</a></li>
                   <li><a href="{% url 'home:about' %}">About</a></li>
-                  <li><a href="{% url 'home:product' 1 1 %}"> Product</a></li>
+                  <li><a href="{% url 'home:product' 1 3 %}"> Product</a></li>
                   <li><a href="{% url 'home:activities' %}">Activities</a></li>
                   <li><a href="{% url 'home:contact' %}">Contact</a></li>
                 </ul>
@@ -82,7 +83,7 @@
   <!-- ##### Footer Area Start ##### -->
   <footer class="footer-area">
     <!-- Main Footer Area -->
-    <div class="main-footer bg-img bg-overlay section-padding-80-0" style="background-image: {% static 'home/img/bg-img/3.jpg' %}">
+    <div class="main-footer bg-img bg-overlay section-padding-80-0" style="background-image:url({% static 'home/img/bg-img/3.jpg' %});">
       <div class="container">
         <div class="row">
 
@@ -233,6 +234,22 @@
   <script src="{% static 'home/js/jarallax-video.min.js' %}"></script>
   <!-- Active js -->
   <script src="{% static 'home/js/active.js' %}"></script>
+
+{% block scripts %}
+{% endblock scripts %}
+
+<script>
+    $(document).ready(function () {
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+
+        {% block docrdy %}
+        {% endblock docrdy %}
+
+    })
+
+</script>
 </body>
 
 </html>

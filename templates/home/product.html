@@ -23,7 +23,6 @@
 {#          </div>#}
 {#        </div>#}
 {#      </div>#}
-<form id="pform" role="form" action="{% url 'home:product' 1 1 %}" method="post">
       <div class="row">
         <!-- Shop Sidebar Area -->
         <div class="col-12 col-md-4 col-lg-3">
@@ -126,10 +125,8 @@
           <a href="#child" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent }}</a>
            {% if menu.child %}
             <div class="collapse" id="child">
-
                {% for menuchild in menu.child %}
-                    <a href="{% url 'home:product' menu.parent.id menuchild.id %}" class="list-group-item" data-toggle="collapse" target="_blank" >{{ menuchild.name }} </a>
-
+                    <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" class="list-group-item" >{{ menuchild.name }} </a>
                 {% endfor %}
 
           </div>
@@ -142,36 +139,61 @@
 </div>
 
           </div>
-
+{#testing #}
+{#        <nav id="MainMenu" class="col-md-8">#}
+{#        <ul>#}
+{#            {%for menu in sidemenu %}#}
+{#            <li>#}
+{#                <a href="#child" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent.name }}</a>#}
+{#				{% if menu.child %}#}
+{#                <ul class="collapse" id="child">#}
+{#				{% for menuchild in menu.child %}#}
+{#                    <li>#}
+{#                        <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" class="list-group-item" data-toggle="collapse">{{ menuchild.name }}</a>#}
+{#                    </li>#}
+{#                {% endfor %}#}
+{#                </ul>#}
+{#				{% endif %}#}
+{#            </li>#}
+{#         {%endfor %}#}
+{##}
+{#        </ul>#}
+{#    </nav>#}
+{#        #}
         </div>
 
         <!-- Shop Products Area -->
-        <div class="col-12 col-md-8 col-lg-9">
-          <div class="row">
-           <!-- Single Product Area -->
-    {% for product in products %}
-        <div class="col-12 col-sm-6 col-lg-4">
-            <!-- Cart Table -->
-            <div class="cart-table clearfix">
-              <table class="table table-responsive">
-                <!-- tbody -->
-                <tbody>
-                  <!-- Single Table Row -->
-                  <tr>
-                    <td class="cart_product_img">
-                      <a href="#">
-                        <img class="picture-src" src="{{ product.photo_1.url }}" id="wizardPicturePreview"
-                                             style="width: 50px; height: 50px;">
-                      </a>
-                    </td>
-                    <td class="cart_product_desc">
-                      <p>{{ product.name }}</p>
-
-                        <a href="{% url 'home:productdetail' product.id %}">{{ product.std_cert }}</a>
-                    </td>
-
-                  </tr>
-
+      <div id="imgcontent">
+          {% block imgcontent %}
+          {% endblock %}
+      </div>
+{#      product show #}
+{#        <div class="col-12 col-md-8 col-lg-9">#}
+{#          <div class="row">#}
+{#           <!-- Single Product Area -->#}
+{#    {% for product in products %}#}
+{#        <div class="col-12 col-sm-6 col-lg-4">#}
+{#            <!-- Cart Table -->#}
+{#            <div class="cart-table clearfix">#}
+{#              <table class="table table-responsive">#}
+{#                <!-- tbody -->#}
+{#                <tbody>#}
+{#                  <!-- Single Table Row -->#}
+{#                  <tr>#}
+{#                    <td class="cart_product_img">#}
+{#                      <a href="#">#}
+{#                        <img class="picture-src" src="{{ product.photo_1.url }}" id="wizardPicturePreview"#}
+{#                                             style="width: 50px; height: 50px;">#}
+{#                      </a>#}
+{#                    </td>#}
+{#                    <td class="cart_product_desc">#}
+{#                      <p>{{ product.name }}</p>#}
+{##}
+{#                        <a href="{% url 'home:productdetail' product.id %}">{{ product.std_cert }}</a>#}
+{#                    </td>#}
+{##}
+{#                  </tr>#}
+{##}
 {#                  <!-- Single Table Row -->#}
 {#                  <tr>#}
 {#                    <td class="cart_product_img">#}
@@ -198,26 +220,25 @@
 {#                      <a href="#"><i class="icon_close"></i></a>#}
 {#                    </td>#}
 {#                  </tr>#}
-                </tbody>
-              </table>
-            </div>
-{#          </div>   #}
-
-        </div>
-    {% endfor %}
-          </div>
-
-          <!-- Pagination -->
-          <nav>
-            <ul class="pagination mb-0 mt-50">
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
-          </nav>
-        </div>
+{#                </tbody>#}
+{#              </table>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#          </div>#}
+{##}
+{#          <!-- Pagination -->#}
+{#          <nav>#}
+{#            <ul class="pagination mb-0 mt-50">#}
+{#              <li class="page-item active"><a class="page-link" href="#">1</a></li>#}
+{#              <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+{#              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>#}
+{#            </ul>#}
+{#          </nav>#}
+{#        </div>#}
+{#      end product show #}
       </div>
-</form>
+
     </div>
   </section>
   <!-- ##### Shop Area End ##### -->
@@ -230,45 +251,32 @@
         {#    else#}
         {#        x.hidden = true#}
         {#}#}
-
             var show = function (elem) {
                 elem.style.display = 'block';
             };
-
             var hide = function (elem) {
                 elem.style.display = 'none';
             };
-
             var toggle = function (elem) {
-
                 // If the element is visible, hide it
                 if (window.getComputedStyle(elem).display === 'none') {
                     show(elem);
                     return;
                 }
-
                 // Otherwise, show it
                 hide(elem);
-
             };
-
 // Listen for click events
             document.addEventListener('click', function (event) {
-
                 // Make sure clicked element is our toggle
                 if (!event.target.classList.contains('toggle')) return;
-
                 // Prevent default link behavior
                 event.preventDefault();
-
                 // Get the content
                 var content = document.querySelector(event.target.hash);
                 if (!content) return;
-
                 // Toggle the content
                 toggle(content);
-
             }, false);
-
     </script>
 {% endblock content %}

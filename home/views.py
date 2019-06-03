@@ -4,35 +4,45 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
+from administration.models import LearningPagePicture
 from home.custom import ParentChild
 from inventory.models import Categories, ProductGroup, ProductSubGroup, Products, Customer
 
 
-def index(request):
-    return render(request, 'home/index.html')
-
-def about(request):
-    return  render(request,'home/about.html')
-
-def product(request,pgrpid,psubgrpid):
+def sidemenu():
     sidemenu = []
     sidemenu.clear()
     pgroups = ProductGroup.objects.filter(active=True)
     for pgroup in pgroups:
         psubgrps = ProductSubGroup.objects.select_related().filter(pgroup=pgroup, active=True).order_by('id')
         sidemenu.append(ParentChild(pgroup, psubgrps))
-    products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
+    return  sidemenu
 
+def index(request):
+    pics = LearningPagePicture.objects.last()
+    content = {'pics':pics}
+    return render(request, 'home/index.html',content)
+
+def about(request):
+    return  render(request,'home/about.html')
+
+def product(request,pgrpid,psubgrpid):
+    side_menu  = sidemenu()
+    products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
     context = {
-        'sidemenu': sidemenu,
+        'sidemenu': side_menu,
         'products':products,
     }
     return  render(request,'home/product.html',context)
+    # return render(request, 'home/admin-product.html', context)
 
 def productshow(request,pgrpid,psubgrpid):
+    side_menu = sidemenu()
     products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
-    content = {}
-    return render(request, 'home/product.html', context)
+    content = {
+        'sidemenu':side_menu,
+        'products':products}
+    return render(request, 'home/products-img.html', content)
 
 def activities(request):
     return render(request, 'home/activities.html')
@@ -42,7 +52,33 @@ def farmingpractice(request):
 
 def productdetail(request,pid):
     products = Products.objects.get(id=pid)
-    content = {'products' : products }
+    if products.photo_1 == '' :
+        photo1_url = ''
+    else:
+        photo1_url = products.photo_1.url
+    if products.photo_2 == '' :
+        photo2_url = ''
+    else:
+        photo2_url = products.photo_2.url
+    if products.photo_3 == '':
+        photo3_url = ''
+    else:
+        photo3_url = products.photo_3.url
+    if products.photo_4 == '':
+        photo4_url = ''
+    else:
+        photo4_url = products.photo_4.url
+    if products.photo_5 == '':
+        photo5_url = ''
+    else:
+        photo5_url = products.photo_5.url
+
+    content = {'products' : products,
+               'photo1_url':photo1_url,
+               'photo2_url' : photo2_url,
+               'photo3_url' : photo3_url,
+               'photo4_url' : photo4_url,
+               'photo5_url' : photo5_url}
     return render(request, 'home/productdetail.html',content)
 
 def contact(request):
@@ -58,6 +94,8 @@ def custsave(request):
         cust.message = request.POST.get("message")
         cust.active = 1
         cust.ts = datetime.now()
-        # cust = Customer(name=cust_name,email=cust_email,phone=cust_phone,address=cust_address,message=cust_message,ts=cust_ts,active=cust_active)
         cust.save()
-    return HttpResponseRedirect(reverse('home:productdetail'))
+        prodid = request.POST.get("pid")
+        products = Products.objects.get(id=prodid)
+        content = {'products':products}
+    return render(request,'home/productdetail.html',content)

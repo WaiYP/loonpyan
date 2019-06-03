@@ -141,35 +141,35 @@
                                         </label>
                                     </section>
                                   <section>
-                                        <label class="label">Choose ProductGroups</label>
+                                        <label class="label">Choose Product Groups</label>
                                         <label class="select">
                                         <select name="pgroup" id="pgroup">
-                                            {% for pgroup in productgroup %}
-                                                {% if pgroup.id == product.pgroup_id %}
-                                                    <option value="{{ pgroup.id }}"
-                                                            selected="selected">{{ pgroup.name }}</option>
+                                            {% for pgrp in productgroup %}
+                                                {% if pgrp.id|slugify == product.pgroup_id|slugify %}
+                                                    <option value="{{ pgrp.id }}"
+                                                            selected="selected">{{ pgrp.name }}</option>
                                                 {% else %}
-                                                    <option value="{{ pgroup.id }}">{{ pgroup.name }}</option>
+                                                    <option value="{{ pgrp.id }}">{{ pgrp.name }}</option>
                                                 {% endif %}
                                             {% endfor %}
                                         </select><i></i>
                                         </label>
                                     </section>
                                 <section>
-                                        <label class="label">Choose Product Sub Group</label>
-                                        <label class="select">
-                                        <select name="psubgroup" id="psubgroup">
-                                            {% for ps in psubgroup %}
-                                                {% if ps.id == product.psubgroup_id %}
-                                                    <option value="{{ ps.id }}"
-                                                            selected="selected">{{ ps.name }}</option>
-                                                {% else %}
-                                                    <option value="{{ ps.id }}">{{ ps.name }}</option>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </select><i></i>
-                                        </label>
-                                    </section>
+                                    <datalist id="default_sub">
+
+                                    </datalist>
+                                    <label class="label">Choose Product Subgroup</label>
+                                    <label class="input">
+                                        <div class="input-group">
+                                            {% if psname %}
+                                                <input type="text" value="{{ psname }}" list="default_sub" style="line-height: 28px; width: 350px" name="psubgroup" id="psubgroup">
+                                            {% else %}
+                                                <input type="text" list="default_sub" style="line-height: 28px; width: 350px" name="psubgroup" id="psubgroup" >
+                                            {% endif %}
+                                        </div>
+                                    </label>
+                                </section>
                                     <section>
                                         <label class="label">Product Name:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
@@ -181,28 +181,28 @@
 
                                 </div>
                             <div class="col col-6">
-                                  <section>
+                                <section>
                                         <label class="label">Product Description:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
                                             <input type="text" name="description" placeholder="Description"
                                                    value="{{ product.description }}">
                                         </label>
                                     </section>
-                                    <section>
+                                <section>
                                         <label class="label">Product Technology:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
                                             <input type="text" name="technology" placeholder="Technology"
                                                    value="{{ product.technology }}">
                                         </label>
                                     </section>
-                                 <section>
+                                <section>
                                         <label class="label">Product Standard Certificate:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
                                             <input type="text" name="standard" placeholder="Standard Certificate"
                                                    value="{{ product.std_cert }}">
                                         </label>
                                     </section>
-                            <section>
+                                <section>
                                         <label class="label">Product Made In:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
                                             <input type="text" name="made_in" placeholder="Made In"
@@ -210,7 +210,7 @@
                                         </label>
                                     </section>
 
-                                </div>
+                            </div>
                             </fieldset>
                         <fieldset>
                             <div class="col col-4">
@@ -330,8 +330,11 @@
         </article>
         <!-- END COL -->
     </div>
-{% endblock %}
 
+{% endblock %}
+{% block scriptsrc %}
+    <script type="text/javascript" src="{% static 'js/ajax/productsdetail.js' %}"></script>
+{% endblock %}
 {% block scripts %}
     {#    <script>#}
     {#        // Prepare the preview for profile picture#}
@@ -358,6 +361,7 @@
     {#            }#}
     {#        }#}
     {#    </script>#}
+
 {% endblock %}
 {% block docrdy %}
     var errorClass = 'invalid';
