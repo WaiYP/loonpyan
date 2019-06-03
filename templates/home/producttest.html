@@ -1,0 +1,396 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% block content %}
+    <!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title> Myanmar Loon Pyan </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/font-awesome.min.css' %}">
+
+{#    <link rel="stylesheet" href="searchableOptionList.css">#}
+{#    <script type="text/javascript" src="jQuery.js"></script>#}
+{#    <script type="text/javascript" src="sol-{VERSION}.js"></script>#}
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="{% static 'css/smartadmin-production-plugins.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/smartadmin-production.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/smartadmin-skins.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/smartadmin-rtl.min.css' %}">
+
+{#    {% block css %}#}
+{#    {% endblock css %}#}
+
+    <link rel="shortcut icon" href="{% static 'img/favicon/loonpyan_logo.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'img/favicon/loonpyan_logo.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+    <link rel="apple-touch-icon" href="{% static 'img/splash/sptouch-icon-iphone.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/splash/touch-icon-ipad.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/splash/touch-icon-iphone-retina.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/splash/touch-icon-ipad-retina.png' %}">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-startup-image" href="{% static 'img/splash/ipad-landscape.png' %}"
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'img/splash/ipad-portrait.png' %}"
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'img/splash/iphone.png' %}"
+          media="screen and (max-device-width: 320px)">
+
+</head>
+
+<body class="smart-style-2 desktop-detected menu-on-left">
+
+{#<header id="header" style="background-color:#5cb85c">#}
+{##}
+{#    <div id="logo-group">#}
+{##}
+{#        <span id="logo"> <img src="{% static 'img/logo3.jpg' %}" alt="LoonPyan" style="width:40%;height:65%;"> </span>#}
+{##}
+{#        <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>#}
+{#        <div class="ajax-dropdown">#}
+{#            <div class="btn-group btn-group-justified" data-toggle="buttons">#}
+{#                <label class="btn btn-default">#}
+{#                    <input type="radio" name="activity" id="ajax/notify/mail.html">#}
+{#                    Msgs (14) </label>#}
+{#                <label class="btn btn-default">#}
+{#                    <input type="radio" name="activity" id="ajax/notify/notifications.html">#}
+{#                    notify (3) </label>#}
+{#                <label class="btn btn-default">#}
+{#                    <input type="radio" name="activity" id="ajax/notify/tasks.html">#}
+{#                    Tasks (4) </label>#}
+{#            </div>#}
+{##}
+{#            <div class="ajax-notifications custom-scroll">#}
+{#                <div class="alert alert-transparent">#}
+{#                    <h4>Click a button to show messages here</h4>#}
+{#                    This blank page message helps protect your privacy, or you can show the first message here#}
+{#                    automatically.#}
+{#                </div>#}
+{#                <i class="fa fa-lock fa-4x fa-border"></i>#}
+{#            </div>#}
+{##}
+{#            <span> Last updated on: 12/12/2013 9:43AM#}
+{#                <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..."#}
+{#                        class="btn btn-xs btn-default pull-right">#}
+{#                    <i class="fa fa-refresh"></i>#}
+{#                </button>#}
+{#            </span>#}
+{##}
+{#        </div>#}
+{##}
+{#    </div>#}
+{##}
+{#    <div class="project-context hidden-xs">#}
+{##}
+{#        <span class="label">Activities:</span>#}
+{#        <span class="project-selector dropdown-toggle" data-toggle="dropdown">#}
+{#            Recent activities<i class="fa fa-angle-down"></i>#}
+{#            </span>#}
+{#        <ul class="dropdown-menu">#}
+{#            <li>#}
+{#                <a href="javascript:void(0);">Test 1</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="javascript:void(0);">Test 2</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="javascript:void(0);">Test 3</a>#}
+{#            </li>#}
+{#            <li class="divider"></li>#}
+{#            <li>#}
+{#                <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>#}
+{#            </li>#}
+{#        </ul>#}
+{##}
+{#    </div>#}
+{##}
+{#    <div class="pull-right">#}
+{#        <div id="hide-menu" class="btn-header pull-right">#}
+{#            <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i#}
+{#                    class="fa fa-reorder"></i></a> </span>#}
+{#        </div>#}
+{#        <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">#}
+{#            <span class="label"><strong>{{ user.get_username }}</strong></span>#}
+{#            <li class="">#}
+{##}
+{#                <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">#}
+{#                    <img src="{% static 'img/avatars/female.png' %}" alt="User" class="online"/>#}
+{#                </a>#}
+{#                <ul class="dropdown-menu pull-right">#}
+{#                    <li>#}
+{#                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i#}
+{#                                class="fa fa-cog"></i> Setting</a>#}
+{#                    </li>#}
+{#                    <li class="divider"></li>#}
+{#                    <li>#}
+{#                        <a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i#}
+{#                                class="fa fa-user"></i> <u>P</u>rofile</a>#}
+{#                    </li>#}
+{#                    <li class="divider"></li>#}
+{#                    <li>#}
+{#                        <a href="{% url 'administration:user_logout' %}"#}
+{#                           class="padding-10 padding-top-5 padding-bottom-5"#}
+{#                           data-action="userLogout"><i#}
+{#                                class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+{#        </ul>#}
+{##}
+{#        <div id="logout" class="btn-header transparent pull-right">#}
+{#            <span>#}
+{#                <a href="{% url 'administration:user_logout' %}" title="Sign Out"#}
+{#                   data-action="userLogout"#}
+{#                   data-logout-msg="You can improve your security further after logging out by closing this opened browser">#}
+{#                    <i class="fa fa-sign-out"></i>#}
+{#                </a>#}
+{#            </span>#}
+{#        </div>#}
+{##}
+{#        <ul class="header-dropdown-list hidden-xs">#}
+{#            <li>#}
+{#                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{% static 'img/blank.gif' %}"#}
+{#                                                                                 class="flag flag-us"#}
+{#                                                                                 alt="United States"> <span> English (US) </span>#}
+{#                    <i class="fa fa-angle-down"></i> </a>#}
+{#                <ul class="dropdown-menu pull-right">#}
+{#                    <li class="active">#}
+{#                        <a href="javascript:void(0);"><img src="{% static 'img/blank.gif' %}" class="flag flag-us"#}
+{#                                                           alt="United States"> English (US)</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="javascript:void(0);"><img src="{% static 'img/blank.gif' %}" class="flag flag-mm"#}
+{#                                                           alt="France"> Myanmar (MM)</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+{#        </ul>#}
+{##}
+{#    </div>#}
+{##}
+{#</header>#}
+
+<aside id="left-panel">
+
+    <div class="login-info">
+            <span>
+                <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+                    <img src="{% static 'img/avatars/male.png' %}" alt="me" class="online"/>
+                    <span>
+                        Loon Pyan Admin
+                    </span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+            </span>
+    </div>
+    <nav>
+        <ul>
+         {% for menu in sidemenu %}
+            <li>
+                <a href="#"><i class="fa fa-lg fa-fw fa-male"></i> <span class="menu-item-parent">{{ menu.parent }} </span></a>
+
+                <ul>
+                     {% if menu.child %}
+                          {% for menuchild in menu.child %}
+                            <li>
+                                <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}"> {{ menuchild.name }}</a>
+                            </li>
+                         {% endfor %}
+                    {% endif %}
+                </ul>
+
+            </li>
+         {% endfor %}
+
+
+        </ul>
+    </nav>
+
+    <span class="minifyme" data-action="minifyMenu">
+            <i class="fa fa-arrow-circle-left hit"></i>
+        </span>
+
+</aside>
+<div id="main" role="main">
+
+{#    <div id="ribbon">#}
+{#        <span class="ribbon-button-alignment">#}
+{#            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip"#}
+{#                  data-placement="bottom"#}
+{#                  data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset the pages."#}
+{#                  data-html="true">#}
+{#                <i class="fa fa-refresh"></i>#}
+{#            </span>#}
+{#        </span>#}
+{##}
+{#        <ol class="breadcrumb">#}
+{##}
+{#        </ol>#}
+{#    </div>#}
+
+    <div id="content" style="opacity: 1;">
+{#        <div class="row">#}
+            <div class="col-xs-8 col-sm-4 col-md-4 col-lg-5">
+                <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Loon Pyan Administration Pages
+                    <span>> {% block BlockTitle %}{% endblock BlockTitle %}</span>
+                </h1>
+            </div>
+{#            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">#}
+
+{#                <ul id="sparks">#}
+{#                    <li class="sparks-info">#}
+{#                        <h5> Balance <span#}
+{#                                class="txt-color-blue">{% block BlockBalance %}{% endblock BlockBalance %}</span></h5>#}
+{#                        <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">#}
+{#                            <canvas width="89" height="26"#}
+{#                                    style="display: inline-block; width: 89px; height: 26px; vertical-align: top;"></canvas>#}
+{#                        </div>#}
+{#                    </li>#}
+{#                    <li class="sparks-info">#}
+{#                        <h5> Site Traffic <span class="txt-color-purple"><i#}
+{#                                class="fa fa-arrow-circle-up"></i>&nbsp;{% block BlockPer %}{% endblock BlockPer %}%</span>#}
+{#                        </h5>#}
+{#                        <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">#}
+{#                            <canvas width="82" height="26"#}
+{#                                    style="display: inline-block; width: 82px; height: 26px; vertical-align: top;"></canvas>#}
+{#                        </div>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% block content %}#}
+{#        {% endblock content %}#}
+    </div>
+
+</div>
+
+
+
+<div id="shortcut">
+    <ul>
+        <li>
+            <a href="inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i
+                    class="fa fa-envelope fa-4x"></i> <span>Mail <span
+                    class="label pull-right bg-color-darken">14</span></span> </span> </a>
+        </li>
+        <li>
+            <a href="calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i
+                    class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+        </li>
+        <li>
+            <a href="gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i
+                    class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
+        </li>
+        <li>
+            <a href="invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i
+                    class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
+            </a>
+        </li>
+        <li>
+            <a href="gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i
+                    class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
+        </li>
+        <li>
+            <a href="profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i
+                    class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+        </li>
+    </ul>
+</div>
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="{% static 'js/plugin/pace/pace.min.js' %}"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="{% static 'js/libs/jquery-2.1.1.min.js' %}"><\/script>');
+    }
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+    if (!window.jQuery.ui) {
+        document.write('<script src="{% static 'js/libs/jquery-ui-1.10.3.min.js' %}"><\/script>');
+    }
+</script>
+
+<script src="{% static 'js/app.config.js' %}"></script>
+
+<script src="{% static 'js/plugin/jquery-touch/jquery.ui.touch-punch.min.js' %}"></script>
+
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/notification/SmartNotification.min.js' %}"></script>
+
+<script src="{% static 'js/smartwidgets/jarvis.widget.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/sparkline/jquery.sparkline.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/jquery-validate/jquery.validate.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/masked-input/jquery.maskedinput.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/select2/select2.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/bootstrap-slider/bootstrap-slider.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/msie-fix/jquery.mb.browser.min.js' %}"></script>
+
+<script src="{% static 'js/plugin/fastclick/fastclick.min.js' %}"></script>
+
+<script src="{% static 'js/app.min.js' %}"></script>
+<script src="{% static 'js/speech/voicecommand.min.js' %}"></script>
+<script src="{% static 'js/smart-chat-ui/smart.chat.ui.min.js' %}"></script>
+<script src="{% static 'js/smart-chat-ui/smart.chat.manager.min.js' %}"></script>
+{% block scriptsrc %}
+{% endblock scriptsrc %}
+{% block scripts %}
+{% endblock scripts %}
+
+<script>
+    $(document).ready(function () {
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+
+        {% block docrdy %}
+        {% endblock docrdy %}
+
+    })
+
+</script>
+
+<!-- Your GOOGLE ANALYTICS CODE Below -->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+
+</body>
+
+</html>
+
+
+{% endblock content %}
