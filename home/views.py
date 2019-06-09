@@ -33,8 +33,8 @@ def product(request,pgrpid,psubgrpid):
         'sidemenu': side_menu,
         'products':products,
     }
-    return  render(request,'home/producttest.html',context)
-    # return render(request, 'home/admin-product.html', context)
+    # return  render(request,'home/producttest.html',context)
+    return render(request, 'home/product.html', context)
 
 def productshow(request,pgrpid,psubgrpid):
     side_menu = sidemenu()

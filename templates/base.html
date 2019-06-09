@@ -25,16 +25,17 @@
   </div>
 
   <!-- ##### Header Area Start ##### -->
-  <header class="header-area">
+  <header class="header-area" >
     <!-- Top Header Area -->
     <!-- Navbar Area -->
-    <div class="famie-main-menu">
-      <div class="classy-nav-container breakpoint-off">
+    <div class="famie-main-menu" >
+      <div class="classy-nav-container breakpoint-off" style="background-color: #c5e1a5">
         <div class="container">
           <!-- Menu -->
           <nav class="classy-navbar justify-content-between" id="famieNav">
             <!-- Nav Brand -->
-            <a href="#" class="nav-brand"><img src="{% static 'home/img/core-img/loonpyan_logo.png' %}" alt=""></a>
+{#            <a href="#" class="nav-brand"><img src="{% static 'home/img/core-img/loonpyan_logo.png' %}" alt=""></a>#}
+              <a href="#" class="nav-brand" style="font-family: 'Times New Roman'; font-weight: bolder"><span style="color: #ffc107">Myanmar</span><span style="color: green">Loon</span><span style="color: red" >Pyan</span></a>
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
               <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -50,7 +51,7 @@
                 <ul>
                   <li class="active"><a href="{% url 'home:index' %}">Home</a></li>
                   <li><a href="{% url 'home:about' %}">About</a></li>
-                  <li><a href="{% url 'home:product' 1 3 %}"> Product</a></li>
+                  <li><a href="{% url 'home:productshow' 1 3 %}"> Product</a></li>
                   <li><a href="{% url 'home:activities' %}">Activities</a></li>
                   <li><a href="{% url 'home:contact' %}">Contact</a></li>
                 </ul>

@@ -25,7 +25,7 @@
 {#      </div>#}
       <div class="row">
         <!-- Shop Sidebar Area -->
-        <div class="col-12 col-md-4 col-lg-3">
+        <div class="col-12 col-md-4 col-lg-2">
 
 {#          <!-- Shopping Cart -->#}
 {#          <div class="shopping-cart mb-50">#}
@@ -95,47 +95,49 @@
             <!-- Title -->
             <h5 class="widget-title">Catagories</h5>
             <!-- Cata List -->
-{#            <ul class="cata-list shop-page">#}
-{#                {% for menu in sidemenu %}#}
-{#                    <li>#}
-{#                        <a  class="toggle" href="#sub" >{{ menu.parent }}</a>#}
-{#                        <div class="toggle-content" id="sub" >#}
-{#                         {% if menu.child %}#}
-{#                        <ul>#}
-{#                        {% for menuchild in menu.child %}#}
-{#                            <li>#}
-{#                                <a href="#" style="color: blue" >{{ menuchild.name }}</a>#}
-{#                            </li>#}
-{#                        {% endfor %}#}
-{#                        </ul>#}
-{#                        {% endif %}#}
-{#                    </div>#}
-{#                    </li>#}
-{#                {% endfor %}#}
-{##}
-{##}
-{#            </ul>#}
-              <div >
-  <div class="row">
-    <div class="col-md-8">
-
-      <div id="MainMenu">
-        <div class="list-group panel">
-            {% for menu in sidemenu %}
-          <a href="#child" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent }}</a>
-           {% if menu.child %}
-            <div class="collapse" id="child">
-               {% for menuchild in menu.child %}
-                    <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" class="list-group-item" >{{ menuchild.name }} </a>
+            <ul class="cata-list shop-page">
+                {% for menu in sidemenu %}
+                    <li>
+                        <a  class="toggle" href="#" style="font-weight: bold; color: darkgreen; font-size: large">{{ menu.parent }}</a>
+                        <div class="toggle-content" id="sub" style="padding: 0px 0px 0px 10px">
+                         {% if menu.child %}
+                        <ul>
+                        {% for menuchild in menu.child %}
+                            <li>
+                                <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" style="color: forestgreen" >{{ menuchild.name }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    </li>
                 {% endfor %}
 
-          </div>
-                {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
+
+            </ul>
+              <div >
+{#              9/6 #}
+{#  <div class="row">#}
+{#    <div class="col-md-8">#}
+{##}
+{#      <div id="MainMenu">#}
+{#        <div class="list-group panel">#}
+{#            {% for menu in sidemenu %}#}
+{#          <a href="#" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent }}</a>#}
+{#           {% if menu.child %}#}
+{#            <div class="collapse" id="child">#}
+{#               {% for menuchild in menu.child %}#}
+{#                    <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" class="list-group-item" >{{ menuchild.name }} </a>#}
+{#                {% endfor %}#}
+{##}
+{#          </div>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#              9/6#}
 </div>
 
           </div>
@@ -163,8 +165,9 @@
         </div>
 
         <!-- Shop Products Area -->
-      <div id="imgcontent">
+      <div id="imgcontent" class="col-12 col-lg-10">
           {% block imgcontent %}
+
           {% endblock %}
       </div>
 {#      product show #}
@@ -251,7 +254,7 @@
         {#    else#}
         {#        x.hidden = true#}
         {#}#}
-            var show = function (elem) {
+           var show = function (elem) {
                 elem.style.display = 'block';
             };
             var hide = function (elem) {

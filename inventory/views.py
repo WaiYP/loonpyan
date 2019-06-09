@@ -52,8 +52,8 @@ class ProductView():
                 'psubgroup':psubgroup,
 
             }
-
             return render(request, 'inventory/productcreate.html',context)
+
 
     def edit(request,id):
 
