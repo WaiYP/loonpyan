@@ -47,7 +47,7 @@ class ProductView():
             pgroup = ProductGroup.objects.filter(active=1)
             psubgroup = ProductSubGroup.objects.filter(active=1)
             context = {
-                "category":category,
+                'category':category,
                 'prodgroup':pgroup,
                 'psubgroup':psubgroup,
 
@@ -122,6 +122,7 @@ class ProductView():
             psubgroup = request.POST.get('psgroup')
             name = request.POST.get('name')
             description = request.POST.get('description')
+            mmdespt = request.POST.get('mmdespt')
             technology = request.POST.get('technology')
             made = request.POST.get('made_in')
             standard = request.POST.get('standard')
@@ -160,7 +161,7 @@ class ProductView():
             if request.POST.get('id') is None or request.POST.get('id')=='':
                 cust = Products(name=name,photo_1=photo,active=active,ts=ts,
                                 cat_id=cat,pgroup_id=pgroup,psubgroup_id=psubgroup,description=description,technology=technology,
-                                made_in=made,std_cert=standard,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5)
+                                made_in=made,std_cert=standard,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5,rsrv_char_field_1=mmdespt)
                 cust.save()
 
             else:
@@ -169,7 +170,7 @@ class ProductView():
                                 cat_id=cat, pgroup_id=pgroup, psubgroup_id=psubgroup, description=description,
                                 technology=technology,
                                 made_in=made, std_cert=standard, photo_2=photo2, photo_3=photo3, photo_5=photo5,
-                                photo_4=photo5)
+                                photo_4=photo5,rsrv_char_field_1=mmdespt)
                 cust.save()
             return HttpResponseRedirect(reverse('inventory:product_list'))
         return render(request, 'inventory/productlist.html')

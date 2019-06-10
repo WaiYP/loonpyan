@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+    {% csrf_token %}
  <!-- ##### About Us Area Start ##### -->
   <section class="about-us-area">
     <div class="container">
@@ -15,16 +16,17 @@
               <h2><span>Let Us</span> Tell You Our Story</h2>
               <img src="{% static 'home/img/core-img/image7.jpg' %}" alt="">
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetu adipiscing elit. Etiam nunc elit, pretium atlanta urna veloci, fermentum malesuda mina. Donec auctor nislec neque sagittis, sit amet dapibus pellentesque donal feugiat. Nulla mollis magna non
-              sanaliquet, volutpat do zutum, ultrices consectetur, ultrices at purus.</p>
-            <a href="#" class="btn famie-btn mt-30">Read More</a>
+            <p>{{ abt.description }}</p>
+              <p id="mm" hidden>{{ abt.rsrv_char_field_1 }}</p>
+            <a href="javascript:myfun()" style="color: forestgreen;font-weight: bolder">Translate it</a>
+
           </div>
         </div>
 
         <!-- Famie Video Play -->
         <div class="col-12 col-md-4">
             <div class="benefits-thumbnail mb-50">
-              <img src="{% static 'home/img/core-img/image8.png' %}" alt="">
+              <img src="{{ abt.photo_1.url }}" alt="About Us Pic">
           </div>
 {#          <div class="famie-video-play mb-100">#}
 {#            <img src="{% static 'img/core-img/image8.png' %}" alt="">#}
@@ -37,5 +39,13 @@
     </div>
   </section>
   <!-- ##### About Us Area End ##### -->
-
+<script>
+ function myfun(){
+     var x =  document.getElementById("mm");
+     if (x.hidden == true)
+         x.hidden = false;
+     else
+         x.hidden = true;
+ }
+</script>
 {% endblock %}

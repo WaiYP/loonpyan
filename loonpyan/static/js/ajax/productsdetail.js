@@ -12,8 +12,7 @@ $(function () {
 
                 var sel;
                 var pid=$("#pgroup").val();
-
-                // alert(pid);
+                //alert("pid "+ pid);
                 $("#pgroup").html('');
                 for (var i = 0; i < data.length; i++) {
                     pgroup = data[i];
@@ -65,26 +64,26 @@ $(function () {
     //updated by SSM to make text search input in Product Sub Group 4/5/2018
     function getProductSubGroup(id) {
         $.ajax({
-
             url: "api/products/get_productsubgroup/" + id, // the endpoint
             type: "GET", // http method
             // handle a successful response
             success: function (data) {
                 // alert('hello success');
                 var psid=$("#psgroup").val();
-                // alert(psid);
+                //alert("psid "+psid);
                 $('#psgroup').html(' ');
                 var sel;
                 for (var i = 0; i < data.length; i++) {
-                   // alert(i);
+                   //alert("i = " +i);
                     psgroup = data[i];
-                   // alert(psgroup.id);
+                   //alert(psgroup.id);
                     if (i == 0)
                         sel = psgroup.id;
+                        //alert ("sel "+ sel);
                      if(psid==psgroup.id)
                     {
                         sel = psgroup.id;
-                        // alert('in selected');
+                        //alert('in selected' + sel);
                         $("#psgroup").append(
                             '<option value="' + psgroup.id + '" selected>'
                             + psgroup.name
@@ -92,7 +91,7 @@ $(function () {
                         );
                     }
                     else{
-                        // alert(psgroup.id);
+                        //alert("else "+psgroup.id);
                         $("#psgroup").append(
                         $('<option/>', {
                             value: psgroup.id,

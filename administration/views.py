@@ -233,7 +233,7 @@ class AboutPageView():
 
             userid = request.user.id
             description = request.POST.get('description')
-
+            mmdesp = request.POST.get('mmdescription')
             if 'photo_1' in request.FILES:
                 photo = request.FILES['photo_1']
             else:
@@ -258,13 +258,13 @@ class AboutPageView():
             else:
                 active = request.POST.get('active')
             if request.POST.get('id') is None or request.POST.get('id')=='':
-                cats = AboutPagePicture(active=active,ts=ts,description=description,
+                cats = AboutPagePicture(active=active,ts=ts,description=description,rsrv_char_field_1=mmdesp,
                                   photo_1=photo,photo_2=photo2,photo_3=photo3)
                 cats.save()
 
             else:
                 id = request.POST.get('id')
-                cats = AboutPagePicture(id=id, active=active, ts=ts,description=description,
+                cats = AboutPagePicture(id=id, active=active, ts=ts,description=description,rsrv_char_field_1=mmdesp,
                                   photo_1=photo, photo_2=photo2, photo_3=photo3)
                 cats.save()
             return HttpResponseRedirect(reverse('administration:about_page_list'))

@@ -13,13 +13,12 @@
             <h6>Post on <a href="#" class="post-date">18 Aug 2018</a> / <a href="#" class="post-author">Peter Crough</a></h6>
             <h2 class="post-title">{{ products.name }}</h2>
             <h5>{{ products.std_cert }} , {{ products.made_in }}</h5>
-            <p>{{ products.description }}</p>
             <input type="hidden" id="pid" name="pid" value="{{ products.id }}">
             <div class="row">
               <div class="col-lg-6">
-                <p>Proin accumsan laoreet donald, a pretiumas dolor congue facilisis. Morbi eget convallis nisi. Sedoni blandit neque eu leo fringilla semper. Donec sed arcu ut arcu sagittis ornare acdat ipsum. Fusces
-                  ut phareto augue, in placerat arcu. Utat erat sit mauris et turpis non dictum eleifend elit.</p>
-                <p>Etiam faucibus vestibulum orci at euismod. Sedo sollicitudin justo esteran nibh egestas maximus. Nullam rutrum dolor velit, act accumsan denim commodo non.</p>
+                  <p>{{ products.description }}</p>
+                <p id="mm" hidden>{{ products.rsrv_char_field_1 }}</p>
+                <a href="javascript:myfun()" >Translate it</a>
               </div>
               <div class="col-lg-6">
                 <img class="w-100 mb-30" src="{{ products.photo_1.url }}" alt="" style="width: 300px;height: 300px">
@@ -209,4 +208,13 @@
       </form>
   </section>
   <!-- ##### News Details Area End ##### -->
+    <script>
+        function  myfun() {
+            var x = document.getElementById("mm");
+            if (x.hidden == true)
+                x.hidden = false;
+            else
+                x.hidden = true;
+        }
+    </script>
 {% endblock content %}

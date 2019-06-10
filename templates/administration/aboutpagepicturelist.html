@@ -62,6 +62,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Description</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Myanmar Description</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> About Page  Photo1</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> About Page  Photo2</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> About Page  Photo3</th>
@@ -76,6 +77,7 @@
                                         <tr>
                                             <td>{{ forloop.counter }}</td>
                                             <td>{{ ser.description }}</td>
+                                            <td>{{ ser.rsrv_char_field_1 }}</td>
                                             <td>{% if ser.photo_1 is None or ser.photo_1 == '' %}
                                                 <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_1 }} data-toggle="modal" data-target="#myModal" >
                                                 <span><img class="picture-src" src="{{ ser.photo_1 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
