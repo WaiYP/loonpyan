@@ -3,15 +3,15 @@ from django.db import models
 
 
 class LearningPagePicture(models.Model):
-    description = models.CharField(max_length=300)
+    description = models.TextField(null=True, blank=True)
     photo_1 = models.FileField(upload_to='learning_images', null=True)
     photo_2 = models.FileField(upload_to='learning_images', null=True)
     photo_3 = models.FileField(upload_to='learning_images', null=True)
     photo_4 = models.FileField(upload_to='learning_images', null=True)
     photo_5 = models.FileField(upload_to='learning_images', null=True)
     photo_6 = models.FileField(upload_to='learning_images', null=True)
-    rsrv_char_field_1 = models.CharField(max_length=80,blank=True, null=True)
-    rsrv_char_field_2 = models.CharField(max_length=80,blank=True, null=True)
+    rsrv_char_field_1 = models.TextField(null=True, blank=True)
+    rsrv_char_field_2 = models.TextField(null=True, blank=True)
     rsrv_photo_field_1 = models.FileField(upload_to='learning_images', null=True)
     rsrv_photo_field_2 = models.FileField(upload_to='learning_images', null=True)
     rsrv_photo_field_3 = models.FileField(upload_to='learning_images', null=True)
@@ -22,12 +22,12 @@ class LearningPagePicture(models.Model):
         return self.description
 
 class AboutPagePicture(models.Model):
-    description = models.CharField(max_length=300)
+    description = models.TextField(null=True, blank=True)
     photo_1 = models.FileField(upload_to='about_images', null=True)
     photo_2 = models.FileField(upload_to='about_images', null=True)
     photo_3 = models.FileField(upload_to='about_images', null=True)
-    rsrv_char_field_1 = models.CharField(max_length=80,blank=True, null=True)
-    rsrv_char_field_2 = models.CharField(max_length=80,blank=True, null=True)
+    rsrv_char_field_1 = models.TextField(null=True, blank=True)
+    rsrv_char_field_2 = models.TextField(null=True, blank=True)
     rsrv_photo_field_1 = models.FileField(upload_to='about_images', null=True)
     rsrv_photo_field_2 = models.FileField(upload_to='about_images', null=True)
     rsrv_photo_field_3 = models.FileField(upload_to='about_images', null=True)
