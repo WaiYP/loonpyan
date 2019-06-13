@@ -6,7 +6,7 @@ from django.urls import reverse
 
 from administration.models import LearningPagePicture, AboutPagePicture
 from home.custom import ParentChild
-from inventory.models import Categories, ProductGroup, ProductSubGroup, Products, Customer
+from inventory.models import Categories, ProductGroup, ProductSubGroup, Products, Customer, Activities
 
 
 def sidemenu():
@@ -47,7 +47,9 @@ def productshow(request,pgrpid,psubgrpid):
     return render(request, 'home/products-img.html', context)
 
 def activities(request):
-    return render(request, 'home/activities.html')
+    activity = Activities.objects.all()
+    context = {'activites':activity}
+    return render(request, 'home/activities.html',context)
 
 def farmingpractice(request):
     return render(request,'home/farming-practice.html')

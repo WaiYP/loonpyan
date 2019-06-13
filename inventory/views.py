@@ -681,7 +681,7 @@ class ActivityView():
             if 'photo_2' in request.FILES:
                 photo2 = request.FILES['photo_2']
             else:
-                photo = request.POST.get('photoid2')
+                photo2 = request.POST.get('photoid2')
 
             if 'photo_3' in request.FILES:
                 photo3 = request.FILES['photo_3']

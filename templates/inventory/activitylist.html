@@ -64,6 +64,7 @@
                                         <th><i class="icon-append fa fa-address-card-o"></i> Activity Group Name</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Activity  Name</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Activity  Description</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Myanmar  Description</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo1</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo2</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Activity  Photo3</th>
@@ -82,6 +83,7 @@
                                             <td>{{ agroup.agroup.name }}</td>
                                             <td>{{ agroup.name }}</td>
                                             <td>{{ agroup.description }}</td>
+                                            <td>{{ agroup.rsrv_char_field_1 }}</td>
                                             <td>{% if agroup.photo_1 is None or agroup.photo_1 == '' %}
                                                 <a class="btn-link" id="btn" href="#" data-yourparameter={{ agroup.photo_1 }} data-toggle="modal" data-target="#myModal" >
                                                 <span><img class="picture-src" src="{{ agroup.photo_1 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
