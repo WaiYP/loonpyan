@@ -46,8 +46,8 @@ def productshow(request,pgrpid,psubgrpid):
         'products':products}
     return render(request, 'home/products-img.html', context)
 
-def activities(request):
-    activity = Activities.objects.all()
+def activities(request,actgrp):
+    activity = Activities.objects.filter(agroup=actgrp,active=True)
     context = {'activites':activity}
     return render(request, 'home/activities.html',context)
 
