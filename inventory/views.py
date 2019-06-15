@@ -48,7 +48,7 @@ class ProductView():
             psubgroup = ProductSubGroup.objects.filter(active=1)
             context = {
                 'category':category,
-                'prodgroup':pgroup,
+                'productgroup':pgroup,
                 'psubgroup':psubgroup,
 
             }

@@ -53,8 +53,8 @@ $(function () {
     }
 
     $('#pgroup').change(function () {
-        alert('In change');
-        alert($('#pgroup').val());
+        // alert('In change');
+        // alert($('#pgroup').val());
 
         getProductSubGroup($('#pgroup').val());
         // getProSubGroup($('#pgroup').val());//updated by SSM to use the text input search in product sub group4/5/2018
