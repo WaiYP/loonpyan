@@ -143,7 +143,7 @@
                                   <section>
                                         <label class="label">Choose Product Groups</label>
                                         <label class="select">
-                                        <select name="pgroup" id="pgroup">
+                                        <select name="pgroup" id="pgroup" class="form-control">
                                             {% for pgrp in productgroup %}
                                                 {% if pgrp.id|slugify == product.pgroup_id|slugify %}
                                                     <option value="{{ pgrp.id }}"
@@ -177,23 +177,11 @@
                                                    value="{{ product.name }}">
                                         </label>
                                     </section>
-                                    <section>
-                                        <label class="label">Myanmar Description:</label>
-                                        <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="mmdespt" placeholder="Myanmar Description"
-                                                   value="{{ product.rsrv_char_field_1 }}">
-                                        </label>
-                                    </section>
+
 
                                 </div>
                             <div class="col col-6">
-                                <section>
-                                        <label class="label">Product Description:</label>
-                                        <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="description" placeholder="Description"
-                                                   value="{{ product.description }}">
-                                        </label>
-                                    </section>
+
                                 <section>
                                         <label class="label">Product Technology:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
@@ -218,6 +206,34 @@
 
                             </div>
                             </fieldset>
+                        <fieldset>
+                            <div class="col col-6">
+                                <section>
+                                        <label class="label">Product Description:</label>
+                                        <label class="input">
+{#                                            <input type="text" name="description" placeholder="Description"#}
+{#                                                  style="width: 800px;height: 150px;"#}
+{#                                                   value="{{ product.description }}">#}
+                                            <textarea name="description" placeholder="Description"
+                                            style="width: 800px;height: 150px;">{{ product.description  }}</textarea>
+                                        </label>
+                                    </section>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="col col-6">
+                                 <section>
+                                        <label class="label">Myanmar Description:</label>
+                                        <label class="input">
+{#                                            <input type="text" name="mmdespt" placeholder="Myanmar Description"#}
+{#                                                   style="width: 800px;height: 150px;columns: 50px;"#}
+{#                                                   value="{{ product.rsrv_char_field_1 }}">#}
+                                            <textarea name="mmdespt" placeholder="Myanmar Description"
+                                            style="width: 800px;height: 150px;"}>{{product.rsrv_char_field_1  }}</textarea>
+                                        </label>
+                                    </section>
+                            </div>
+                        </fieldset>
                         <fieldset>
                             <div class="col col-4">
                                  <section>
@@ -339,7 +355,8 @@
 
 {% endblock %}
 {% block scriptsrc %}
-    <script type="text/javascript" src="{% static 'js/ajax/productsdetail.js' %}"></script>
+{#    <script src="{% static 'js/ajax/productsdetail.js' %}"></script>#}
+    <script  src="{% static 'js/ajax/productjs.js' %}"></script>
 {% endblock %}
 {% block scripts %}
     {#    <script>#}

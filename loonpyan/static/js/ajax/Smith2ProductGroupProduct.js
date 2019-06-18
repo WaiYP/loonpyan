@@ -147,7 +147,7 @@ $(function () {
     }
 
     $('#pgroup').change(function () {
-        // alert("In ProductGroup Change");
+        alert("In ProductGroup Change");
         getInventoryProduct($('#pgroup').val())
     })
     $('#reducey').change(function () {
