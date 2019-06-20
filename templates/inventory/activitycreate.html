@@ -159,8 +159,23 @@
                                  <section>
                                         <label class="label">Activity  Description:</label>
                                         <label class="input">
-                                            <input type="text" style="width: 800px;height: 150px;" name="description" placeholder="Description"
-                                                   value="{{ activity.description }}">
+                                            <textarea name="description" placeholder="Description"
+                                            style="width: 800px;height: 150px;">{{ activity.description }}</textarea>
+{#                                            <input type="text" style="width: 800px;height: 150px;" name="description" placeholder="Description"#}
+{#                                                   value="{{ activity.description }}">#}
+                                        </label>
+                                    </section>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="col col-6">
+                                 <section>
+                                        <label class="label">Activity  Description Myanmar:</label>
+                                        <label class="input">
+                                            <textarea name="myanmardescription" placeholder="Myanmar Description"
+                                            style="width: 800px;height: 150px;">{{ activity.rsrv_char_field_1 }}</textarea>
+{#                                            <input type="text" style="width: 800px;height: 150px;" name="description" placeholder="Description"#}
+{#                                                   value="{{ activity.description }}">#}
                                         </label>
                                     </section>
                             </div>

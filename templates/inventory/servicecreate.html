@@ -159,17 +159,35 @@
 
 
                                 </div>
-                            <div class="col col-4">
+
+
+                            </fieldset>
+                        <fieldset>
+                              <div class="col col-12">
                                  <section>
                                         <label class="label">Services  Description:</label>
                                         <label class="input"><i class="icon-append fa fa-cube"></i>
-                                            <input type="text" name="description" placeholder="Description"
-                                                   value="{{ services.description }}">
+                                             <textarea name="description" placeholder=" Description"
+                                            style="width: 800px;height: 150px;">{{ services.description }}</textarea>
+{#                                            <input type="text" name="description" placeholder="Description"#}
+{#                                                   value="{{ services.description }}">#}
                                         </label>
                                     </section>
                             </div>
-
-                            </fieldset>
+                        </fieldset>
+                         <fieldset>
+                              <div class="col col-12">
+                                 <section>
+                                        <label class="label">Services  Description Myanmar:</label>
+                                        <label class="input"><i class="icon-append fa fa-cube"></i>
+                                             <textarea name="myanmardescription" placeholder=" Myanmar Description"
+                                            style="width: 800px;height: 150px;">{{ services.rsrv_char_field_1}}</textarea>
+{#                                            <input type="text" name="description" placeholder="Description"#}
+{#                                                   value="{{ services.description }}">#}
+                                        </label>
+                                    </section>
+                            </div>
+                        </fieldset>
                         <fieldset>
                             <div class="col col-4">
                                   <section>
@@ -264,7 +282,7 @@
                                 <div class="row">
                                     <section class="col col-4">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="active" {% if activity.active == 1 %}
+                                            <input type="checkbox" name="active" {% if services.active == 1 %}
                                                    checked {% endif %} value="1"><i></i>Is Active
                                         </label>
                                     </section>
