@@ -672,7 +672,7 @@ class ActivityView():
             name = request.POST.get('name')
             agroup  = request.POST.get('agroup')
             description = request.POST.get('description')
-
+            mydescription = request.POST.get('myanmardescription')
             if 'photo_1' in request.FILES:
                 photo = request.FILES['photo_1']
             else:
@@ -706,13 +706,13 @@ class ActivityView():
                 active = request.POST.get('active')
             if request.POST.get('id') is None or request.POST.get('id')=='':
                 cats = Activities(name=name,active=active,ts=ts,agroup_id=agroup,description=description,
-                                  photo_1=photo,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5)
+                                  photo_1=photo,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5,rsrv_char_field_1=mydescription)
                 cats.save()
 
             else:
                 id = request.POST.get('id')
                 cats = Activities(id=id,name=name, active=active, ts=ts,agroup_id=agroup,description=description,
-                                  photo_1=photo, photo_2=photo2, photo_3=photo3, photo_4=photo4, photo_5=photo5)
+                                  photo_1=photo, photo_2=photo2, photo_3=photo3, photo_4=photo4, photo_5=photo5,rsrv_char_field_1=mydescription)
                 cats.save()
             return HttpResponseRedirect(reverse('inventory:activity_list'))
         return render(request, 'inventory/activitylist.html')
@@ -884,7 +884,7 @@ class ServiceView():
             name = request.POST.get('name')
             sgroup  = request.POST.get('sgroup')
             description = request.POST.get('description')
-
+            mydescription = request.POST.get('myanmardescription')
             if 'photo_1' in request.FILES:
                 photo = request.FILES['photo_1']
             else:
@@ -893,7 +893,7 @@ class ServiceView():
             if 'photo_2' in request.FILES:
                 photo2 = request.FILES['photo_2']
             else:
-                photo = request.POST.get('photoid2')
+                photo2 = request.POST.get('photoid2')
 
             if 'photo_3' in request.FILES:
                 photo3 = request.FILES['photo_3']
@@ -918,13 +918,13 @@ class ServiceView():
                 active = request.POST.get('active')
             if request.POST.get('id') is None or request.POST.get('id')=='':
                 cats = Services(name=name,active=active,ts=ts,sgroup_id=sgroup,description=description,
-                                  photo_1=photo,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5)
+                                  photo_1=photo,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5,rsrv_char_field_1=mydescription)
                 cats.save()
 
             else:
                 id = request.POST.get('id')
                 cats = Services(id=id,name=name, active=active, ts=ts,sgroup_id=sgroup,description=description,
-                                  photo_1=photo, photo_2=photo2, photo_3=photo3, photo_4=photo4, photo_5=photo5)
+                                  photo_1=photo, photo_2=photo2, photo_3=photo3, photo_4=photo4, photo_5=photo5,rsrv_char_field_1=mydescription)
                 cats.save()
             return HttpResponseRedirect(reverse('inventory:service_list'))
         return render(request, 'inventory/servicelist.html')
