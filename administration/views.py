@@ -106,6 +106,12 @@ class LearnPageView():
         if request.method == 'POST':
 
             userid = request.user.id
+            description2= request.POST.get('description2')
+            description3= request.POST.get('description3')
+            description4= request.POST.get('description4')
+            description5= request.POST.get('description5')
+            description6= request.POST.get('description6')
+
             description = request.POST.get('description')
 
             if 'photo_1' in request.FILES:
@@ -146,13 +152,19 @@ class LearnPageView():
                 active = request.POST.get('active')
             if request.POST.get('id') is None or request.POST.get('id')=='':
                 cats = LearningPagePicture(active=active,ts=ts,description=description,photo_6=photo6,
-                                  photo_1=photo,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5)
+                                  photo_1=photo,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5,
+                                           description2=description2,description3=description3,description4=description4,description5=description5,
+                                           description6=description6)
                 cats.save()
 
             else:
                 id = request.POST.get('id')
                 cats = LearningPagePicture(id=id, active=active, ts=ts,description=description,photo_6=photo6,
-                                  photo_1=photo, photo_2=photo2, photo_3=photo3, photo_4=photo4, photo_5=photo5)
+                                  photo_1=photo, photo_2=photo2, photo_3=photo3, photo_4=photo4, photo_5=photo5,
+                                           description2=description2, description3=description3,
+                                           description4=description4, description5=description5,
+                                           description6=description6
+                                           )
                 cats.save()
             return HttpResponseRedirect(reverse('administration:learn_page_list'))
         return render(request, 'administration/learningpagepicturelist.html')

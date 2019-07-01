@@ -54,8 +54,36 @@
                   <li><a href="{% url 'home:productshow' 1 3 %}"> Product</a></li>
                   <li><a href="#">Activities</a>
                       <ul class="dropdown">
-                          <li><a href="{% url 'home:activities' 1 %}" >CSR Activities</a></li>
-                          <li><a href="{% url 'home:activities' 2 %}" >Others Activities</a></li>
+                          {% for actv in actmenu %}
+                          <li><a href="#" >{{ actv.parent }}</a>
+                              {% if actv.child %}
+                                  <ul class="dropdown">
+                                  {% for actvies in actv.child %}
+                                  <li><a href="{% url 'home:activities'  actv.parent.id actvies.id%}">{{ actvies.name }}</a></li>
+                                  {% endfor %}
+                                  </ul>
+                              {% endif %}
+                              </li>
+{#                          <li><a href="{% url 'home:activities' 2 %}" >Others Activities</a></li>#}
+                          {% endfor %}
+
+                      </ul>
+                  </li>
+                 <li><a href="#">Services</a>
+                      <ul class="dropdown">
+                          {% for actv in sermenu %}
+                          <li><a href="#" >{{ actv.parent }}</a>
+                              {% if actv.child %}
+                                  <ul class="dropdown">
+                                  {% for actvies in actv.child %}
+                                  <li><a href="{% url 'home:services'  actv.parent.id actvies.id%}">{{ actvies.name }}</a></li>
+                                  {% endfor %}
+                                  </ul>
+                              {% endif %}
+                              </li>
+{#                          <li><a href="{% url 'home:activities' 2 %}" >Others Activities</a></li>#}
+                          {% endfor %}
+
                       </ul>
                   </li>
                   <li><a href="{% url 'home:contact' %}">Contact</a></li>
@@ -89,14 +117,14 @@
   <!-- ##### Footer Area Start ##### -->
   <footer class="footer-area">
     <!-- Main Footer Area -->
-    <div class="main-footer bg-img bg-overlay section-padding-80-0" style="background-image:url({% static 'home/img/bg-img/3.jpg' %});">
+    <div class="main-footer bg-img bg-overlay section-padding-80-0" style="background-image:url({% static 'home/img/bg-img/background6.jpg' %});">
       <div class="container">
         <div class="row">
 
           <!-- Single Footer Widget Area -->
-          <div class="col-12 col-sm-6 col-lg-3">
+          <div class="col-12 col-sm-6 col-lg-6">
             <div class="footer-widget mb-80">
-              <a href="#" class="foo-logo d-block mb-30"><img src="{% static 'home/img/core-img/logo3.jpg' %}" alt=""></a>
+              <a href="#" class="foo-logo d-block mb-30"><img src="{% static 'img/loonpyan_login.jpg' %}" alt=""></a>
               <p>Lorem ipsum dolor sit amet, consecte stare adipiscing elit. In act honcus risus atiner Pellentesque risus.</p>
               <div class="contact-info">
                 <p><i class="fa fa-map-pin" aria-hidden="true"></i><span>120 Raymond Rd, New York</span></p>
@@ -107,28 +135,28 @@
           </div>
 
           <!-- Single Footer Widget Area -->
-          <div class="col-12 col-sm-6 col-lg-3">
-            <div class="footer-widget mb-80">
-              <h5 class="widget-title">QUICK LINK</h5>
-              <!-- Footer Widget Nav -->
-              <nav class="footer-widget-nav">
-                <ul>
-                  <li><a href="#">Purchase</a></li>
-                  <li><a href="#">Policities</a></li>
-                  <li><a href="#">Shipping</a></li>
-                  <li><a href="#">FAQs</a></li>
-                  <li><a href="#">Return</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Payments</a></li>
-                  <li><a href="#">Partners</a></li>
-                  <li><a href="#">Guide</a></li>
-                  <li><a href="#">Standard</a></li>
-                  <li><a href="#">News</a></li>
-                  <li><a href="#">Brands</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+{#          <div class="col-12 col-sm-6 col-lg-3">#}
+{#            <div class="footer-widget mb-80">#}
+{#              <h5 class="widget-title">QUICK LINK</h5>#}
+{#              <!-- Footer Widget Nav -->#}
+{#              <nav class="footer-widget-nav">#}
+{#                <ul>#}
+{#                  <li><a href="#">Purchase</a></li>#}
+{#                  <li><a href="#">Policities</a></li>#}
+{#                  <li><a href="#">Shipping</a></li>#}
+{#                  <li><a href="#">FAQs</a></li>#}
+{#                  <li><a href="#">Return</a></li>#}
+{#                  <li><a href="#">Careers</a></li>#}
+{#                  <li><a href="#">Payments</a></li>#}
+{#                  <li><a href="#">Partners</a></li>#}
+{#                  <li><a href="#">Guide</a></li>#}
+{#                  <li><a href="#">Standard</a></li>#}
+{#                  <li><a href="#">News</a></li>#}
+{#                  <li><a href="#">Brands</a></li>#}
+{#                </ul>#}
+{#              </nav>#}
+{#            </div>#}
+{#          </div>#}
 
           <!-- Single Footer Widget Area -->
           <div class="col-12 col-sm-6 col-lg-3">
@@ -138,22 +166,22 @@
               <!-- Single Recent News Start -->
               <div class="single-recent-blog d-flex align-items-center">
                 <div class="post-thumbnail">
-                  <img src="{% static 'home/img/core-img/image1.jpg' %}" alt="">
+                  <img src="{{ pics.photo_2.url }}" alt="" style="height: 100px;width: 80px;">
                 </div>
                 <div class="post-content">
-                  <a href="#" class="post-title">WA’s largest Car Accessories business on the market</a>
-                  <div class="post-date">18 Aug 2018</div>
+                  <a href="#" class="post-title">{{ pics.description2 }}</a>
+{#                  <div class="post-date">18 Aug 2018</div>#}
                 </div>
               </div>
 
               <!-- Single Recent News Start -->
               <div class="single-recent-blog d-flex align-items-center">
                 <div class="post-thumbnail">
-                  <img src="{% static 'home/img/core-img/image2.jpg' %}" alt="">
+                  <img src="{{ pics.photo_3.url }}" alt="" style="height: 100px;width: 80px;">
                 </div>
                 <div class="post-content">
-                  <a href="#" class="post-title">Engine Oil Products </a>
-                  <div class="post-date">18 Aug 2018</div>
+                  <a href="#" class="post-title">{{ pics.description3 }} </a>
+{#                  <div class="post-date">18 Aug 2018</div>#}
                 </div>
               </div>
 

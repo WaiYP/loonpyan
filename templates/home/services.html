@@ -21,26 +21,26 @@
 {#            </div>#}
 
             <!-- Single Blog Post Area -->
-                {% for activity in activites %}
+                {% for service in services %}
                 <div class="single-blog-post-area mb-50 wow fadeInUp" data-wow-delay="300ms">
                     <div class="row">
                 <div class="col-4">
 {#              <h6>Post on <a href="#" class="post-date">18 Aug 2018</a> / <a href="#" class="post-author">Peter Crough</a></h6>#}
                     <p></p>
-              <a href="#" class="post-title">{{ activity.name }}</a>
+              <a href="#" class="post-title">{{ service.name }}</a>
                     <p class="post-excerpt">
-                {{ activity.description }}
+                {{ service.description }}
               </p>
-                    <p id="mm" hidden>{{ activity.rsrv_char_field_1 }}</p>
+                    <p id="mm" hidden>{{ service.rsrv_char_field_1 }}</p>
                     <a href="javascript:myfun()" >Translate it</a>
                 </div>
                 <div class="col-8">
 {#                    <img src="{% static 'home/img/bg-img/27.jpg'%}" alt="" class="post-thumb" style="width: 300px; height: 300px">#}
-                    <img src="{{ activity.photo_1.url }}" class="post-thumb" style="width: 150px; height: 150px">
-                    <img src="{{ activity.photo_2.url }}" class="post-thumb" style="width: 150px; height: 150px">
-                    <img src="{{ activity.photo_3.url }}" class="post-thumb" style="width: 150px; height: 150px">
-                    <img src="{{ activity.photo_4.url }}" class="post-thumb" style="width: 150px; height: 150px">
-                    <img src="{{ activity.photo_5.url }}" class="post-thumb" style="width: 150px; height: 150px">
+                    <img src="{{ service.photo_1.url }}" class="post-thumb" style="width: 150px; height: 150px">
+                    <img src="{{ service.photo_2.url }}" class="post-thumb" style="width: 150px; height: 150px">
+                    <img src="{{ service.photo_3.url }}" class="post-thumb" style="width: 150px; height: 150px">
+                    <img src="{{ service.photo_4.url }}" class="post-thumb" style="width: 150px; height: 150px">
+                    <img src="{{ service.photo_5.url }}" class="post-thumb" style="width: 150px; height: 150px">
                 </div>
             </div>
 </div>

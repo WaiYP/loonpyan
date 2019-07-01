@@ -37,7 +37,7 @@
                     data-widget-sortable="false"
 
                     -->
-                    <header style="background-color: #d6a042">
+                    <header style="background-color: #5cb85c">
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
                         <h2>Leaning Page Pictures Table</h2>
 
@@ -61,7 +61,11 @@
                                     <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th><i class="icon-append fa fa-address-card-o"></i> Description</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Description1</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Description2</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Description3</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Description4</th>
+                                        <th><i class="icon-append fa fa-address-card-o"></i> Description5</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo1</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo2</th>
                                         <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo3</th>
@@ -77,7 +81,11 @@
                                     {% for ser in lpagepictures %}
                                         <tr>
                                             <td>{{ forloop.counter }}</td>
-                                            <td>{{ ser.description }}</td>
+                                            <td>{{ ser.description2 }}</td>
+                                            <td>{{ ser.description3 }}</td>
+                                            <td>{{ ser.description4 }}</td>
+                                            <td>{{ ser.description5 }}</td>
+                                            <td>{{ ser.description6 }}</td>
                                             <td>{% if ser.photo_1 is None or ser.photo_1 == '' %}
                                                 <a class="btn-link" id="btn" href="#" data-yourparameter={{ ser.photo_1 }} data-toggle="modal" data-target="#myModal" >
                                                 <span><img class="picture-src" src="{{ ser.photo_1 }}" id="wizardPicturePreview"  style="width: 50px; height: 50px;"></span></a>
