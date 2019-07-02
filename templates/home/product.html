@@ -95,6 +95,7 @@
             <!-- Title -->
             <h5 class="widget-title">Catagories</h5>
             <!-- Cata List -->
+          <nav>
             <ul class="cata-list shop-page">
                 {% for menu in sidemenu %}
                     <li>
@@ -115,6 +116,7 @@
 
 
             </ul>
+          </nav>
               <div >
 {#              9/6 #}
 {#  <div class="row">#}
@@ -125,7 +127,7 @@
 {#            {% for menu in sidemenu %}#}
 {#          <a href="#" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent }}</a>#}
 {#           {% if menu.child %}#}
-{#            <div class="collapse" id="child">#}
+{#            <div class="collapse dropdown" id="child">#}
 {#               {% for menuchild in menu.child %}#}
 {#                    <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" class="list-group-item" >{{ menuchild.name }} </a>#}
 {#                {% endfor %}#}
@@ -146,9 +148,9 @@
 {#        <ul>#}
 {#            {%for menu in sidemenu %}#}
 {#            <li>#}
-{#                <a href="#child" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent.name }}</a>#}
+{#                <a href="#child" class="list-group-item list-group-item-success menu-item-parent" data-toggle="collapse" data-parent="#MainMenu">{{ menu.parent.name }}</a>#}
 {#				{% if menu.child %}#}
-{#                <ul class="collapse" id="child">#}
+{#                <ul class="collapse dropdown" id="child">#}
 {#				{% for menuchild in menu.child %}#}
 {#                    <li>#}
 {#                        <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" class="list-group-item" data-toggle="collapse">{{ menuchild.name }}</a>#}
