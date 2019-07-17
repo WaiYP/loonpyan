@@ -37,7 +37,7 @@
                     data-widget-sortable="false"
 
                     -->
-                    <header style="background-color: #d6a042">
+                    <header style="background-color: #5cb85c">
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
                         <h2>Product Group Table</h2>
 
@@ -61,7 +61,7 @@
                                     <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th><i class="icon-append fa fa-address-card-o"></i> Product Category</th>
+{#                                        <th><i class="icon-append fa fa-address-card-o"></i> Product Category</th>#}
                                         <th><i class="icon-append fa fa-address-card-o"></i> Product Group Name</th>
 
 {#                                        <th>Cust_id_id</th>#}
@@ -74,7 +74,7 @@
 
                                         <tr>
                                             <td>{{ forloop.counter }}</td>
-                                            <td>{{ pgroup.cat.name }}</td>
+{#                                            <td>{{ pgroup.cat.name }}</td>#}
                                             <td>{{ pgroup.name }}</td>
                                         <td>
                                                 <a href="{% url 'inventory:pgroup_edit' pgroup.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>

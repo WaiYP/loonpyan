@@ -46,7 +46,7 @@
 
 </head>
 
-<body class="smart-style-2 desktop-detected menu-on-left">
+<body class="smart-style-2 desktop-detected menu-on-top">
 
 <header id="header" style="background-color:#5cb85c">
 
@@ -208,9 +208,9 @@
               <li>
                 <a href="#"><i class="fa fa-lg fa-fw fa-cubes"></i> <span class="menu-item-parent">Products</span></a>
                 <ul>
-                    <li>
-                        <a href="{% url 'inventory:category_list' %}">Product's Categories</a>
-                    </li>
+{#                    <li>#}
+{#                        <a href="{% url 'inventory:category_list' %}">Product's Categories</a>#}
+{#                    </li>#}
                     <li>
                         <a href="{% url 'inventory:pgroup_list' %}"> Product Group</a>
                     </li>
@@ -246,7 +246,7 @@
                 </ul>
             </li>
              <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-industry"></i> <span class="menu-item-parent">HomePagePhotoSetting </span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-industry"></i> <span class="menu-item-parent">HomeSetting </span></a>
                 <ul>
                     <li>
                         <a href="{% url 'administration:learn_page_list' %}"> Home Photo Settings</a>

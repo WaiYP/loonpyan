@@ -119,24 +119,24 @@
                                 {% if edit == 1 %}
                                     <input type="text" name="id" value="{{ pgroup.id }}" hidden>
                                 {% endif %}
-                            <div class="col col-6">
-                                     <section>
-                                        <label class="label">Choose Product Category</label>
-                                        <label class="select">
-                                        <select name="category" id="category">
-                                            {% for cat in category %}
-                                                {% if cat.id == pgroup.cat_id %}
-                                                    <option value="{{ cat.id }}"
-                                                            selected="selected">{{ cat.name }}</option>
-                                                {% else %}
-                                                    <option value="{{ cat.id }}">{{ cat.name }}</option>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </select><i></i>
-                                        </label>
-                                    </section>
-
-                                </div>
+{#                            <div class="col col-6">#}
+{#                                     <section>#}
+{#                                        <label class="label">Choose Product Category</label>#}
+{#                                        <label class="select">#}
+{#                                        <select name="category" id="category">#}
+{#                                            {% for cat in category %}#}
+{#                                                {% if cat.id == pgroup.cat_id %}#}
+{#                                                    <option value="{{ cat.id }}"#}
+{#                                                            selected="selected">{{ cat.name }}</option>#}
+{#                                                {% else %}#}
+{#                                                    <option value="{{ cat.id }}">{{ cat.name }}</option>#}
+{#                                                {% endif %}#}
+{#                                            {% endfor %}#}
+{#                                        </select><i></i>#}
+{#                                        </label>#}
+{#                                    </section>#}
+{##}
+{#                                </div>#}
                                 <div class="col col-6">
                                     <section>
                                         <label class="label">Product Group Name:</label>

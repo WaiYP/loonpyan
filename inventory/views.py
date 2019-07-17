@@ -43,11 +43,11 @@ class ProductView():
             # division= Division.objects.all()
             # township = Township.objects.all()
             # pricegroup = PriceGroup.objects.filter(active=True)
-            category = Categories.objects.filter(active=1)
+            # category = Categories.objects.filter(active=1)
             pgroup = ProductGroup.objects.filter(active=1)
             psubgroup = ProductSubGroup.objects.filter(active=1)
             context = {
-                'category':category,
+                # 'category':category,
                 'productgroup':pgroup,
                 'psubgroup':psubgroup,
 
@@ -117,7 +117,7 @@ class ProductView():
         if request.method == 'POST':
 
             userid = request.user.id
-            cat = request.POST.get('category')
+            # cat = request.POST.get('category')
             pgroup = request.POST.get('pgroup')
             psubgroup = request.POST.get('psgroup')
             name = request.POST.get('name')
@@ -160,14 +160,14 @@ class ProductView():
                 active = request.POST.get('active')
             if request.POST.get('id') is None or request.POST.get('id')=='':
                 cust = Products(name=name,photo_1=photo,active=active,ts=ts,
-                                cat_id=cat,pgroup_id=pgroup,psubgroup_id=psubgroup,description=description,technology=technology,
+                                pgroup_id=pgroup,psubgroup_id=psubgroup,description=description,technology=technology,
                                 made_in=made,std_cert=standard,photo_2=photo2,photo_3=photo3,photo_4=photo4,photo_5=photo5,rsrv_char_field_1=mmdespt)
                 cust.save()
 
             else:
                 id = request.POST.get('id')
                 cust = Products(id=id,name=name, photo_1=photo, active=active, ts=ts,
-                                cat_id=cat, pgroup_id=pgroup, psubgroup_id=psubgroup, description=description,
+                                pgroup_id=pgroup, psubgroup_id=psubgroup, description=description,
                                 technology=technology,
                                 made_in=made, std_cert=standard, photo_2=photo2, photo_3=photo3, photo_5=photo5,
                                 photo_4=photo5,rsrv_char_field_1=mmdespt)
@@ -405,7 +405,7 @@ class PgroupView():
 
             userid = request.user.id
             name = request.POST.get('name')
-            cate = request.POST.get('category')
+            # cate = request.POST.get('category')
             ts = datetime.now()
 
 
@@ -414,12 +414,12 @@ class PgroupView():
             else:
                 active = request.POST.get('active')
             if request.POST.get('id') is None or request.POST.get('id')=='':
-                cats = ProductGroup(name=name,active=active,ts=ts,cat_id=cate)
+                cats = ProductGroup(name=name,active=active,ts=ts)
                 cats.save()
 
             else:
                 id = request.POST.get('id')
-                cats = ProductGroup(id=id,name=name, active=active, ts=ts,cat_id=cate)
+                cats = ProductGroup(id=id,name=name, active=active, ts=ts)
                 cats.save()
             return HttpResponseRedirect(reverse('inventory:pgroup_list'))
         return render(request, 'inventory/productgrouplist.html')
@@ -432,8 +432,9 @@ class PgroupView():
         # except Categories.DoesNotExist:
         #     raise Http404('This Categories does not exist')
         #
-        category = Categories.objects.filter(active=1)
-        content = {'category': category,
+        # category = Categories.objects.filter(active=1)
+        content = {
+            # 'category': category,
                    # 'edit':1,
                    # 'pricegroup':pricegroup,
                    }

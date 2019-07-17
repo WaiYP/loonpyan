@@ -10,7 +10,7 @@
         <div class="col-12">
           <!-- News Details Content -->
           <div class="news-details-content">
-            <h6>Post on <a href="#" class="post-date">18 Aug 2018</a> / <a href="#" class="post-author">Peter Crough</a></h6>
+{#            <h6>Post on <a href="#" class="post-date">18 Aug 2018</a> / <a href="#" class="post-author">Peter Crough</a></h6>#}
             <h2 class="post-title">{{ products.name }}</h2>
             <h5>{{ products.std_cert }} , {{ products.made_in }}</h5>
             <input type="hidden" id="pid" name="pid" value="{{ products.id }}">
@@ -73,107 +73,107 @@
             <!-- Share & Tags -->
             <div class="share-tags d-flex flex-wrap align-items-center justify-content-between">
               <!-- Share -->
-              <div class="share-post d-flex align-items-center">
-                <span>Share This post:</span>
-                <!-- Share Icons -->
-                <div class="share-icons">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
-                </div>
-              </div>
+{#              <div class="share-post d-flex align-items-center">#}
+{#                <span>Share This post:</span>#}
+{#                <!-- Share Icons -->#}
+{#                <div class="share-icons">#}
+{#                  <a href="#"><i class="fa fa-facebook"></i></a>#}
+{#                  <a href="#"><i class="fa fa-twitter"></i></a>#}
+{#                  <a href="#"><i class="fa fa-pinterest"></i></a>#}
+{#                </div>#}
+{#              </div>#}
               <!-- Tags -->
               <ul class="famie-tags">
                 <li><a href="{% url 'home:product' 1 1 %}">All product</a></li>
-                <li><a href="#">Freshy Fruit</a></li>
-                <li><a href="#">Sweet Corn</a></li>
+{#                <li><a href="#">Freshy Fruit</a></li>#}
+{#                <li><a href="#">Sweet Corn</a></li>#}
               </ul>
             </div>
           </div>
 
           <!-- Post Author -->
-          <div class="post-author-area d-flex align-items-center">
-            <div class="post-author-img">
-              <img src="{% static 'home/img/bg-img/38.jpg' %}" alt="">
-            </div>
-            <div class="post-author-description">
-              <a href="#">
-                <h5>Peter Crough</h5>
-              </a>
-              <p>Duis tincidunt turpis sodales, tincidunt nisi et, auctor nisigama. Curabitur vulputate sapien espanyol metusi ultricies fermentum necvelpa.
-                Maecenas eget lacinia est molestie ligula, et euismod auctor. </p>
-            </div>
-          </div>
+{#          <div class="post-author-area d-flex align-items-center">#}
+{#            <div class="post-author-img">#}
+{#              <img src="{% static 'home/img/bg-img/38.jpg' %}" alt="">#}
+{#            </div>#}
+{#            <div class="post-author-description">#}
+{#              <a href="#">#}
+{#                <h5>Peter Crough</h5>#}
+{#              </a>#}
+{#              <p>Duis tincidunt turpis sodales, tincidunt nisi et, auctor nisigama. Curabitur vulputate sapien espanyol metusi ultricies fermentum necvelpa.#}
+{#                Maecenas eget lacinia est molestie ligula, et euismod auctor. </p>#}
+{#            </div>#}
+{#          </div>#}
 
           <!-- Comment Area Start -->
-          <div class="comment_area clearfix mb-50">
-
-            <!-- Title -->
-            <h3 class="mb-50">3 Comments</h3>
-
-            <ul>
-              <!-- Single Comment Area -->
-              <li class="single_comment_area">
-                <!-- Comment Content -->
-                <div class="comment-content d-flex">
-                  <!-- Comment Author -->
-                  <div class="comment-author">
-                    <img src="{% static 'home/img/bg-img/31.jpg' %}" alt="author">
-                  </div>
-                  <!-- Comment Meta -->
-                  <div class="comment-meta">
-                    <a href="#" class="comment-date">27 Aug 2019</a>
-                    <h6>Diego Simeone</h6>
-                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sitdown ameto, consectetur, adipisci velit, sed quiata non numqua eius modi tempor incidunt ut labore et dolore magnam, semper quis mollis id, ullamcorper ut diam.</p>
-                    <a href="#" class="reply">Reply</a>
-                  </div>
-                </div>
-
-                <ol class="children">
-                  <li class="single_comment_area">
-                    <!-- Comment Content -->
-                    <div class="comment-content d-flex">
-                      <!-- Comment Author -->
-                      <div class="comment-author">
-                        <img src="{% static 'home/img/bg-img/32.jpg' %}" alt="author">
-                      </div>
-                      <!-- Comment Meta -->
-                      <div class="comment-meta">
-                        <a href="#" class="comment-date">27 Aug 2019</a>
-                        <h6>Susie Martha</h6>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sitdown ameto, consectetur, adipisci velit, sed quiata non numqua eius modi tempor incidunt ut labore et dolore magnam, semper quis mollis id, ullamcorper ut diam.</p>
-                        <a href="#" class="reply">Reply</a>
-                      </div>
-                    </div>
-                  </li>
-                </ol>
-              </li>
-
-              <!-- Single Comment Area -->
-              <li class="single_comment_area">
-                <!-- Comment Content -->
-                <div class="comment-content d-flex">
-                  <!-- Comment Author -->
-                  <div class="comment-author">
-                    <img src="{% static 'home/img/bg-img/33.jpg' %}" alt="author">
-                  </div>
-                  <!-- Comment Meta -->
-                  <div class="comment-meta">
-                    <a href="#" class="comment-date">27 Aug 2019</a>
-                    <h6>Jonny Evans</h6>
-                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sitdown ameto, consectetur, adipisci velit, sed quiata non numqua eius modi tempor incidunt ut labore et dolore magnam, semper quis mollis id, ullamcorper ut diam.</p>
-                    <a href="#" class="reply">Reply</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+{#          <div class="comment_area clearfix mb-50">#}
+{##}
+{#            <!-- Title -->#}
+{#            <h3 class="mb-50">3 Comments</h3>#}
+{##}
+{#            <ul>#}
+{#              <!-- Single Comment Area -->#}
+{#              <li class="single_comment_area">#}
+{#                <!-- Comment Content -->#}
+{#                <div class="comment-content d-flex">#}
+{#                  <!-- Comment Author -->#}
+{#                  <div class="comment-author">#}
+{#                    <img src="{% static 'home/img/bg-img/31.jpg' %}" alt="author">#}
+{#                  </div>#}
+{#                  <!-- Comment Meta -->#}
+{#                  <div class="comment-meta">#}
+{#                    <a href="#" class="comment-date">27 Aug 2019</a>#}
+{#                    <h6>Diego Simeone</h6>#}
+{#                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sitdown ameto, consectetur, adipisci velit, sed quiata non numqua eius modi tempor incidunt ut labore et dolore magnam, semper quis mollis id, ullamcorper ut diam.</p>#}
+{#                    <a href="#" class="reply">Reply</a>#}
+{#                  </div>#}
+{#                </div>#}
+{##}
+{#                <ol class="children">#}
+{#                  <li class="single_comment_area">#}
+{#                    <!-- Comment Content -->#}
+{#                    <div class="comment-content d-flex">#}
+{#                      <!-- Comment Author -->#}
+{#                      <div class="comment-author">#}
+{#                        <img src="{% static 'home/img/bg-img/32.jpg' %}" alt="author">#}
+{#                      </div>#}
+{#                      <!-- Comment Meta -->#}
+{#                      <div class="comment-meta">#}
+{#                        <a href="#" class="comment-date">27 Aug 2019</a>#}
+{#                        <h6>Susie Martha</h6>#}
+{#                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sitdown ameto, consectetur, adipisci velit, sed quiata non numqua eius modi tempor incidunt ut labore et dolore magnam, semper quis mollis id, ullamcorper ut diam.</p>#}
+{#                        <a href="#" class="reply">Reply</a>#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  </li>#}
+{#                </ol>#}
+{#              </li>#}
+{##}
+{#              <!-- Single Comment Area -->#}
+{#              <li class="single_comment_area">#}
+{#                <!-- Comment Content -->#}
+{#                <div class="comment-content d-flex">#}
+{#                  <!-- Comment Author -->#}
+{#                  <div class="comment-author">#}
+{#                    <img src="{% static 'home/img/bg-img/33.jpg' %}" alt="author">#}
+{#                  </div>#}
+{#                  <!-- Comment Meta -->#}
+{#                  <div class="comment-meta">#}
+{#                    <a href="#" class="comment-date">27 Aug 2019</a>#}
+{#                    <h6>Jonny Evans</h6>#}
+{#                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sitdown ameto, consectetur, adipisci velit, sed quiata non numqua eius modi tempor incidunt ut labore et dolore magnam, semper quis mollis id, ullamcorper ut diam.</p>#}
+{#                    <a href="#" class="reply">Reply</a>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </li>#}
+{#            </ul>#}
+{#          </div>#}
 
           <!-- Post A Comment Area -->
           <div class="post-a-comment-area">
 
             <!-- Title -->
-            <h3 class="mb-50">Leave A Reply</h3>
+            <h3 class="mb-50">Send A Message</h3>
 
             <!-- Reply Form -->
             <div class="contact-form-area">
