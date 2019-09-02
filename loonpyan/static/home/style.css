@@ -1573,7 +1573,7 @@ input:focus {
       vertical-align: middle;
       border-top: none; }
       .cart-table tbody tr td.cart_product_img a img {
-        max-width: 60px; }
+        max-width: 300px; }
       .cart-table tbody tr td.cart_product_desc p {
         margin-bottom: 2px; }
       .cart-table tbody tr td.cart_product_desc h6 {

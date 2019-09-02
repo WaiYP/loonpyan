@@ -3,18 +3,27 @@
 {% block content %}
     {% csrf_token %}
  <!-- ##### About Us Area Start ##### -->
-  <section class="about-us-area">
+
+
+    <section class="about-us-area">
     <div class="container">
       <div class="row align-items-center">
 
         <!-- About Us Content -->
-        <div class="col-12 col-md-8">
+        <div class="col-12">
           <div class="about-us-content mb-100">
             <!-- Section Heading -->
             <div class="section-heading">
               <p>About us</p>
               <h2><span>Let Us</span> Tell You Our Story</h2>
-              <img src="{% static 'home/img/core-img/image7.jpg' %}" alt="">
+
+            <div class="col-12">
+            <div class="row">
+           <div class="benefits-thumbnail mb-50">
+            <img src="{{ abt.photo_1.url }}" alt="" style="height: 350px;width:1500px;" >
+          </div>
+        </div>
+      </div>
             </div>
             <p>{{ abt.description }}</p>
               <p id="mm" hidden>{{ abt.rsrv_char_field_1 }}</p>
@@ -24,10 +33,10 @@
         </div>
 
         <!-- Famie Video Play -->
-        <div class="col-12 col-md-4">
-            <div class="benefits-thumbnail mb-50">
-              <img src="{{ abt.photo_1.url }}" alt="About Us Pic">
-          </div>
+{#        <div class="col-12 col-md-4">#}
+{#            <div class="benefits-thumbnail mb-50">#}
+{#              <img src="{{ abt.photo_1.url }}" alt="About Us Pic">#}
+{#          </div>#}
 {#          <div class="famie-video-play mb-100">#}
 {#            <img src="{% static 'img/core-img/image8.png' %}" alt="">#}
 {#            <!-- Play Icon -->#}
@@ -36,8 +45,9 @@
         </div>
 
       </div>
-    </div>
   </section>
+
+
   <!-- ##### About Us Area End ##### -->
 <script>
  function myfun(){

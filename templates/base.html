@@ -29,30 +29,31 @@
     <!-- Top Header Area -->
     <!-- Navbar Area -->
     <div class="famie-main-menu" >
-      <div class="classy-nav-container breakpoint-off" style="background-color: #c5e1a5">
+      <div class="classy-nav-container breakpoint-off" style="background-color: #042D59">
+{#      green c5e1a5#}
         <div class="container">
           <!-- Menu -->
           <nav class="classy-navbar justify-content-between" id="famieNav">
             <!-- Nav Brand -->
-{#            <a href="#" class="nav-brand"><img src="{% static 'home/img/core-img/loonpyan_logo.png' %}" alt=""></a>#}
+{#            <a href="#" class="nav-brand"><img src="{% static 'home/img/core-img/images.jpg' %}" alt=""></a>#}
               <a href="#" class="nav-brand" style="font-family: 'Times New Roman'; font-weight: bolder"><span style="color: #ffc107">Myanmar</span><span style="color: green">Loon</span><span style="color: red" >Pyan</span></a>
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
               <span class="navbarToggler"><span></span><span></span><span></span></span>
             </div>
             <!-- Menu -->
-            <div class="classy-menu">
+            <div class="classy-menu" >
               <!-- Close Button -->
               <div class="classycloseIcon">
                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
               </div>
               <!-- Navbar Start -->
-              <div class="classynav">
-                <ul>
+              <div class="classynav"  >
+                <ul >
                   <li class="active"><a href="{% url 'home:index' %}">Home</a></li>
-                  <li><a href="{% url 'home:about' %}">About</a></li>
-                  <li><a href="{% url 'home:productshow' 1 3 %}"> Product</a></li>
-                  <li><a href="#">Activities</a>
+                  <li ><a href="{% url 'home:about' %}" style="color: white">About</a></li>
+                  <li><a href="{% url 'home:productshow' 1 3 %}" style="color: white"> Products</a></li>
+                  <li><a href="#" style="color: white">Activities</a>
                       <ul class="dropdown">
                           {% for actv in actmenu %}
                           <li><a href="#" >{{ actv.parent }}</a>
@@ -69,7 +70,7 @@
 
                       </ul>
                   </li>
-                 <li><a href="#">Services</a>
+                 <li><a href="#" style="color: white">Services</a>
                       <ul class="dropdown">
                           {% for actv in sermenu %}
                           <li><a href="#" >{{ actv.parent }}</a>
@@ -86,7 +87,7 @@
 
                       </ul>
                   </li>
-                  <li><a href="{% url 'home:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'home:contact' %}" style="color: white">Contact</a></li>
                 </ul>
 
               </div>
@@ -117,76 +118,73 @@
   <!-- ##### Footer Area Start ##### -->
   <footer class="footer-area">
     <!-- Main Footer Area -->
-    <div class="main-footer bg-img bg-overlay section-padding-80-0" style="background-image:url({% static 'home/img/bg-img/background6.jpg' %});">
+    <div class="main-footer bg-img bg-overlay section-padding-80-0" >
+{#        style="background-image:url({% static 'home/img/bg-img/background6.jpg' %});   src="{% static 'home/img/bg-img/contact_pic.jpeg' %}" #}
       <div class="container">
         <div class="row">
 
           <!-- Single Footer Widget Area -->
           <div class="col-12 col-sm-6 col-lg-6">
             <div class="footer-widget mb-80">
-              <a href="#" class="foo-logo d-block mb-30"><img src="{% static 'img/loonpyan_login.jpg' %}" alt=""></a>
+              <a href="#" class="foo-logo d-block mb-30"><img  alt=""></a>
               <p>Lorem ipsum dolor sit amet, consecte stare adipiscing elit. In act honcus risus atiner Pellentesque risus.</p>
               <div class="contact-info">
-                <p><i class="fa fa-map-pin" aria-hidden="true"></i><span>120 Raymond Rd, New York</span></p>
-                <p><i class="fa fa-envelope" aria-hidden="true"></i><span>info.deercreative@gmail.com</span></p>
-                <p><i class="fa fa-phone" aria-hidden="true"></i><span>+84 223 9000</span></p>
+                <p><i class="fa fa-map-pin" aria-hidden="true"></i><span>No.282, 82nd Road, Between 26th & 27th St.,Mandalay, Myanmar</span></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i><span>loonpyan@gmail.com</span></p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i><span>02-4071696, 09-76650011</span></p>
               </div>
+            </div>
+          </div>
+
+          <!-- Single Footer Widget Area -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="footer-widget mb-80">
+              <h5 class="widget-title">QUICK LINK</h5>
+              <!-- Footer Widget Nav -->
+              <nav class="footer-widget-nav">
+                <ul>
+                  <li><a href="{% url 'home:about' %}">ABOUT</a></li>
+                  <li><a href="{% url 'home:product' 1 3 %}">PRODUCTS</a></li>
+                  <li><a href="{% url 'home:activities'  1 1 %}">ACTIVITIES</a>
+
+                  </li>
+                    <li><a href="#">SERVICES</a>
+
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
 
           <!-- Single Footer Widget Area -->
 {#          <div class="col-12 col-sm-6 col-lg-3">#}
 {#            <div class="footer-widget mb-80">#}
-{#              <h5 class="widget-title">QUICK LINK</h5>#}
-{#              <!-- Footer Widget Nav -->#}
-{#              <nav class="footer-widget-nav">#}
-{#                <ul>#}
-{#                  <li><a href="#">Purchase</a></li>#}
-{#                  <li><a href="#">Policities</a></li>#}
-{#                  <li><a href="#">Shipping</a></li>#}
-{#                  <li><a href="#">FAQs</a></li>#}
-{#                  <li><a href="#">Return</a></li>#}
-{#                  <li><a href="#">Careers</a></li>#}
-{#                  <li><a href="#">Payments</a></li>#}
-{#                  <li><a href="#">Partners</a></li>#}
-{#                  <li><a href="#">Guide</a></li>#}
-{#                  <li><a href="#">Standard</a></li>#}
-{#                  <li><a href="#">News</a></li>#}
-{#                  <li><a href="#">Brands</a></li>#}
-{#                </ul>#}
-{#              </nav>#}
+{#              <h5 class="widget-title">RECENT NEWS</h5>#}
+{##}
+{#              <!-- Single Recent News Start -->#}
+{#              <div class="single-recent-blog d-flex align-items-center">#}
+{#                <div class="post-thumbnail">#}
+{#                  <img src="{{ pics.photo_2.url }}" alt="" style="height: 100px;width: 80px;">#}
+{#                </div>#}
+{#                <div class="post-content">#}
+{#                  <a href="#" class="post-title">{{ pics.description2 }}</a>#}
+{#                  <div class="post-date">18 Aug 2018</div>#}
+{#                </div>#}
+{#              </div>#}
+{##}
+{#              <!-- Single Recent News Start -->#}
+{#              <div class="single-recent-blog d-flex align-items-center">#}
+{#                <div class="post-thumbnail">#}
+{#                  <img src="{{ pics.photo_3.url }}" alt="" style="height: 100px;width: 80px;">#}
+{#                </div>#}
+{#                <div class="post-content">#}
+{#                  <a href="#" class="post-title">{{ pics.description3 }} </a>#}
+{#                  <div class="post-date">18 Aug 2018</div>#}
+{#                </div>#}
+{#              </div>#}
+{##}
 {#            </div>#}
 {#          </div>#}
-
-          <!-- Single Footer Widget Area -->
-          <div class="col-12 col-sm-6 col-lg-3">
-            <div class="footer-widget mb-80">
-              <h5 class="widget-title">RECENT NEWS</h5>
-
-              <!-- Single Recent News Start -->
-              <div class="single-recent-blog d-flex align-items-center">
-                <div class="post-thumbnail">
-                  <img src="{{ pics.photo_2.url }}" alt="" style="height: 100px;width: 80px;">
-                </div>
-                <div class="post-content">
-                  <a href="#" class="post-title">{{ pics.description2 }}</a>
-{#                  <div class="post-date">18 Aug 2018</div>#}
-                </div>
-              </div>
-
-              <!-- Single Recent News Start -->
-              <div class="single-recent-blog d-flex align-items-center">
-                <div class="post-thumbnail">
-                  <img src="{{ pics.photo_3.url }}" alt="" style="height: 100px;width: 80px;">
-                </div>
-                <div class="post-content">
-                  <a href="#" class="post-title">{{ pics.description3 }} </a>
-{#                  <div class="post-date">18 Aug 2018</div>#}
-                </div>
-              </div>
-
-            </div>
-          </div>
 
           <!-- Single Footer Widget Area -->
           <div class="col-12 col-sm-6 col-lg-3">
@@ -194,7 +192,7 @@
               <h5 class="widget-title">STAY CONNECTED</h5>
               <!-- Footer Social Info -->
               <div class="footer-social-info">
-                <a href="#">
+                <a href="https://www.facebook.com/elflubricants/" target="_blank">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                   <span>Facebook</span>
                 </a>
@@ -226,11 +224,14 @@
               <div class="footer-nav">
                 <nav>
                   <ul>
-                    <li><a href="{% url 'home:about' %}">About</a></li>
-                    <li><a href="#">Produce</a></li>
-                    <li><a href="farming-practice.html">Practice</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="news.html">News</a></li>
+                    <li><a href="{% url 'home:about' %}">ABOUT</a></li>
+                    <li><a href="#">PRODUCTS</a></li>
+                    <li><a href="{% url 'home:activities'  1 1 %}">Activities</a>
+
+                  </li>
+                    <li><a href="#">Services</a>
+                      
+                  </li>
                     <li><a href="contact.html">Contact</a></li>
                   </ul>
                 </nav>
