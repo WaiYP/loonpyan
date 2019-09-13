@@ -25,7 +25,7 @@ SECRET_KEY = '2rgp&sadrft8@mazma4dx5l!@c3_852@41+=55aba-ibockih_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['173.248.152.254','localhost','127.0.0.1','loonpyan.com.mm','www.loonpyan.com.mm']
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'loonpyan.urls'
@@ -76,7 +77,7 @@ WSGI_APPLICATION = 'loonpyan.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -87,9 +88,9 @@ DATABASES = {
 'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'loonpyandb',
-    'USER': 'root',
-    'PASSWORD': 'P@$$w0rd',
-    'HOST': '127.0.0.1',
+    'USER': 'sa',
+    'PASSWORD': 'L00npy@n0!l',
+    'HOST': 'localhost',
     'PORT': '3306',
     'AUTOCOMMIT': True,
 }
