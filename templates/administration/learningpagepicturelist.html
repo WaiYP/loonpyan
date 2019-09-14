@@ -74,7 +74,7 @@
                                         <th><i class="icon-append fa fa-address-card-o"></i> Home Page  Photo6</th>
 {#                                        <th>Cust_id_id</tah>#}
                                         <th>Edit</th>
-{#                                        <th>Delete</th>#}
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -125,6 +125,10 @@
                                         <td>
                                                 <a href="{% url 'administration:learn_page_edit' ser.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>
                                             </td>
+                                        </td>
+                                              <td>
+                                            <a href="#" data-href="{% url 'administration:learn_page_delete' ser.id %}" data-toggle="modal" data-target="#confirm-delete" class="text-danger"><i class="fa fa-2x fa-trash"></i></a>
+                                        </td>
                                         </tr>
 
                                     {% endfor %}
