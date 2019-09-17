@@ -101,6 +101,11 @@ class LearnPageView():
                    }
         return render(request, 'administration/learningpagepicturecreate.html', content)
 
+    def delete(request, id):
+        ts = datetime.now()
+        LearningPagePicture.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('administration:learn_page_list'))
+
     def save (request):
 
         if request.method == 'POST':
@@ -238,6 +243,11 @@ class AboutPageView():
                    'photourl3': photourl3,
                    }
         return render(request, 'administration/aboutpagepicturecreate.html', content)
+
+    def delete(request, id):
+        ts = datetime.now()
+        AboutPagePicture.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('administration:about_page_list'))
 
     def save (request):
 
