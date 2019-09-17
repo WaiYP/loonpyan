@@ -10,14 +10,15 @@ from inventory.models import Categories, ProductGroup, ProductSubGroup, Products
     ServiceGroup, Services
 
 
-def sidemenu():
-    sidemenu = []
-    sidemenu.clear()
+def productsmenu():
+    productsmenu = []
+    productsmenu.clear()
     pgroups = ProductGroup.objects.filter(active=True)
     for pgroup in pgroups:
         psubgrps = ProductSubGroup.objects.select_related().filter(pgroup=pgroup, active=True).order_by('id')
-        sidemenu.append(ParentChild(pgroup, psubgrps))
-    return  sidemenu
+        productsmenu.append(ParentChild(pgroup, psubgrps))
+    return  productsmenu
+
 def activitymenu():
     activitymenu = []
     activitymenu.clear()
@@ -26,6 +27,7 @@ def activitymenu():
         activities = Activities.objects.select_related().filter(agroup=agroup, active=True).order_by('id')
         activitymenu.append(ParentChild(agroup, activities))
     return  activitymenu
+
 def servicemenu():
     servicemenu = []
     servicemenu.clear()
@@ -38,10 +40,12 @@ def servicemenu():
 def index(request):
     pics = LearningPagePicture.objects.last()
     actvgroup = ActivityGroup.objects.all()
+    p_menu = productsmenu()
     a_menu=activitymenu()
     s_menu = servicemenu()
     servgroup = ServiceGroup.objects.all()
     context = {'pics':pics,
+               'prodmenu':p_menu,
                'actmenu':a_menu,
                'sermenu':s_menu,
                'actvgroup':actvgroup,
@@ -52,11 +56,13 @@ def about(request):
     pics = LearningPagePicture.objects.last()
     abt = AboutPagePicture.objects.last()
     actvgroup = ActivityGroup.objects.all()
+    p_menu = productsmenu()
     a_menu = activitymenu()
     s_menu = servicemenu()
     servgroup = ServiceGroup.objects.all()
     context = {'abt':abt,
                'pics':pics,
+               'prodmenu':p_menu,
                'sermenu':s_menu,
                'actmenu':a_menu,
                'actvgroup':actvgroup,
@@ -64,15 +70,17 @@ def about(request):
     return  render(request,'home/about.html',context)
 
 def product(request,pgrpid,psubgrpid):
-    side_menu  = sidemenu()
+    side_menu  = productsmenu()
     s_menu = servicemenu()
     pics = LearningPagePicture.objects.last()
     actvgroup = ActivityGroup.objects.all()
     servgroup = ServiceGroup.objects.all()
+    p_menu = productsmenu()
     a_menu = activitymenu()
     products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
     context = {
         'pics':pics,
+        'prodmenu':p_menu,
         'actmenu':a_menu,
         'sermenu':s_menu,
         'sidemenu': side_menu,
@@ -84,15 +92,17 @@ def product(request,pgrpid,psubgrpid):
     return render(request, 'home/product.html', context)
 
 def productshow(request,pgrpid,psubgrpid):
-    side_menu = sidemenu()
+    side_menu = productsmenu()
     s_menu = servicemenu()
     pics = LearningPagePicture.objects.last()
     actvgroup = ActivityGroup.objects.all()
     servgroup = ServiceGroup.objects.all()
+    p_menu = productsmenu()
     a_menu = activitymenu()
     products = Products.objects.filter(pgroup=pgrpid,psubgroup=psubgrpid,active=True)
     context = {
         'pics':pics,
+        'prodmenu':p_menu,
         'actmenu':a_menu,
         'sermenu':s_menu,
         'actvgroup':actvgroup,
@@ -103,6 +113,7 @@ def productshow(request,pgrpid,psubgrpid):
 
 def activities(request,actgrp,actid):
     pics = LearningPagePicture.objects.last()
+    p_menu = productsmenu()
     a_menu = activitymenu()
     s_menu = servicemenu()
     actvgroup = ActivityGroup.objects.all()
@@ -110,6 +121,7 @@ def activities(request,actgrp,actid):
     activity = Activities.objects.filter(agroup=actgrp,active=True,id=actid)
     context = {'activites':activity,
                'pics':pics,
+               'prodmenu':p_menu,
                'actmenu':a_menu,
                'sermenu':s_menu,
                'actvgroup':actvgroup,
@@ -119,12 +131,14 @@ def activities(request,actgrp,actid):
 def services(request,sergrp,serid):
     pics = LearningPagePicture.objects.last()
     actvgroup = ActivityGroup.objects.all()
+    p_menu = productsmenu()
     a_menu = activitymenu()
     s_menu = servicemenu()
     servgroup = ServiceGroup.objects.all()
     service = Services.objects.filter(sgroup=sergrp,active=1,id=serid)
     context = {'services':service,
                'pics':pics,
+               'prodmenu':p_menu,
                'actmenu':a_menu,
                'sermenu':s_menu,
                'actvgroup':actvgroup,
@@ -135,6 +149,7 @@ def farmingpractice(request):
     return render(request,'home/farming-practice.html')
 
 def productdetail(request,pid):
+    p_menu = productsmenu()
     a_menu = activitymenu()
     s_menu = servicemenu()
     pics = LearningPagePicture.objects.last()
@@ -164,6 +179,7 @@ def productdetail(request,pid):
 
     context = {'products' : products,
                'pics':pics,
+               'prodmenu':p_menu,
                'actmenu':a_menu,
                'sermenu':s_menu,
                'actvgroup':actvgroup,
@@ -176,6 +192,7 @@ def productdetail(request,pid):
     return render(request, 'home/productdetail.html',context)
 
 def contact(request):
+    p_menu = productsmenu()
     a_menu = activitymenu()
     s_menu = servicemenu()
     pics = LearningPagePicture.objects.last()
@@ -183,6 +200,7 @@ def contact(request):
     servgroup = ServiceGroup.objects.all()
     context ={'actvgroup':actvgroup,
               'pics':pics,
+              'prodmenu':p_menu,
               'sermenu':s_menu,
               'actmenu':a_menu,
               'servgroup':servgroup}
