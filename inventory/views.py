@@ -112,6 +112,11 @@ class ProductView():
             }
 
             return render(request, 'inventory/productcreate.html',content)
+
+    def delete(request,id):
+        ts = datetime.now()
+        Products.objects.filter(id=id).update(active=0,ts=ts)
+        return HttpResponseRedirect(reverse('inventory:product_list'))
     def save (request):
 
         if request.method == 'POST':
@@ -399,6 +404,10 @@ class PgroupView():
                    }
         return render(request, 'inventory/productgroupcreate.html', content)
 
+    def delete(request, id):
+        ts = datetime.now()
+        ProductGroup.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('inventory:pgroup_list'))
     def save (request):
 
         if request.method == 'POST':
@@ -482,6 +491,11 @@ class PsubgroupView():
                    }
         return render(request, 'inventory/psubgroupcreate.html', content)
 
+    def delete(request, id):
+        ts = datetime.now()
+        ProductSubGroup.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('inventory:psubgroup_list'))
+
     def save (request):
 
         if request.method == 'POST':
@@ -560,6 +574,11 @@ class ActivityGroupView():
                    # 'pricegroup':pricegroup,
                    }
         return render(request, 'inventory/activitygroupcreate.html', content)
+
+    def delete(request, id):
+        ts = datetime.now()
+        ActivityGroup.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('inventory:actgroup_list'))
 
     def save (request):
 
@@ -664,6 +683,11 @@ class ActivityView():
                    # 'pricegroup':pricegroup,
                    }
         return render(request, 'inventory/activitycreate.html', content)
+
+    def delete(request, id):
+        ts = datetime.now()
+        Activities.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('inventory:activity_list'))
 
     def save (request):
 
@@ -773,6 +797,11 @@ class ServiceGroupView():
                    }
         return render(request, 'inventory/servicegroupcreate.html', content)
 
+    def delete(request, id):
+        ts = datetime.now()
+        ServiceGroup.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('inventory:sergroup_list'))
+
     def save (request):
 
         if request.method == 'POST':
@@ -876,6 +905,11 @@ class ServiceView():
                    # 'pricegroup':pricegroup,
                    }
         return render(request, 'inventory/servicecreate.html', content)
+
+    def delete(request, id):
+        ts = datetime.now()
+        Services.objects.filter(id=id).update(active=0, ts=ts)
+        return HttpResponseRedirect(reverse('inventory:service_list'))
 
     def save (request):
 

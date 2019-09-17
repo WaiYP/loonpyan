@@ -65,7 +65,7 @@
 
 {#                                        <th>Cust_id_id</th>#}
                                         <th>Edit</th>
-{#                                        <th>Delete</th>#}
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -77,6 +77,9 @@
                                         <td>
                                                 <a href="{% url 'inventory:sergroup_edit' sg.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>
                                             </td>
+                                         <td>
+                                            <a href="#" data-href="{% url 'inventory:sergroup_delete' sg.id %}" data-toggle="modal" data-target="#confirm-delete" class="text-danger"><i class="fa fa-2x fa-trash"></i></a>
+                                        </td>
                                         </tr>
 
                                     {% endfor %}

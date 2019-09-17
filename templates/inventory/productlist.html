@@ -78,7 +78,7 @@
 
 {#                                        <th>Cust_id_id</th>#}
                                         <th>Edit</th>
-{#                                        <th>Delete</th>#}
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -128,6 +128,10 @@
                                         <td>
                                             <a href="{% url 'inventory:product_edit' product.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>
                                         </td>
+                                              <td>
+                                            <a href="#" data-href="{% url 'inventory:product_delete' product.id %}" data-toggle="modal" data-target="#confirm-delete" class="text-danger"><i class="fa fa-2x fa-trash"></i></a>
+                                        </td>
+
 {#                                         <td>#}
 {#                                                <a href="{% url 'inventory:product_edit'  poduct.id %}" class="text-primary"><i class="fa fa-2x fa-edit"></i></a>#}
 {#                                            </td>#}
