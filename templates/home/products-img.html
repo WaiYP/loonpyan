@@ -15,7 +15,7 @@
                   <!-- Single Table Row -->
                   <tr>
                     <td >
-                      <a href="#">
+                      <a href="{% url 'home:productdetail' product.id %}">
                         <img src="{{ product.photo_1.url }}" alt="Product" style="width: 300px; height: 300px">
                       </a>
                         <p style="font-size: 18px;">{{ product.name }}</p>
