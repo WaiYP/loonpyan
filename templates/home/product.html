@@ -4,7 +4,7 @@
     <!-- ##### Shop Area Start ##### -->
   <section class="shop-area section-padding-0-100">
   {% csrf_token %}
-    <div class="container">
+    <div class="container" >
 
 {#      <div class="row">#}
 {#        <!-- Shop Filters -->#}
@@ -91,33 +91,33 @@
 {#          </div>#}
 
    <!-- Single Widget Area -->
-          <div class="single-widget-area">
-            <!-- Title -->
-            <h5 class="widget-title">Catagories</h5>
-            <!-- Cata List -->
-          <nav>
-            <ul class="cata-list shop-page">
-                {% for menu in sidemenu %}
-                    <li>
-                        <a  class="toggle" href="#" style="font-weight: bold; color: darkgreen; font-size: large">{{ menu.parent }}</a>
-                        <div class="toggle-content" id="sub" style="padding: 0px 0px 0px 10px">
-                         {% if menu.child %}
-                        <ul>
-                        {% for menuchild in menu.child %}
-                            <li>
-                                <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" style="color: forestgreen" >{{ menuchild.name }}</a>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                        {% endif %}
-                    </div>
-                    </li>
-                {% endfor %}
-
-
-            </ul>
-          </nav>
-              <div >
+{#          <div class="single-widget-area">#}
+{#            <!-- Title -->#}
+{#            <h5 class="widget-title">Catagories</h5>#}
+{#            <!-- Cata List -->#}
+{#          <nav>#}
+{#            <ul class="cata-list shop-page">#}
+{#                {% for menu in sidemenu %}#}
+{#                    <li>#}
+{#                        <a  class="toggle" href="#" style="font-weight: bold; color: darkgreen; font-size: large">{{ menu.parent }}</a>#}
+{#                        <div class="toggle-content" id="sub" style="padding: 0px 0px 0px 10px">#}
+{#                         {% if menu.child %}#}
+{#                        <ul>#}
+{#                        {% for menuchild in menu.child %}#}
+{#                            <li>#}
+{#                                <a href="{% url 'home:productshow' menu.parent.id menuchild.id %}" style="color: forestgreen" >{{ menuchild.name }}</a>#}
+{#                            </li>#}
+{#                        {% endfor %}#}
+{#                        </ul>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    </li>#}
+{#                {% endfor %}#}
+{##}
+{##}
+{#            </ul>#}
+{#          </nav>#}
+{#              <div >#}
 {#              9/6 #}
 {#  <div class="row">#}
 {#    <div class="col-md-8">#}
@@ -140,9 +140,9 @@
 {#      </div>#}
 {#    </div>#}
 {#              9/6#}
-</div>
-
-          </div>
+{#</div>#}
+{##}
+{#          </div>#}
 {#testing #}
 {#        <nav id="MainMenu" class="col-md-8">#}
 {#        <ul>#}
