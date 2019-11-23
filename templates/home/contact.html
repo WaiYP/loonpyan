@@ -21,6 +21,108 @@
 <body>
 
   <!-- ##### Header Area Start ##### -->
+{#  <header class="header-area" >#}
+{#    <!-- Top Header Area -->#}
+{#    <!-- Navbar Area -->#}
+{#    <div class="famie-main-menu" >#}
+{#      <div class="classy-nav-container breakpoint-off" style="background-color: #000000">#}
+{#      green c5e1a5 darkblue 042D59 grey 808080#}
+{#        <div class="container">#}
+{#          <!-- Menu -->#}
+{#          <nav class="classy-navbar justify-content-between" id="famieNav">#}
+{#            <!-- Nav Brand -->#}
+{#            <a href="#" class="nav-brand"><img src="{% static 'home/img/core-img/mlp_logo.png' %}" alt=""></a>#}
+{##}
+{#            <!-- Navbar Toggler -->#}
+{#            <div class="classy-navbar-toggler">#}
+{#              <span class="navbarToggler"><span></span><span></span><span></span></span>#}
+{#            </div>#}
+{#            <!-- Menu -->#}
+{#            <div class="classy-menu" >#}
+{#              <!-- Close Button -->#}
+{#              <div class="classycloseIcon">#}
+{#                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>#}
+{#              </div>#}
+{#              <!-- Navbar Start -->#}
+{#              <div class="classynav"  >#}
+{#                <ul >#}
+{#                  <li class="active"><a href="{% url 'home:index' %}">Home</a></li>#}
+{#                  <li ><a href="{% url 'home:about' %}" style="color: white">About</a></li>#}
+{#                  <li><a href="{% url 'home:productshow' 1 3 %}" style="color: white"> Products</a></li>#}
+{#                  <li><a href="#" style="color: white">Products</a>#}
+{#                      <ul class="dropdown">#}
+{#                          {% for prod in prodmenu %}#}
+{#                          <li><a href="#" >{{ prod.parent }}</a>#}
+{#                              {% if prod.child %}#}
+{#                                  <ul class="dropdown">#}
+{#                                  {% for products in prod.child %}#}
+{#                                  <li><a href="{% url 'home:productshow'  prod.parent.id products.id%}">{{ products.name }}</a></li>#}
+{#                                  {% endfor %}#}
+{#                                  </ul>#}
+{#                              {% endif %}#}
+{#                              </li>#}
+{#                          <li><a href="{% url 'home:activities' 2 %}" >Others Activities</a></li>#}
+{#                          {% endfor %}#}
+{##}
+{#                      </ul>#}
+{#                  </li>#}
+{#                  <li><a href="#" style="color: white">Activities</a>#}
+{#                      <ul class="dropdown">#}
+{#                          {% for actv in actmenu %}#}
+{#                          <li><a href="#" >{{ actv.parent }}</a>#}
+{#                              {% if actv.child %}#}
+{#                                  <ul class="dropdown">#}
+{#                                  {% for actvies in actv.child %}#}
+{#                                  <li><a href="{% url 'home:activities'  actv.parent.id actvies.id%}">{{ actvies.name }}</a></li>#}
+{#                                  {% endfor %}#}
+{#                                  </ul>#}
+{#                              {% endif %}#}
+{#                              </li>#}
+{#                          <li><a href="{% url 'home:activities' 2 %}" >Others Activities</a></li>#}
+{#                          {% endfor %}#}
+{##}
+{#                      </ul>#}
+{#                  </li>#}
+{#                 <li><a href="#" style="color: white">Services</a>#}
+{#                      <ul class="dropdown">#}
+{#                          {% for actv in sermenu %}#}
+{#                          <li><a href="#" >{{ actv.parent }}</a>#}
+{#                              {% if actv.child %}#}
+{#                                  <ul class="dropdown">#}
+{#                                  {% for actvies in actv.child %}#}
+{#                                  <li><a href="{% url 'home:services'  actv.parent.id actvies.id%}">{{ actvies.name }}</a></li>#}
+{#                                  {% endfor %}#}
+{#                                  </ul>#}
+{#                              {% endif %}#}
+{#                              </li>#}
+{#                          <li><a href="{% url 'home:activities' 2 %}" >Others Activities</a></li>#}
+{#                          {% endfor %}#}
+{##}
+{#                      </ul>#}
+{#                  </li>#}
+{#                  <li><a href="{% url 'home:contact' %}" style="color: white">Contact</a></li>#}
+{#                </ul>#}
+{##}
+{#              </div>#}
+{#              <!-- Navbar End -->#}
+{#            </div>#}
+{#          </nav>#}
+{##}
+{#          <!-- Search Form -->#}
+{#          <div class="search-form">#}
+{#            <form action="#" method="get">#}
+{#              <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">#}
+{#              <button type="submit" class="d-none"></button>#}
+{#            </form>#}
+{#            <!-- Close Icon -->#}
+{#            <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </header>#}
+
+
   <header class="header-area" >
     <!-- Top Header Area -->
     <!-- Navbar Area -->
@@ -31,7 +133,7 @@
           <!-- Menu -->
           <nav class="classy-navbar justify-content-between" id="famieNav">
             <!-- Nav Brand -->
-            <a href="#" class="nav-brand"><img src="{% static 'home/img/core-img/mlp_logo.png' %}" alt=""></a>
+            <a href="#" class="nav-brand"><img src="{% static 'home/img/core-img/logomlp.png' %}" alt=""></a>
 
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
@@ -46,17 +148,17 @@
               <!-- Navbar Start -->
               <div class="classynav"  >
                 <ul >
-                  <li class="active"><a href="{% url 'home:index' %}">Home</a></li>
+                  <li ><a href="{% url 'home:index' %}" style="color: white">Home</a></li>
                   <li ><a href="{% url 'home:about' %}" style="color: white">About</a></li>
 {#                  <li><a href="{% url 'home:productshow' 1 3 %}" style="color: white"> Products</a></li>#}
-                  <li><a href="#" style="color: white">Products</a>
-                      <ul class="dropdown">
+                  <li><a href="#" style="color: white" style="color:white">Products</a>
+                      <ul class="dropdown" style="background-color: black">
                           {% for prod in prodmenu %}
-                          <li><a href="#" >{{ prod.parent }}</a>
+                          <li><a href="#" id="prodname" style="color:white">{{ prod.parent }}</a>
                               {% if prod.child %}
-                                  <ul class="dropdown">
+                                  <ul class="dropdown" style="background-color: black">
                                   {% for products in prod.child %}
-                                  <li><a href="{% url 'home:productshow'  prod.parent.id products.id%}">{{ products.name }}</a></li>
+                                  <li><a href="{% url 'home:productshow'  prod.parent.id products.id%}" style="color:white;">{{ products.name }}</a></li>
                                   {% endfor %}
                                   </ul>
                               {% endif %}
@@ -67,13 +169,13 @@
                       </ul>
                   </li>
                   <li><a href="#" style="color: white">Activities</a>
-                      <ul class="dropdown">
+                      <ul class="dropdown" style="background-color: black">
                           {% for actv in actmenu %}
-                          <li><a href="#" >{{ actv.parent }}</a>
+                          <li><a href="#" style="color:white;">{{ actv.parent }}</a>
                               {% if actv.child %}
-                                  <ul class="dropdown">
+                                  <ul class="dropdown" style="background-color: black">
                                   {% for actvies in actv.child %}
-                                  <li><a href="{% url 'home:activities'  actv.parent.id actvies.id%}">{{ actvies.name }}</a></li>
+                                  <li><a href="{% url 'home:activities'  actv.parent.id actvies.id%}" style="color:white;">{{ actvies.name }}</a></li>
                                   {% endfor %}
                                   </ul>
                               {% endif %}
@@ -83,14 +185,14 @@
 
                       </ul>
                   </li>
-                 <li><a href="#" style="color: white">Services</a>
-                      <ul class="dropdown">
+                 <li><a href="#" style="color: white" >Services</a>
+                      <ul class="dropdown" style="background-color: black">
                           {% for actv in sermenu %}
-                          <li><a href="#" >{{ actv.parent }}</a>
+                          <li><a href="#" style="color:white;">{{ actv.parent }}</a>
                               {% if actv.child %}
-                                  <ul class="dropdown">
+                                  <ul class="dropdown" style="background-color: black">
                                   {% for actvies in actv.child %}
-                                  <li><a href="{% url 'home:services'  actv.parent.id actvies.id%}">{{ actvies.name }}</a></li>
+                                  <li><a href="{% url 'home:services'  actv.parent.id actvies.id%}" style="color:white;">{{ actvies.name }}</a></li>
                                   {% endfor %}
                                   </ul>
                               {% endif %}
